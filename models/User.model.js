@@ -53,7 +53,7 @@ const UserSchema = new mongoose.Schema({
     match: [emailRegex, "Please use a valid email address"],
     lowercase: true
   },
-  password: {
+  passwordHash: {
     type: String,
     required: true,
     trim: true

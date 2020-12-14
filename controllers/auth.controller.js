@@ -52,7 +52,7 @@ const signup = async (req,res,next) =>{
       esports,
       email,
       username,
-      password: hashedpassword
+      passwordHash: hashedpassword
     })
     console.log(user)
     res.send("usuario creado")
@@ -78,13 +78,15 @@ const login = async (req,res,next) => {
     if(isMissingCredentials){
       res.render('signup', {message: "Missing credentials"})
     }
-    const user = await Users.findOne({email})
-  
+    const {passwordHash,...user} = await Users.findOne({email}).lean()
     if(!user){
       res.render('signup', {message: "User does not exist. Please signup."})
     }
-    req.session.currentUser = user._id
-    return res.render('index')
+
+    req.session.currentUser = user
+    console.log("req.session:", req.session.currentUser)
+    console.log("username:", user)
+    return res.render('index', user)
   }catch(e){
     console.error(e)
   }
