@@ -1,0 +1,26 @@
+<form action="/auth/signup" method="POST">
+<input type="text" name="name" required placeholder="name"><br>
+<input type="text" name="lastname" required placeholder="lastname"><br>
+<input type="number" name="age" required placeholder="age"><br>
+<input type="text" name="country" required value="Spain" readonly='readonly' placeholder="country"><br>
+<input type="text" name="favoriteClub" placeholder="Club"><br>
+<label for="level">Choose a level:</label>
+<select id="level" name="level" required>
+  <option value="Principiante">Principiante</option>
+  <option value="Medio">Medio</option>
+  <option value="Avanzado">Avanzado</option>
+  <option value="Profesional">Profesional</option>
+</select><br>
+<label for="level">Choose an esport:</label>
+<select id="esports" name="esports" required>
+  <option value="Padel">Padel</option>
+  <option value="Tenis">Tenis</option>
+</select><br>
+<input type="email" name="email" required placeholder="email"><br>
+<input type="text" name="username" required placeholder="username"><br>
+<input type="password" name="password" required placeholder="password"><br>
+<button type="submit">SignUp</button>
+</form>
+{{#if message}}
+<p>{{message}}</p>
+{{/if}}
