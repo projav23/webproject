@@ -25,10 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 const index = require('./routes/index.routes')
 const login = require('./routes/login.routes')
 const signup = require('./routes/signup.routes')
+const matches = require('./routes/matches.routes')
 
 app.use('/', index)
 app.use('/auth', login)
 app.use('/auth', signup)
+app.use('/matches', matches)
 
 
 //Puerto de escucha

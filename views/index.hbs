@@ -1,7 +1,6 @@
 <div class="topnav" id="myTopnav">
-  <a href="/index" class="active">FULLSTACK APP</a>
+  <a href="/index" class="active">Nombre aplicacion</a>
   {{#if username}}
-  <p>{{username}}</p>
   <div class="dropdown">
     <button class="dropbtn">Deportes
       <i class="fa fa-caret-down"></i>
@@ -12,8 +11,8 @@
       <a href="#">Futbol</a>
     </div>
   </div>
-  <a href="/mispartidos">Mis partidos</a>
-  <a href="/newgame">Crear partido</a>
+  <a href="/matches/list">Mis partidos</a>
+  <a href="/matches/newgame">Crear partido</a>
   <a href="/ranking">Ranking</a>
   <a href="/torneos">Torneos</a>
   <a href="/friends">Invita a tus amigos</a>
@@ -37,14 +36,6 @@
   {{/if}}
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
-<script>
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-</script>
+<section class="">
+
+</section>

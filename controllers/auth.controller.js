@@ -1,6 +1,9 @@
 const Users = require('../models/User.model')
+const Matches = require('../models/Matches.model')
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
+const moment = require('moment')
+
 
 
 //Errores de validacion mongoose
@@ -26,6 +29,24 @@ const showFormSignup = async (req,res,next) => {
 const showFormLogin = async (req,res,next) => {
   res.render('login')
 }
+
+//Mostrar el formulario crear partido
+const showFormMatch = async (req,res,next) => {
+  res.render('newgame')
+}
+
+//Mostrar listado de partidos
+const showAllMatches = async (req,res, next) => {
+  try{
+    const match = await Matches.find()
+    console.log(match)
+    res.render('list', {match})
+  } catch(e){
+    console.error(e)
+  }
+}
+
+
 
 //POST SIGNUP
 const signup = async (req,res,next) =>{
@@ -82,7 +103,6 @@ const login = async (req,res,next) => {
     if(!user){
       res.render('signup', {message: "User does not exist. Please signup."})
     }
-
     req.session.currentUser = user
     console.log("req.session:", req.session.currentUser)
     console.log("username:", user)
@@ -92,4 +112,27 @@ const login = async (req,res,next) => {
   }
 }
 
-module.exports = {showFormLogin, showFormSignup, login, signup}
+//POST MATCH
+const createMatch = async (req,res,next) => {
+  try{
+    const {center, date, numberPlayers, level, esport, location} = req.body;
+    const isMissingCredentials = !center || !date || !numberPlayers || !level || !esport || !location;
+    if(isMissingCredentials){
+      res.render('newgame', {message: "Debes rellenar todos los campos."})
+    }
+    const newmatch = await Matches.create({
+      center,
+      level,
+      location,
+      esport,
+      numberPlayers,
+      date
+    })
+    res.render('index')
+    console.log(newmatch)
+  } catch(e){
+    console.error(e)
+  }
+}
+
+module.exports = {showFormLogin, showFormSignup, login, signup, showFormMatch, createMatch, showAllMatches}
