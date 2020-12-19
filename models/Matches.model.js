@@ -31,8 +31,14 @@ const MatchSchema = new mongoose.Schema({
   date: {
     type: Date,
     required: true
+  },
+  createdBy: {
+    type: String,
+    required: true
+  },
+  players:{
+    type:[String]
   }
-  
 })
 
 module.exports = mongoose.model("Matches", MatchSchema)

@@ -9,32 +9,26 @@ const moment = require('moment')
 //Errores de validacion mongoose
 const isMongooseErrorValidation =  (error) =>
   error instanceof mongoose.Error.ValidationError;
-
 //Error de duplicado MongoDB
 const isMongoError = ({code: errorCode}) => errorCode === 11000;
-
-
 //Formato de la contrasenya
 const hasCorrectPasswordFormat = (password) => {
   const passRegEx = new RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/);
   return passRegEx.test(password);
 }
-
 //Mostrar el formulario de registro
 const showFormSignup = async (req,res,next) => {
   res.render('signup')
 }
-
 //Mostrar el formulario de login
 const showFormLogin = async (req,res,next) => {
   res.render('login')
 }
-
 //Mostrar el formulario crear partido
 const showFormMatch = async (req,res,next) => {
-  res.render('newgame')
+  const createdBy = req.session.currentUser.username
+  res.render('newgame', {createdBy})
 }
-
 //Mostrar listado de partidos
 const showAllMatches = async (req,res, next) => {
   try{
@@ -45,9 +39,13 @@ const showAllMatches = async (req,res, next) => {
     console.error(e)
   }
 }
-
-
-
+//Asegurar que el usuario esta logeado para acceder a privadas
+const userLogin = async (req,res,next) => {
+  if(req.session.currentUser){
+    return next()
+  }
+  res.render('login')
+}
 //POST SIGNUP
 const signup = async (req,res,next) =>{
   try{
@@ -90,7 +88,6 @@ const signup = async (req,res,next) =>{
     }
   }
 }
-
 //POST LOGIN
 const login = async (req,res,next) => {
   try{
@@ -104,19 +101,17 @@ const login = async (req,res,next) => {
       res.render('signup', {message: "User does not exist. Please signup."})
     }
     req.session.currentUser = user
-    console.log("req.session:", req.session.currentUser)
-    console.log("username:", user)
+
     return res.render('index', user)
   }catch(e){
     console.error(e)
   }
 }
-
 //POST MATCH
 const createMatch = async (req,res,next) => {
   try{
-    const {center, date, numberPlayers, level, esport, location} = req.body;
-    const isMissingCredentials = !center || !date || !numberPlayers || !level || !esport || !location;
+    const {center, date, numberPlayers, level, esport, location, createdBy} = req.body;
+    const isMissingCredentials = !center || !date || !numberPlayers || !level || !esport || !location
     if(isMissingCredentials){
       res.render('newgame', {message: "Debes rellenar todos los campos."})
     }
@@ -126,7 +121,8 @@ const createMatch = async (req,res,next) => {
       location,
       esport,
       numberPlayers,
-      date
+      date,
+      createdBy
     })
     res.render('index')
     console.log(newmatch)
@@ -135,4 +131,4 @@ const createMatch = async (req,res,next) => {
   }
 }
 
-module.exports = {showFormLogin, showFormSignup, login, signup, showFormMatch, createMatch, showAllMatches}
+module.exports = {showFormLogin, showFormSignup, login, signup, showFormMatch, createMatch, showAllMatches, userLogin}
