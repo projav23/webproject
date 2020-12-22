@@ -79,12 +79,12 @@ const signup = async (req,res,next) =>{
     //Mostrar el error de duplicado
     if(isMongoError(e)){
       console.error(e)
-      res.render('signup', {message: 'El usuario ya existe.'})
+      res.render('index', {message: 'El usuario ya existe.'})
     }
     //Mostrar el error de validacion
     if(isMongooseErrorValidation(e)){
       console.error(e)
-      res.render('signup', {message: 'Failed validation'})
+      res.render('index', {message: 'Failed validation'})
     }
   }
 }
@@ -94,11 +94,11 @@ const login = async (req,res,next) => {
     const {email, password} = req.body
     const isMissingCredentials = !email || !password;
     if(isMissingCredentials){
-      res.render('signup', {message: "Missing credentials"})
+      res.render('index', {message: "Missing credentials"})
     }
     const {passwordHash,...user} = await Users.findOne({email}).lean()
     if(!user){
-      res.render('signup', {message: "User does not exist. Please signup."})
+      res.render('index', {message: "User does not exist. Please signup."})
     }
     req.session.currentUser = user
 

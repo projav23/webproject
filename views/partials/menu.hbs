@@ -32,10 +32,71 @@
       
     <ul class="nav__menu topnav" id="menu" tabindex="-1" aria-label="main navigation" hidden>
       <li class="nav__item">
-        <a href="/auth/login" class="nav__link">Iniciar sesion</a>
+        {{!-- <a class="nav__link"> Iniciar Sesión</a> --}}
+        <a class="nav__link" onclick="document.getElementById('id02').style.display='block'">Iniciar sesión</a>
+    <!-- The Modal -->
+    <div id="id02" class="modal2">
+      <span onclick="document.getElementById('id02').style.display='none'"
+    class="close2" title="Close Modal">&times;</span>
+      <!-- Modal Content -->
+      <form class="modal-content2 animate" action="/" method="POST">
+        <div class="container">
+          <label for="email"><b>Email</b></label>
+          <input type="email" placeholder="Enter Email" name="email" required>
+          <label for="password"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" required>
+          <button type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </form>
+    </div>
       </li>
       <li class="nav__item">
-        <a href="/auth/signup" class="nav__link">Hazte miembro</a>
+        {{!-- <a href="/auth/signup" class="nav__link">Hazte miembro</a> --}}
+        <!--Button to open the modal-->
+    <a class="nav__link"onclick="document.getElementById('id01').style.display='block'">Hazte miembro</a>
+    <!-- The Modal (contains the Sign Up form) -->
+    <div id="id01" class="modal">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"></span>
+      <form class="modal-content" action="/" method="POST">
+        <div class="container">
+          <h1>Sign Up</h1>
+          <p>Please fill in this form to create an account.</p>
+          <hr>
+          <label for="name"><b>Name</b></label>
+          <input type="text" name="name" required placeholder="Enter name">
+          <label for="lastname"><b>Lastname</b></label>
+          <input type="text" name="lastname" required placeholder="Enter lastname">
+          <label for="age"><b>Age</b></label>
+          <input type="number" name="age" required placeholder="Enter age">
+          <label for="country"><b>Country</b></label>
+          <input type="text" name="country" required value="Spain" readonly='readonly' placeholder="country">
+          <label for="email"><b>Email</b></label>
+          <input type="email" placeholder="Enter Email" name="email" required>
+          <label for="username"><b>Username</b></label>
+          <input type="text" name="username" required placeholder="Enter username">
+          <label for="password"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" required>
+          <label for="level"><b>Choose your level</b></label>
+          <select id="level" name="level" required>
+            <option value="Principiante">Principiante</option>
+            <option value="Medio">Medio</option>
+            <option value="Avanzado">Avanzado</option>
+            <option value="Profesional">Profesional</option>
+          </select>
+          <div class="clearfix">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signup">Sign Up</button>
+          </div>
+        </div>
+      </form>
+    </div>
       </li>
       <li class="nav__item">
         <a href="#" class="nav__link">Tenis</a>
