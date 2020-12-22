@@ -9,7 +9,8 @@ const connectSession = (app) => {
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: true,
-      cookie: { maxAge: 60000 },
+      cookie: { maxAge: 3600000 },
+      unset: "destroy",
       store: new MongoStore({
         mongooseConnection: mongoose.connection,
         // time to live
