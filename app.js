@@ -21,20 +21,29 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 //Para decirle donde estan los partials
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 
+
+
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session.currentUser;
+  next();
+});
 
 //Routas
 const index = require('./routes/index.routes')
 const login = require('./routes/login.routes')
 const signup = require('./routes/signup.routes')
 const matches = require('./routes/matches.routes')
+const logout = require("./routes/logout.routes")
 app.use('/', index)
 app.use('/', login)
 app.use('/', signup)
 app.use('/matches', matches)
+app.use("/logout", logout)
 
 
 //Puerto de escucha

@@ -102,11 +102,22 @@ const login = async (req,res,next) => {
     }
     req.session.currentUser = user
 
-    return res.render('index', user)
+    // return res.render('index', user)
+    res.redirect("/")
   }catch(e){
     console.error(e)
   }
 }
+//LOGOUT
+const logout = async (req, res) => {
+  try {
+    await req.session.destroy();
+    //Redirect index
+    res.redirect("/");
+  } catch(e) {
+    console.error(e)
+  }
+};
 //POST MATCH
 const createMatch = async (req,res,next) => {
   try{
@@ -131,4 +142,4 @@ const createMatch = async (req,res,next) => {
   }
 }
 
-module.exports = {showFormLogin, showFormSignup, login, signup, showFormMatch, createMatch, showAllMatches, userLogin}
+module.exports = {showFormLogin, showFormSignup, login, signup, showFormMatch, createMatch, showAllMatches, userLogin, logout}
