@@ -1,6 +1,8 @@
 const nav = document.querySelector('#nav');
 const menu = document.querySelector('#menu');
 const menuToggle = document.querySelector('.nav__toggle');
+const iniciarSesion = document.querySelector("#iniciar-sesion");
+const hazteMiembro = document.querySelector("#hazte-miembro");
 let isMenuOpen = false;
 
 
@@ -15,6 +17,15 @@ menu.hidden = !isMenuOpen;
 nav.classList.toggle('nav--open');
 });
 
+iniciarSesion.addEventListener('click', e => {
+  e.preventDefault();
+  nav.classList.toggle('nav--open');
+  });
+
+  hazteMiembro.addEventListener('click', e => {
+    e.preventDefault();
+    nav.classList.toggle('nav--open');
+    });
 
 // TRAP TAB INSIDE NAV WHEN OPEN
 nav.addEventListener('keydown', e => {

@@ -26,8 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 
-
-
 app.use((req, res, next) => {
   res.locals.currentUser = req.session.currentUser;
   next();
