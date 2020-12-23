@@ -326,4 +326,12 @@ hr {
 #footer{
   display:flex;
   justify-content: space-around;
+  background-color: #0a2c42;
+  color: #bfbfbf;
+  padding: 20px; 
+  /* position: sticky; */
+  position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
 }
