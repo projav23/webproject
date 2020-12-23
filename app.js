@@ -21,11 +21,13 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 //Para decirle donde estan los partials
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
+// matches-logic
 
+
+// develop
 app.use((req, res, next) => {
   res.locals.currentUser = req.session.currentUser;
   next();
@@ -42,7 +44,6 @@ app.use('/', login)
 app.use('/', signup)
 app.use('/matches', matches)
 app.use("/logout", logout)
-
 
 //Puerto de escucha
 app.listen(process.env.PORT, ()=>console.log("Esta corriendo en el puerto 4000"))

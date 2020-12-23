@@ -1,3 +1,14 @@
+
+<form action="/matches/list" method="GET">
+<label for="location">location</label>
+<input type="text" name="location" id="location">
+<label for="level">level</label>
+<input type="text" name="level" id="level">
+<label for="esport">esport</label>
+<input type="text" name="esport" id="esport">
+<button type="submit">Filtrar</button>
+</form>
+{{#if match}}
 {{#each match}}
 <hr>
 <p>Centro: {{center}}</p>
@@ -6,4 +17,22 @@
 <p>Fecha: {{date}}</p>
 <p>Nivel: {{level}}</p>
 <p>Deporte: {{esport}}</p>
+
+<a href="/matches/{{_id}}">See more details</a>
+
+
 {{/each}}
+{{else}}
+{{#each matchfilter}}
+<hr>
+<p>Centro: {{center}}</p>
+<p>Localidad: {{location}}</p>
+<p>Numero de jugadores a completar: {{numberPlayers}}</p>
+<p>Fecha: {{date}}</p>
+<p>Nivel: {{level}}</p>
+<p>Deporte: {{esport}}</p>
+
+<a href="/matches/{{_id}}">See more details</a>
+
+{{/each}}
+{{/if}}

@@ -28,11 +28,6 @@ const UserSchema = new mongoose.Schema({
     enum: ['Principiante', 'Medio', 'Avanzado', 'Profesional'],
     required: true
   },
-  favoriteClub:{
-    type: String,
-    enum: [],
-    required: false
-  },
   esports:{
     type: String,
     enum: ["Padel", "Tenis"],
@@ -57,7 +52,16 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true
-  }
+  },
+  hostedEvents:[{
+    type: mongoose.Schema.Types.ObjectId, ref: "Matches"
+  }],
+  pendingEvents: [{  
+    type: mongoose.Schema.Types.ObjectId, ref: "Matches"
+  }],
+  attendedEvents: [{  
+    type: mongoose.Schema.Types.ObjectId, ref: "Matches"
+  }] 
 })
 
 module.exports = mongoose.model("Users", UserSchema)

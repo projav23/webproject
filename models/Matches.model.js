@@ -32,13 +32,16 @@ const MatchSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
-  createdBy: {
-    type: String,
+  host: {
+    type: mongoose.Schema.Types.ObjectId, ref: "Users", 
     required: true
   },
-  players:{
-    type:[String]
-  }
+  acceptedGuests: [{
+    type: mongoose.Schema.Types.ObjectId, ref: "Users"
+  }],
+  pendingGuests: [{
+    type: mongoose.Schema.Types.ObjectId, ref: "Users"
+  }]
 })
 
 module.exports = mongoose.model("Matches", MatchSchema)

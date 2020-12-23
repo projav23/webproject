@@ -16,29 +16,6 @@ const hasCorrectPasswordFormat = (password) => {
   const passRegEx = new RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/);
   return passRegEx.test(password);
 }
-//Mostrar el formulario de registro
-const showFormSignup = async (req,res,next) => {
-  res.render('signup')
-}
-//Mostrar el formulario de login
-const showFormLogin = async (req,res,next) => {
-  res.render('login')
-}
-//Mostrar el formulario crear partido
-const showFormMatch = async (req,res,next) => {
-  const createdBy = req.session.currentUser.username
-  res.render('newgame', {createdBy})
-}
-//Mostrar listado de partidos
-const showAllMatches = async (req,res, next) => {
-  try{
-    const match = await Matches.find()
-    console.log(match)
-    res.render('list', {match})
-  } catch(e){
-    console.error(e)
-  }
-}
 //Asegurar que el usuario esta logeado para acceder a privadas
 const userLogin = async (req,res,next) => {
   if(req.session.currentUser){
@@ -49,7 +26,7 @@ const userLogin = async (req,res,next) => {
 //POST SIGNUP
 const signup = async (req,res,next) =>{
   try{
-    const {name, lastname, age, country, level, favoriteClub, esports, username, email, password} = req.body;
+    const {name, lastname, age, country, level, esports, username, email, password} = req.body;
     const isMissingCredentials = !email || !country || !password || !name || !lastname || !age || !username || !level || !esports
     if(isMissingCredentials){
       res.render('signup', {message: "Missing fields"})
@@ -66,7 +43,9 @@ const signup = async (req,res,next) =>{
       lastname,
       age, 
       country,
-      favoriteClub,
+      hostedEvents,
+      pendingEvents,
+      attendedEvents,
       level,
       esports,
       email,
@@ -118,28 +97,6 @@ const logout = async (req, res) => {
     console.error(e)
   }
 };
-//POST MATCH
-const createMatch = async (req,res,next) => {
-  try{
-    const {center, date, numberPlayers, level, esport, location, createdBy} = req.body;
-    const isMissingCredentials = !center || !date || !numberPlayers || !level || !esport || !location
-    if(isMissingCredentials){
-      res.render('newgame', {message: "Debes rellenar todos los campos."})
-    }
-    const newmatch = await Matches.create({
-      center,
-      level,
-      location,
-      esport,
-      numberPlayers,
-      date,
-      createdBy
-    })
-    res.render('index')
-    console.log(newmatch)
-  } catch(e){
-    console.error(e)
-  }
-}
 
-module.exports = {showFormLogin, showFormSignup, login, signup, showFormMatch, createMatch, showAllMatches, userLogin, logout}
+
+module.exports = {login, signup, userLogin, logout}
