@@ -1,0 +1,9 @@
+<p>{{center}}</p>
+<p>{{level}}</p>
+<p>{{location}}</p>
+<p>{{host}}</p>
+
+<form action="/matches/{{_id}}" method="post">
+<input type="text" name="pendingGuests" value="{{currentUser._id}}" hidden>
+<button type="submit">Join</button>
+</form>

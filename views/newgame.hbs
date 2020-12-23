@@ -1,11 +1,14 @@
-<form action="/matches/newgame" method="post">
-<input type="text" name="center" placeholder="center">
-<input type="text" name="level" placeholder="level">
-<input type="number" name="numberPlayers" placeholder="number of players">
-<input type="text" name="location" placeholder="location">
-<input type="text" name="esport" placeholder="esport">
-<input type="date" name="date" placeholder="Date">
-<input type="text" name="createdBy" value="{{createdBy}}" hidden>
+
+
+
+<form action="/matches/newgame" method="POST">
+<input type="text" name="center" placeholder="center" required>
+<input type="text" name="level" placeholder="level" required>
+<input type="number" name="numberPlayers" placeholder="number of players" required>
+<input type="text" name="location" placeholder="location" required>
+<input type="text" name="esport" placeholder="esport" required>
+<input type="date" name="date" placeholder="Date" required>
+<input type="text" name="host" hidden>
 <button type="submit">Crear partido</button>
 <button type="reset">Restablecer</button>
 </form>
