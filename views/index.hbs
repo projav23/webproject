@@ -2,5 +2,68 @@
 <section class="max-width">
   {{> menu}}
 </section>
+<!-- The Modal -->
+    <div id="id02" class="modal2">
+      <!-- Modal Content -->
+      <form class="modal-content2 animate" action="/" method="POST">
+        <div class="container">
+          <label>
+                <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">X</span>
+          </label>
+          <label for="email"><b>Email</b></label>
+          <input type="email"  name="email" required>
+          <label for="password"><b>Contraseña</b></label>
+          <input type="password" name="password" required>
+          <button type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancelar</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </form>
+    </div>
+
+<!-- The Modal (contains the Sign Up form) -->
+    <div id="id01" class="modal">
+      <form class="modal-content2 animate" action="/" method="POST">
+        <div class="container">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">X</span>
+          <h4>Sign Up</h4>
+          <hr>
+          <label for="name"><b>Nombre</b></label>
+          <input type="text" name="name" required>
+          <label for="lastname"><b>Apellido</b></label>
+          <input type="text" name="lastname" required>
+          <label for="age"><b>Edad</b></label>
+          <input type="number" name="age" required>
+          <label for="country"><b>Pais</b></label>
+          <input type="text" name="country" required value="Spain" readonly='readonly'>
+          <label for="email"><b>Email</b></label>
+          <input type="email" placeholder="together@gmail.com" name="email" required>
+          <label for="username"><b>Usuario</b></label>
+          <input type="text" name="username" required>
+          <label for="password"><b>Contraseña</b></label>
+          <input type="password" name="password" required>
+          <label for="level"><b>Escoge tu nivel</b></label>
+          <select id="level" name="level" required>
+            <option value="Principiante">Principiante</option>
+            <option value="Medio">Medio</option>
+            <option value="Avanzado">Avanzado</option>
+            <option value="Profesional">Profesional</option>
+          </select>
+          <div class="clearfix">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
+            <button type="submit" class="signup">Sign Up</button>
+          </div>
+        </div>
+      </form>
+    </div>
+<footer>
+  {{> footer}}
+</footer>
+
 
 
