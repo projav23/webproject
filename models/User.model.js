@@ -28,11 +28,6 @@ const UserSchema = new mongoose.Schema({
     enum: ['Principiante', 'Medio', 'Avanzado', 'Profesional'],
     required: true
   },
-  esports:{
-    type: String,
-    enum: ["Padel", "Tenis"],
-    required: true
-  },
   username:{
     type: String,
     required: true,

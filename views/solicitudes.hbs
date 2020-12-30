@@ -1,0 +1,18 @@
+<div>
+ {{#each pendingToAccept}} 
+ El usuario 
+ {{#each pendingGuests}}
+  <a href="/profile/{{id}}">{{username}}</a> ha solicitado unirse al siguiente </p>
+ {{/each}}
+ <a href="/matches/{{id}}">partido</a>
+ {{/each}} 
+
+
+{{pendingToAccept}}
+ <form action="/solicitudes/{{id}}/accept/" method="post">
+ <button type="submit">Aceptar</button>
+ </form>
+ <form action="/solicitudes/{{id}}/decline" method="post">
+ <button type="submit">Rechazar</button>
+ </form>
+</div>

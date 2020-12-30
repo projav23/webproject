@@ -21,18 +21,43 @@ const userLogin = async (req,res,next) => {
   if(req.session.currentUser){
     return next()
   }
-  res.render('login')
+  res.redirect('/')
+}
+//POST LOGIN
+const login = async (req,res,next) => {
+  try{
+    if(Object.keys(req.body).length > 3){
+      return next()
+    
+    }else {
+      const {email, password} = req.body
+      const isMissingCredentials = !email || !password;
+      if(isMissingCredentials){
+        res.render('index', {message: "Missing credentials"})
+      }
+      const {passwordHash,...user} = await Users.findOne({email}).lean()
+      if(!user){
+        res.render('index', {message: "User does not exist. Please signup."})
+      }
+      req.session.currentUser = user
+
+      // return res.render('index', user)
+      res.redirect("/")
+    }
+  }catch(e){
+    console.error(e)
+  }
 }
 //POST SIGNUP
 const signup = async (req,res,next) =>{
   try{
-    const {name, lastname, age, country, level, esports, username, email, password} = req.body;
-    const isMissingCredentials = !email || !country || !password || !name || !lastname || !age || !username || !level || !esports
+    const {name, lastname, age, country, level, username, email, password} = req.body;
+    const isMissingCredentials = !email || !country || !password || !name || !lastname || !age || !username || !level 
     if(isMissingCredentials){
-      res.render('signup', {message: "Missing fields"})
+      res.render('index', {message: "Missing fields"})
     }
     if(!hasCorrectPasswordFormat){
-      res.render('signup', {message: "Invalid password format"})
+      res.render('index', {message: "Invalid password format"})
     }
     const saltRounds = 10;
     const salt = await bcrypt.genSalt(saltRounds)
@@ -43,11 +68,7 @@ const signup = async (req,res,next) =>{
       lastname,
       age, 
       country,
-      hostedEvents,
-      pendingEvents,
-      attendedEvents,
       level,
-      esports,
       email,
       username,
       passwordHash: hashedpassword
@@ -67,26 +88,7 @@ const signup = async (req,res,next) =>{
     }
   }
 }
-//POST LOGIN
-const login = async (req,res,next) => {
-  try{
-    const {email, password} = req.body
-    const isMissingCredentials = !email || !password;
-    if(isMissingCredentials){
-      res.render('index', {message: "Missing credentials"})
-    }
-    const {passwordHash,...user} = await Users.findOne({email}).lean()
-    if(!user){
-      res.render('index', {message: "User does not exist. Please signup."})
-    }
-    req.session.currentUser = user
 
-    // return res.render('index', user)
-    res.redirect("/")
-  }catch(e){
-    console.error(e)
-  }
-}
 //LOGOUT
 const logout = async (req, res) => {
   try {

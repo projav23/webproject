@@ -7,6 +7,7 @@ let isMenuOpen = false;
 
 
 // TOGGLE MENU ACTIVE STATE
+console.log(menuToggle)
 menuToggle.addEventListener('click', e => {
 e.preventDefault();
 isMenuOpen = !isMenuOpen;
