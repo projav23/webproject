@@ -3,3 +3,106 @@
 body{
   font-family: 'Lato', sans-serif;
 }
+
+
+/* card match */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  margin-top: 50px;
+
+  text-align: center;
+
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+  padding: 5px;
+}
+.card h1 {
+  font-size: 1.5em;
+  padding-bottom: 15px;
+}
+.card a {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: green;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+
+
+/*Listado de partidos*/
+
+
+.match{
+  border-radius: 25px;
+  border: 5px solid green;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+}
+.all-matches{
+  display: flex;
+  flex-direction: column;
+}
+#filter{
+width: auto;
+/* display: flex;
+flex-direction: row;
+flex-wrap: nowrap; */
+margin: 5px;
+height: auto;
+align-items: center;
+}
+
+#filter label {
+  text-transform: uppercase;
+  padding: 5px;
+}
+.deporte{
+  text-align: center;
+  padding: 10px 10px 20px 0px;
+}
+.center{
+  padding: 10px 10px 0px 0px;
+}
+.location{
+  padding: 10px 10px 10px 0px;
+}
+.level{
+  padding: 10px 10px 10px 0px;
+}
+.date{
+  padding: 20px 10px 10px 5px;
+}
+.players{
+  text-align:end;
+  padding: 20px 10px 10px 0px;
+}
+.seeMore{
+  padding: 20px 10px 20px 0px;
+  text-align: center;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

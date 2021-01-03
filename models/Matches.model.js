@@ -15,7 +15,7 @@ const MatchSchema = new mongoose.Schema({
   numberPlayers:{
     type: Number,
     min: 1,
-    max: 3,
+    max: 4,
     required: true
   },
   location:{
