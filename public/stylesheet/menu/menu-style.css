@@ -34,7 +34,9 @@
   flex-direction: column;
   justify-content: center;
   height: auto;
-  position: relative;
+  /* position: relative; */
+  position:absolute;
+  width:fit-content;
   text-align: left;
   z-index: 5;
   visibility: hidden;
