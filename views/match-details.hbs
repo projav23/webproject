@@ -2,8 +2,14 @@
 <p>{{level}}</p>
 <p>{{location}}</p>
 <p>{{host.username}}</p>
+ID del owner del partido:<p> {{host._id}}</p>
+ID del usuario logueado:<p> {{currentUser._id}}</p>
 
-<form action="/matches/{{id}}" method="post">
-<input type="text" name="pendingGuests" value="{{currentUser._id}}" hidden>
-<button type="submit">Join</button>
-</form>
+{{#ifCond host._id currentUser._id}}
+  <form action="/matches/{{id}}" method="post">
+  <input type="text" name="pendingGuests" value="{{currentUser._id}}" hidden>
+  <button type="submit">Join</button>
+  </form>
+{{else}}
+  <button type="submit">Eres el owner del partido</button>
+{{/ifCond}}

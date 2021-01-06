@@ -20,6 +20,13 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 //date format
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+//logical compare helpers
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 != v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
 //array helper
 const array = helpers.array()
 //Route partials

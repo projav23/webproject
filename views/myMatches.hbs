@@ -13,7 +13,9 @@
             <p class="date">{{dateFormat date "DD/MM/YYYY"}}</p>
             <p class="players"> Players: {{acceptedGuests.length}}/{{numberPlayers}}</p>
           </div>
-          <p><a href="/matches/{{_id}}">Borrar partido (No funciona)</a></p>
+          <form action="/matches/{{_id}}/delete" method="post">
+          <button type="submit">Borrar partido</button>
+          </form>
         </div>
       {{/each}}
     {{/if}}
