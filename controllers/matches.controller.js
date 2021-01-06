@@ -25,12 +25,11 @@ const createMatch = async (req,res,next) => {
     })
     const updateUser = await Users.findByIdAndUpdate(
       req.session.currentUser._id, 
-      {$addToSet:{hostedEvents: newmatch._id,}},
+      {$addToSet:{hostedEvents: newmatch._id}},
       {new:true}
       )
     res.redirect('/matches')
-    console.log(updateUser)
-    console.log(newmatch)
+
   } catch(e){
     console.error(e)
   }
@@ -63,7 +62,7 @@ const showAllMatches = async (req,res, next) => {
     console.error(e)
   }
 }
-
+//Mostrar detalles de los partidos
 const getDetails = async (req, res, next) => {
   try {
     const {matchId} = req.params
@@ -74,7 +73,7 @@ const getDetails = async (req, res, next) => {
     console.error(e)
   }
 }
-
+//Incluye el usuario en pending cuando hace un join
 const updateMatchGuest = async (req,res,next) => {
   try {
     const {matchId} = req.params;
@@ -94,7 +93,7 @@ const updateMatchGuest = async (req,res,next) => {
     console.error(e)
   }
 }
-
+//Filtra los partidos que el usuario es host
 const myMatches = async (req,res,next) => {
   try{
     const matches = await Matches.find({host: req.session.currentUser._id}).populate("host")
@@ -104,7 +103,7 @@ const myMatches = async (req,res,next) => {
     console.error(e)
   }
 }
-
+//Filtra los partidos que el usuario es pendingGuest
 const pendingMatches = async (req, res, next) => {
   try {
     const matches = await Matches.find({pendingGuests: req.session.currentUser._id})
@@ -114,6 +113,7 @@ const pendingMatches = async (req, res, next) => {
     console.error(error)
   }
 }
+//Filtra los partidos que el usuario es aceptado y no es host
 const acceptedMatches = async (req, res, next) => {
   try {
     //Anadir que el host no sea el usuario de currentUser
@@ -124,5 +124,17 @@ const acceptedMatches = async (req, res, next) => {
     console.error(error)
   }
 }
+//Borrar partido si eres el owner
+const deleteMatch = async (req,res, next) => {
+  try {
+  const {matchId} = req.params
+  const match = await Matches.findByIdAndDelete(matchId)
+  await Users.updateMany({}, {$pull: {hostedEvents: matchId, pendingEvents: matchId, attendedEvents: matchId}}, {multi: true})
+  res.redirect('/matches')
 
-module.exports = {createMatch,myMatches,acceptedMatches, showAllMatches, showFormMatch, getDetails, updateMatchGuest, pendingMatches}
+  } catch (e) {
+  console.error(e)
+  }
+}
+
+module.exports = {createMatch,deleteMatch, myMatches,acceptedMatches, showAllMatches, showFormMatch, getDetails, updateMatchGuest, pendingMatches}

@@ -4,15 +4,59 @@ const mongoose = require('mongoose')
 
 const getRequests = async (req,res, next) => {
   try {
-    const pendingToAccept = await Matches.find({$and: [{host: req.session.currentUser._id}, {pendingGuests: {$ne: []}}]}).populate('pendingGuests')
-    console.log(pendingToAccept)
-
-    res.render('solicitudes', {pendingToAccept})
+    const matches = await Matches.find({$and: [{host: req.session.currentUser._id}, {pendingGuests: {$ne: []}}]}).populate('pendingGuests', `username`)
+    console.log(matches)
+    res.render('solicitudes', {matches})
   } catch (error) {
     console.error(error)
   }
 }
 
+const acceptedGuest = async (req, res, next) => {
+  try {
+  const {matchId} = req.params
+  const {guestId} = req.params
+  const match = await Matches.findByIdAndUpdate(
+    matchId,
+    {
+      $addToSet: { acceptedGuests: guestId },
+      $pull: { pendingGuests: guestId }
+    },
+    {new: true}
+    )
+  
+  const user = await Users.findByIdAndUpdate(
+    guestId,
+    {
+      $addToSet: {attendedEvents: matchId},
+      $pull: {pendingEvents: matchId}
+    },
+    {new: true}
+    )
+  res.redirect("/solicitudes")
+  } catch (e) {
+  console.error(e)
+  }
+}
+const declineGuest = async (req, res, next) => {
+  try {
+  const {matchId} = req.params
+  const {guestId} = req.params
+  const match = await Matches.findByIdAndUpdate(
+    matchId,
+    {$pull: { pendingGuests: guestId }},
+    {new: true}
+    )
 
+  const user = await Users.findByIdAndUpdate(
+    guestId,
+    {$pull: {pendingEvents: matchId}},
+    {new: true}
+    )
+  res.redirect("/solicitudes")
+  } catch (e) {
+  console.error(e)
+  }
+}
 
-module.exports = {getRequests}
+module.exports = {getRequests, acceptedGuest, declineGuest}
