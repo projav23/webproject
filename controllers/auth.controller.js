@@ -101,4 +101,17 @@ const logout = async (req, res) => {
 };
 
 
-module.exports = {login, signup, userLogin, logout}
+//TRAER TODOS LOS USUARIOS PARA MOSTRARLOS EN EL PARTIAL DEL RANKING
+const getAllUsers = async (req,res) => {
+  try{
+  const users = await Users.find();
+  console.log("USUARIOS",users);
+  res.render('index',{users})
+  console.log(req.session.currentUser)
+  }catch(e){
+    console.error(e);
+  }
+}
+
+
+module.exports = {login, signup, userLogin, logout, getAllUsers}

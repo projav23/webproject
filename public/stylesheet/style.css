@@ -1,9 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
-
-body{
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap");
+body {
   font-family: 'Lato', sans-serif;
 }
 
+h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 
 /* card match */
 .card {
@@ -11,9 +23,7 @@ body{
   max-width: 300px;
   margin: auto;
   margin-top: 50px;
-
   text-align: center;
-
 }
 
 .title {
@@ -21,10 +31,12 @@ body{
   font-size: 18px;
   padding: 5px;
 }
+
 .card h1 {
   font-size: 1.5em;
   padding-bottom: 15px;
 }
+
 .card a {
   border: none;
   outline: 0;
@@ -39,18 +51,12 @@ body{
   text-decoration: none;
 }
 
-
-
 button:hover, a:hover {
   opacity: 0.7;
 }
 
-
-
 /*Listado de partidos*/
-
-
-.match{
+.match {
   border-radius: 25px;
   border: 5px solid green;
   padding: 10px;
@@ -59,50 +65,161 @@ button:hover, a:hover {
   flex-direction: column;
   text-transform: uppercase;
 }
-.all-matches{
+
+.all-matches {
   display: flex;
   flex-direction: column;
 }
-#filter{
-width: auto;
-/* display: flex;
-flex-direction: row;
-flex-wrap: nowrap; */
-margin: 5px;
-height: auto;
-align-items: center;
+
+#filter {
+  width: auto;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; */
+  margin: 5px;
+  height: auto;
+  align-items: center;
 }
 
 #filter label {
   text-transform: uppercase;
   padding: 5px;
 }
-.deporte{
+
+.deporte {
   text-align: center;
   padding: 10px 10px 20px 0px;
 }
-.center{
+
+.center {
   padding: 10px 10px 0px 0px;
 }
-.location{
+
+.location {
   padding: 10px 10px 10px 0px;
 }
-.level{
+
+.level {
   padding: 10px 10px 10px 0px;
 }
-.date{
+
+.date {
   padding: 20px 10px 10px 5px;
 }
-.players{
-  text-align:end;
+
+.players {
+  text-align: end;
   padding: 20px 10px 10px 0px;
 }
-.seeMore{
+
+.seeMore {
   padding: 20px 10px 20px 0px;
   text-align: center;
 }
-.row{
+
+.row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.sendToBack {
+  position: relative;
+  z-index: -1;
+}
+
+/*-------------------HOME PAGE-----------------------*/
+/*-------------HEADER--------------*/
+#one {
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+}
+
+#header {
+  background-image: url("../images/yellow-ball-is-laying-on-blue-tennis-court-carpet-with-professional-racket.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#header #homePageTitle {
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 50px;
+  text-shadow: 0.5px 0.5px 0px #000000;
+  padding-top: 50px;
+}
+
+#homePageFormMatch {
+  margin-top: -50px;
+  width: 85%;
+}
+
+/*---------BTN------*/
+.btn {
+  background-color: #000000;
+  box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.3px;
+  font-weight: bold;
+  border-style: none;
+  border-width: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+  margin-top: 50px;
+  text-decoration: none;
+  color: white;
+}
+
+/*----------RANKING-----------*/
+#two {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#two #ranking {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+#two #ranking .text-center {
+  text-align: center;
+}
+
+#two #ranking .text-center h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#table {
+  width: 80vw;
+}
+
+.shadow-title-h2 {
+  text-shadow: 4px 4px 0px #0a2c428c;
+}
+
+.shadow-title-h3 {
+  text-shadow: 1px 1px 0px #0a2c428c;
+}
+
+.table-row {
+  background-color: #EEEEEE;
+  font-size: 20px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

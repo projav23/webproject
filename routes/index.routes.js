@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
+// const Users = require('../models/User.model')
+const {getAllUsers} = require('../controllers/auth.controller')
 
 router
-.get('/', (req,res,next)=>{
-  res.render('index')
-  console.log(req.session.currentUser)
-})
+.get('/', getAllUsers)
 
 module.exports = router
