@@ -5,6 +5,9 @@ const emailRegex = /^\S+@\S+\.\S+$/;
 
 //Modelo de usuarios
 const UserSchema = new mongoose.Schema({
+  img:{
+    type:String
+  },
   name:{
     type: String,
     required: true
@@ -55,6 +58,9 @@ const UserSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, ref: "Matches"
   }],
   attendedEvents: [{  
+    type: mongoose.Schema.Types.ObjectId, ref: "Matches"
+  }],
+  winEvents:[{
     type: mongoose.Schema.Types.ObjectId, ref: "Matches"
   }] 
 })
