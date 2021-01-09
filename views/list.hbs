@@ -3,9 +3,9 @@
 </div>
 
 
-<button><a href="/matches/mymatches">Partidos creados por mi</a></button>
-<button><a href="/matches/pendingmatches">Partidos pendientes de aceptacion</a></button>
-<button><a href="/matches/acceptedmatches">Partidos aceptados</a></button>
+<button class="sendToBack"><a href="/matches/mymatches">Partidos creados por mi</a></button>
+<button class="sendToBack"><a href="/matches/pendingmatches">Partidos pendientes de aceptacion</a></button>
+<button class="sendToBack"><a href="/matches/acceptedmatches">Partidos aceptados</a></button>
 
   <form id="filter" action="/matches" method="GET">
   <label for="location">location</label>
@@ -14,10 +14,10 @@
   <input type="text" name="level" id="level">
   <label for="esport">esport</label>
   <input type="text" name="esport" id="esport">
-  <button type="submit">Filtrar</button>
+  <button class="sendToBack" type="submit">Filtrar</button>
   </form>
 
-  <div class="matches">
+  <div class="matches sendToBack">
     {{#if match}}
       {{#each match}}
         <div class="card">
