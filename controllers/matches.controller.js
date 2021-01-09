@@ -47,14 +47,14 @@ const showAllMatches = async (req,res, next) => {
       //Borrar el par vacio
       if(!value) delete req.query[key]
     }
-    console.log(req.query)
+
     if(Object.keys(req.query).length){
       const filter = {...req.query};
       const matchfilter = await Matches.find(filter)
       res.render('list', {matchfilter})
     } else {
       const match = await Matches.find().sort({date: "asc"})
-      console.log(match)
+    
       res.render('list', {match})
     }
 
@@ -66,29 +66,35 @@ const showAllMatches = async (req,res, next) => {
 const getDetails = async (req, res, next) => {
   try {
     const {matchId} = req.params
-    const match = await Matches.findById(matchId).populate("host")
-    console.log(match)
+    const match = await Matches.findById(matchId).populate("host acceptedGuests")
     res.render('match-details', match)
   } catch(e){
     console.error(e)
   }
 }
 //Incluye el usuario en pending cuando hace un join
-const updateMatchGuest = async (req,res,next) => {
+const joinMatch = async (req,res,next) => {
   try {
-    const {matchId} = req.params;
-    const {pendingGuests} = req.body;
-    const update = await  Matches.findByIdAndUpdate(
-      matchId, 
-      {$addToSet: {pendingGuests}},
-      {new:true})
-    const updateUser = await Users.findByIdAndUpdate(
-      req.session.currentUser._id,
-      {$addToSet: {pendingEvents: matchId}},
-      {new: true})
-    console.log(update)
-    console.log(updateUser)
-    res.redirect("/matches")
+
+    if(Object.keys(req.body).length > 0){
+      console.log("Entra en hacer el join")
+      const {matchId} = req.params;
+      const {pendingGuests} = req.body;
+      const update = await  Matches.findByIdAndUpdate(
+        matchId, 
+        {$addToSet: {pendingGuests}},
+        {new:true})
+      const updateUser = await Users.findByIdAndUpdate(
+        req.session.currentUser._id,
+        {$addToSet: {pendingEvents: matchId}},
+        {new: true})
+      console.log(update)
+      console.log(updateUser)
+      res.redirect("/matches")
+    } else {
+      next()
+    }
+
   }catch(e){
     console.error(e)
   }
@@ -97,7 +103,9 @@ const updateMatchGuest = async (req,res,next) => {
 const myMatches = async (req,res,next) => {
   try{
     const matches = await Matches.find({host: req.session.currentUser._id}).populate("host")
-    console.log(matches)
+    if (matches.length === 0){
+      return res.render('myMatches', {message: "No se han encontrado partidos"})
+    }
     res.render('myMatches', {matches})
   }catch(e){
     console.error(e)
@@ -107,7 +115,9 @@ const myMatches = async (req,res,next) => {
 const pendingMatches = async (req, res, next) => {
   try {
     const matches = await Matches.find({pendingGuests: req.session.currentUser._id})
-    console.log(matches)
+    if(matches.length === 0){
+      return res.render("pendingMatches", {message: "No hay partidos pendientes"})
+    }
     res.render("pendingMatches", {matches})
   } catch (error) {
     console.error(error)
@@ -118,7 +128,9 @@ const acceptedMatches = async (req, res, next) => {
   try {
     //Anadir que el host no sea el usuario de currentUser
     const matches = await Matches.find({$and: [{'acceptedGuests': req.session.currentUser._id}, {host: {$ne: req.session.currentUser._id}}]})
-    console.log(matches)
+    if(matches.length === 0){
+      return res.render("acceptedMatches", {message:"No tienes partidos aceptados"})
+    }
     res.render("acceptedMatches", {matches})
   } catch (error) {
     console.error(error)
@@ -131,10 +143,33 @@ const deleteMatch = async (req,res, next) => {
   const match = await Matches.findByIdAndDelete(matchId)
   await Users.updateMany({}, {$pull: {hostedEvents: matchId, pendingEvents: matchId, attendedEvents: matchId}}, {multi: true})
   res.redirect('/matches')
-
   } catch (e) {
   console.error(e)
   }
 }
 
-module.exports = {createMatch,deleteMatch, myMatches,acceptedMatches, showAllMatches, showFormMatch, getDetails, updateMatchGuest, pendingMatches}
+const editMatch = async (req,res,next) => {
+  try {
+    console.log("Entra en editar y cancelar")
+    const {matchId} = req.params;
+    console.log("matchId", matchId)
+    const match = await Matches.findByIdAndUpdate(
+      matchId,
+      {$pull: {acceptedGuests: req.session.currentUser._id}},
+      {new: true}
+    )
+    console.log("user", req.session.currentUser._id)
+    console.log("match", match)
+    const user = await Users.findByIdAndUpdate(
+      req.session.currentUser._id,
+      {$pull: {attendedEvents: matchId}},
+      {new: true}
+    )
+    console.log(user)
+    res.redirect("/matches")
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+module.exports = {createMatch,deleteMatch, editMatch, myMatches,acceptedMatches, showAllMatches, showFormMatch, getDetails, joinMatch, pendingMatches}

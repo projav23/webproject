@@ -1,5 +1,7 @@
 
-
+<section>
+    {{> menu}}
+</section>
 
 <form action="/matches/newgame" method="POST">
 <input type="text" name="center" placeholder="center" required>
@@ -12,3 +14,7 @@
 <button type="submit">Crear partido</button>
 <button type="reset">Restablecer</button>
 </form>
+
+<footer>
+  {{> footer}}
+</footer>

@@ -27,22 +27,31 @@ const userLogin = async (req,res,next) => {
 const login = async (req,res,next) => {
   try{
     if(Object.keys(req.body).length > 3){
+
       return next()
     
     }else {
+
       const {email, password} = req.body
       const isMissingCredentials = !email || !password;
       if(isMissingCredentials){
         res.render('index', {message: "Missing credentials"})
       }
+
       const {passwordHash,...user} = await Users.findOne({email}).lean()
       if(!user){
         res.render('index', {message: "User does not exist. Please signup."})
       }
-      req.session.currentUser = user
+      const verifiedPassword = await bcrypt.compare(password, passwordHash);
+      console.log(verifiedPassword)
+      if (verifiedPassword) {
+        req.session.currentUser = user
+        // return res.render('index', user)
+        res.redirect("/")
+      }
+      console.log("Error de credenciales")
+      res.render('index', {message: "Invalid credentials"})
 
-      // return res.render('index', user)
-      res.redirect("/")
     }
   }catch(e){
     console.error(e)
@@ -73,7 +82,7 @@ const signup = async (req,res,next) =>{
       username,
       passwordHash: hashedpassword
     })
-    console.log(user)
+
     res.send("usuario creado")
   }catch(e){
     //Mostrar el error de duplicado

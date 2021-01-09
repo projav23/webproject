@@ -1,15 +1,31 @@
-<p>{{center}}</p>
-<p>{{level}}</p>
-<p>{{location}}</p>
-<p>{{host.username}}</p>
-ID del owner del partido:<p> {{host._id}}</p>
-ID del usuario logueado:<p> {{currentUser._id}}</p>
+<section>
+    {{> menu}}
+</section>
+
+<p>Centro del evento: {{center}}</p>
+<p>Nivel del evento: {{level}}</p>
+<p>Localidad: {{location}}</p>
+<p>Creador del evento: {{host.username}}</p>
+
+Usuarios aceptados: 
+{{#each acceptedGuests}}
+  <p><a href="/profile/{{id}}">{{username}}</a></p>
+{{/each}}
 
 {{#ifCond host._id currentUser._id}}
-  <form action="/matches/{{id}}" method="post">
-  <input type="text" name="pendingGuests" value="{{currentUser._id}}" hidden>
-  <button type="submit">Join</button>
-  </form>
+  {{#include acceptedGuests currentUser._id}}
+    <form action="/matches/{{id}}" method="post">
+    <button type="submit">Cancelar partido</button>
+    </form>
+  {{else}}
+    <form action="/matches/{{id}}" method="post">
+    <input type="text" name="pendingGuests" value="{{currentUser._id}}" hidden>
+    <button type="submit">Join</button>
+    </form>
+  {{/include}}
 {{else}}
-  <button type="submit">Eres el owner del partido</button>
+  <form action="/matches/{{id}}/delete" method="post">
+  <button type="submit">Borrar partido</button>
+  </form>
 {{/ifCond}}
+
