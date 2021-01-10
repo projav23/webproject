@@ -42,7 +42,7 @@ const showFormMatch = async (req,res,next) => {
 //Mostrar listado de partidos
 const showAllMatches = async (req,res, next) => {
   try{
-    //Tengo qu iterar sobre todos los pares para ver cual esta vacio
+    //Tengo que iterar sobre todos los pares para ver cual esta vacio
     for (const [key, value] of Object.entries(req.query)) {
       //Borrar el par vacio
       if(!value) delete req.query[key]
