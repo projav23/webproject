@@ -147,7 +147,6 @@ const deleteMatch = async (req,res, next) => {
   console.error(e)
   }
 }
-
 const editMatch = async (req,res,next) => {
   try {
     console.log("Entra en editar y cancelar")

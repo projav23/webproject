@@ -26,9 +26,14 @@ hbs.registerHelper('ifCond', function(v1, v2, options) {
   return v1 != v2 ? options.fn(this) : options.inverse(this);
 });
 
-hbs.registerHelper('include', function(v1, v2, options){
-  return v1.includes(v2) ? options.fn(this) : options.inverse(this)
-})
+hbs.registerHelper('include', function(array, value, options){
+  if(array.includes(value)){
+    return options.fn(this);
+  } else{
+    return options.inverse(this);
+  }
+});
+
 
 //Route partials
 hbs.registerPartials(path.join(__dirname, 'views/partials'));

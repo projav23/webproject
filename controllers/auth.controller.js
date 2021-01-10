@@ -27,31 +27,26 @@ const userLogin = async (req,res,next) => {
 const login = async (req,res,next) => {
   try{
     if(Object.keys(req.body).length > 3){
-
       return next()
-    
     }else {
-
       const {email, password} = req.body
       const isMissingCredentials = !email || !password;
       if(isMissingCredentials){
         res.render('index', {message: "Missing credentials"})
       }
-
       const {passwordHash,...user} = await Users.findOne({email}).lean()
       if(!user){
         res.render('index', {message: "User does not exist. Please signup."})
       }
       const verifiedPassword = await bcrypt.compare(password, passwordHash);
-      console.log(verifiedPassword)
-      if (verifiedPassword) {
+      if (!verifiedPassword) {
+        res.render('index', {message: "Invalid credentials"})
+      }else {
         req.session.currentUser = user
+        console.log(req.session.currentUser)
         // return res.render('index', user)
         res.redirect("/")
       }
-      console.log("Error de credenciales")
-      res.render('index', {message: "Invalid credentials"})
-
     }
   }catch(e){
     console.error(e)
@@ -83,7 +78,8 @@ const signup = async (req,res,next) =>{
       passwordHash: hashedpassword
     })
 
-    res.send("usuario creado")
+
+    res.redirect("/")
   }catch(e){
     //Mostrar el error de duplicado
     if(isMongoError(e)){
@@ -97,7 +93,6 @@ const signup = async (req,res,next) =>{
     }
   }
 }
-
 //LOGOUT
 const logout = async (req, res) => {
   try {

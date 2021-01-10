@@ -6,10 +6,13 @@
 <p>Nivel del evento: {{level}}</p>
 <p>Localidad: {{location}}</p>
 <p>Creador del evento: {{host.username}}</p>
+Usuario logueado {{currentUser._id}}
+
+
 
 Usuarios aceptados: 
 {{#each acceptedGuests}}
-  <p><a href="/profile/{{id}}">{{username}}</a></p>
+  <p><a href="/profile/{{id}}">{{id}}</a></p>
 {{/each}}
 
 {{#ifCond host._id currentUser._id}}

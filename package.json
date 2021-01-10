@@ -24,6 +24,7 @@
     "handlebars-helpers": "^0.10.0",
     "hbs": "^4.1.1",
     "moment": "^2.29.1",
-    "mongoose": "^5.11.7"
+    "mongoose": "^5.11.7",
+    "nodemailer": "^6.4.17"
   }
 }
