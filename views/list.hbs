@@ -2,11 +2,18 @@
  {{>menu}} 
 </div>
 
+<section id="header">
+  <h1 class="text-center bottom-space">Todos los partido</h1>
 
-<button class="sendToBack"><a href="/matches/mymatches">Partidos creados por mi</a></button>
-<button class="sendToBack"><a href="/matches/pendingmatches">Partidos pendientes de aceptacion</a></button>
-<button class="sendToBack"><a href="/matches/acceptedmatches">Partidos aceptados</a></button>
+<div id="headerMatches">
+  <a class="noStyle btn bottom-space" href="/matches/mymatches">Mis Partidos</a>
+  <a class="noStyle btn bottom-space" href="/matches/pendingmatches">Partidos pendientes</a>
+  <a class="noStyle btn bottom-space" href="/matches/acceptedmatches">Partidos aceptados</a>
+</div>
 
+</section>
+
+<h3 class="shadow-title-h3 bottom-space top-space">Encuentra los partidos</h3>
   <form id="filter" action="/matches" method="GET">
   <label for="location">location</label>
   <input type="text" name="location" id="location">
@@ -18,7 +25,10 @@
   </form>
 
   <div class="matches sendToBack">
-    {{#if match}}
+    {{#each match}}
+    {{> matchesCard}}
+    {{/each}}
+    {{!-- {{#if match}}
       {{#each match}}
         <div class="card">
           <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
@@ -46,5 +56,10 @@
         <p><a href="/matches/{{_id}}">See more</a></p>
       </div>
     {{/each}}
-    {{/if}}
+    {{/if}} --}}
   </div>
+
+  <footer>
+  {{> footer}}
+</footer>
+

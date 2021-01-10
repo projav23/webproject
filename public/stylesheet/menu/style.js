@@ -7,26 +7,30 @@ let isMenuOpen = false;
 
 
 // TOGGLE MENU ACTIVE STATE
-console.log(menuToggle)
-menuToggle.addEventListener('click', e => {
-e.preventDefault();
-isMenuOpen = !isMenuOpen;
+  menuToggle.addEventListener('click', e => {
+    e.preventDefault();
+    isMenuOpen = !isMenuOpen;
+
+
 
 // toggle a11y attributes and active class
+
 menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
 menu.hidden = !isMenuOpen;
 nav.classList.toggle('nav--open');
 });
 
-iniciarSesion.addEventListener('click', e => {
-  e.preventDefault();
-  nav.classList.toggle('nav--open');
-  });
-
-  hazteMiembro.addEventListener('click', e => {
+if(iniciarSesion){
+  iniciarSesion.addEventListener('click', e => {
     e.preventDefault();
     nav.classList.toggle('nav--open');
     });
+  
+    hazteMiembro.addEventListener('click', e => {
+      e.preventDefault();
+      nav.classList.toggle('nav--open');
+      });
+}
 
 // TRAP TAB INSIDE NAV WHEN OPEN
 nav.addEventListener('keydown', e => {
