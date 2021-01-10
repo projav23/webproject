@@ -1,6 +1,5 @@
   <div class="matches">
-    {{#if match}}
-      {{#each match}}
+      {{!-- {{#each match}} --}}
         <div class="card">
           <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
           <h1>{{esport}}</h1>
@@ -13,8 +12,7 @@
           </div>
           <p><a href="/matches/{{_id}}">See more</a></p>
         </div>
-      {{/each}}
-    {{else}}
+      {{!-- {{/each}} --}}
     {{#each matchfilter}}
       <div class="card">
         <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
@@ -27,5 +25,4 @@
         <p><a href="/matches/{{_id}}">See more</a></p>
       </div>
     {{/each}}
-    {{/if}}
   </div>
