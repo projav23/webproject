@@ -24,42 +24,12 @@
   <button class="sendToBack" type="submit">Filtrar</button>
   </form>
 
+
   <div class="matches sendToBack">
     {{#each match}}
     {{> matchesCard}}
     {{/each}}
-    {{!-- {{#if match}}
-      {{#each match}}
-        <div class="card">
-          <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
-          <h1>{{esport}}</h1>
-          <p class="title">Localidad: {{location}}</p>
-          <p class="title">Nivel: {{level}}</p>
-          <p class="center">{{center}}</p>
-          <div class="row">
-            <p class="date">{{dateFormat date "DD/MM/YYYY"}}</p>
-            <p class="players"> Players: {{acceptedGuests.length}}/{{numberPlayers}}</p>
-          </div>
-          <p><a href="/matches/{{_id}}">See more</a></p>
-        </div>
-      {{/each}}
-    {{else}}
-    {{#each matchfilter}}
-      <div class="card">
-        <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
-        <h1>{{esport}}</h1>
-        <p class="title">{{location}}</p>
-        <p class="title">{{level}}</p>
-        <p class="title">{{dateFormat date "DD/MM/YYYY"}}</p>
-        <p>{{center}}</p>
-        <p class="players"> Players: {{acceptedGuests.length}}/{{numberPlayers}}</p>
-        <p><a href="/matches/{{_id}}">See more</a></p>
-      </div>
-    {{/each}}
-    {{/if}} --}}
-  </div>
-
+</div>
   <footer>
   {{> footer}}
 </footer>
-

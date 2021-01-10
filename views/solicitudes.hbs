@@ -1,16 +1,26 @@
-{{#each matches}}
-Las siguientes personas han solicitado unirse al evento {{id}} <br> <br>
-  {{#each pendingGuests}} 
-    El usuario {{id}} ha solicitado unirse a tu evento {{../id}} <br> 
+<div>
+ {{>menu}} 
+</div>
+{{#if matches}}
+  {{#each matches}}
+  Las siguientes personas han solicitado unirse al evento {{id}} <br> <br>
+    {{#each pendingGuests}} 
+      El usuario <a href="/profile/{{id}}"></a>{{username}} ha solicitado unirse al evento que se disputará el día {{dateFormat ../date "DD/MM/YYYY"}} <br> 
 
-  <form action="/solicitudes/{{../id}}/accept/{{id}}" method="post">
-  <button type="submit">Aceptar</button>
-  </form>
+    <form action="/solicitudes/{{../id}}/accept/{{id}}" method="post">
+    <button type="submit">Aceptar</button>
+    </form>
 
-  <form action="/solicitudes/{{../id}}/decline/{{id}}" method="post">
-  <button type="submit">Declinar</button>
-  </form>
+    <form action="/solicitudes/{{../id}}/decline/{{id}}" method="post">
+    <button type="submit">Declinar</button>
+    </form>
 
-  {{/each}}
-{{/each }}
+    {{/each}}
+  {{/each }}
+{{else}}
+  <p>{{message}}</p>
+{{/if}}
 
+<footer>
+  {{> footer}}
+</footer>

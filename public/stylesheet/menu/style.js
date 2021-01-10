@@ -7,11 +7,9 @@ let isMenuOpen = false;
 
 
 // TOGGLE MENU ACTIVE STATE
-  menuToggle.addEventListener('click', e => {
-    e.preventDefault();
-    isMenuOpen = !isMenuOpen;
-
-
+menuToggle.addEventListener('click', e => {
+e.preventDefault();
+isMenuOpen = !isMenuOpen;
 
 // toggle a11y attributes and active class
 
