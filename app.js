@@ -8,7 +8,8 @@ const helpers = require("handlebars-helpers")
 const path = require('path');
 const connectSession = require("./config/session.config");
 const app = express()
-
+//array helper
+// const array = helpers.array()
 
 //database configuration required
 require('./config/db.config')
@@ -22,13 +23,18 @@ app.use(bodyParser.urlencoded({extended:true}))
 hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 //logical compare helpers
 hbs.registerHelper('ifCond', function(v1, v2, options) {
-  if(v1 != v2) {
-    return options.fn(this);
-  }
-  return options.inverse(this);
+  return v1 != v2 ? options.fn(this) : options.inverse(this);
 });
-//array helper
-const array = helpers.array()
+
+hbs.registerHelper('include', function(array, value, options){
+  if(array.includes(value)){
+    return options.fn(this);
+  } else{
+    return options.inverse(this);
+  }
+});
+
+
 //Route partials
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
@@ -51,17 +57,17 @@ app.use((req, res, next) => {
 
 //Routas
 const index = require('./routes/index.routes')
-const login = require('./routes/login.routes')
-// const signup = require('./routes/signup.routes')
+const auth = require('./routes/login.routes')
 const matches = require('./routes/matches.routes')
 const logout = require("./routes/logout.routes")
 const requests = require('./routes/solicitudes.routes')
+const profile = require("./routes/profile.routes")
 app.use('/', index)
-app.use('/', login)
-// app.use('/', signup)
+app.use('/', auth)
 app.use('/matches', matches)
 app.use('/solicitudes', requests)
 app.use("/logout", logout)
+app.use("/profile", profile)
 
 //Puerto de escucha
 app.listen(process.env.PORT, ()=>console.log("Esta corriendo en el puerto 4000"))

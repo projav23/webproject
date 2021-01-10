@@ -1,17 +1,17 @@
 <header class="header">
-  <nav id="nav" class="nav">    
+  <nav id="nav" class="nav">
     <a class="logo nav__link" href="/">TOGETHER</a>
     <!--Actual Navigation Menu-->
     {{#if currentUser}}
     <ul class="nav__menu topnav" id="menu" tabindex="-1" aria-label="main navigation" hidden>
       <li class="nav__item">
-        <a href="#" class="nav__link">Tenis</a>
+        <a href="/profile/{{currentUser._id}}" class="nav__link">Mi perfil</a>
       </li>
       <li class="nav__item">
-        <a href="#" class="nav__link">Paddle</a>
+        <a href="/solicitudes" class="nav__link">Solicitudes</a>
       </li>
       <li class="nav__item">
-        <a href="/matches/list" class="nav__link">Mis partidos</a>
+        <a href="/matches" class="nav__link">Partidos</a>
       </li>
       <li class="nav__item">
         <a href="/matches/newgame" class="nav__link">Crear partido</a>
@@ -29,26 +29,28 @@
     {{else}}
     <ul class="nav__menu topnav" id="menu" tabindex="-1" aria-label="main navigation" hidden>
       <li class="nav__item">
-        <a id="iniciar-sesion" class="nav__link" onclick="document.getElementById('id02').style.display='block'">Iniciar sesión</a>
+        <a id="iniciar-sesion" class="nav__link" onclick="document.getElementById('id02').style.display='block'">Iniciar
+          sesión</a>
       </li>
       <li class="nav__item">
         <!--Button to open the modal-->
-        <a id="hazte-miembro" class="nav__link" onclick="document.getElementById('id01').style.display='block'">Hazte miembro</a>
+        <a id="hazte-miembro" class="nav__link" onclick="document.getElementById('id01').style.display='block'">Hazte
+          miembro</a>
       </li>
     </ul>
     {{/if}}
     <!-- MENU TOGGLE BUTTON -->
     <a href="#nav" class="nav__toggle" role="button" aria-expanded="false" aria-controls="menu">
       <svg class="menuicon" xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 50 50">
-          <g>
-            <line class="menuicon__bar" x1="13" y1="16.5" x2="37" y2="16.5"/>
-            <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
-            <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
-            <line class="menuicon__bar" x1="13" y1="32.5" x2="37" y2="32.5"/>
-            <circle class="menuicon__circle" r="23" cx="25" cy="25" />
-          </g>
+        <g>
+          <line class="menuicon__bar" x1="13" y1="16.5" x2="37" y2="16.5" />
+          <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5" />
+          <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5" />
+          <line class="menuicon__bar" x1="13" y1="32.5" x2="37" y2="32.5" />
+          <circle class="menuicon__circle" r="23" cx="25" cy="25" />
+        </g>
       </svg>
     </a>
     <div class="splash"></div>
-</nav>
+  </nav>
 </header>

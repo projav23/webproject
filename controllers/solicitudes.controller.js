@@ -5,8 +5,11 @@ const mongoose = require('mongoose')
 const getRequests = async (req,res, next) => {
   try {
     const matches = await Matches.find({$and: [{host: req.session.currentUser._id}, {pendingGuests: {$ne: []}}]}).populate('pendingGuests', `username`)
-    console.log(matches)
+    if(matches.length === 0){
+      res.render('solicitudes', {message: "No tienes solicitudes pendientes"})
+    }
     res.render('solicitudes', {matches})
+
   } catch (error) {
     console.error(error)
   }
@@ -33,7 +36,7 @@ const acceptedGuest = async (req, res, next) => {
     },
     {new: true}
     )
-  res.redirect("/solicitudes")
+  res.redirect("/")
   } catch (e) {
   console.error(e)
   }

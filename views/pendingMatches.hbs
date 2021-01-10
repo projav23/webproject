@@ -1,3 +1,8 @@
+  
+<section>
+    {{> menu}}
+</section>
+  
   <div class="matches">
     {{#if matches}}
       {{#each matches}}
@@ -14,5 +19,10 @@
           <p><a href="/matches/{{_id}}">See more</a></p>
         </div>
       {{/each}}
+    {{else}}
+    <p>{{message}}</p>
     {{/if}}
   </div>
+  <footer>
+  {{> footer}}
+</footer>
