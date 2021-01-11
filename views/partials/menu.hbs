@@ -3,7 +3,7 @@
     <a class="logo nav__link" href="/">T🎾GETHER</a>
     <!--Actual Navigation Menu-->
     {{#if currentUser}}
-    <ul class="nav__menu topnav" id="menu" tabindex="-1" aria-label="main navigation" hidden>
+    <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
       <li class="nav__item">
         <a href="/profile/{{currentUser._id}}" class="nav__link">Mi perfil</a>
       </li>
@@ -27,7 +27,7 @@
       </li>
     </ul>
     {{else}}
-    <ul class="nav__menu topnav" id="menu" tabindex="-1" aria-label="main navigation" hidden>
+    <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
       <li class="nav__item">
         <a id="iniciar-sesion" class="nav__link" onclick="document.getElementById('id02').style.display='block'">Iniciar
           sesión</a>
@@ -51,6 +51,8 @@
         </g>
       </svg>
     </a>
+
     <div class="splash"></div>
+    
   </nav>
 </header>

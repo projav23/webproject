@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap");
 body {
   font-family: 'Lato', sans-serif;
+  width: 100vw;
 }
 
 h3 {
@@ -139,7 +140,7 @@ button:hover, a:hover {
 
 .sendToBack {
   position: relative;
-  z-index: -1;
+  z-index: 0;
 }
 
 /*-------------------HOME PAGE-----------------------*/

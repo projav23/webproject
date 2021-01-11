@@ -54,7 +54,6 @@ const showAllMatches = async (req,res, next) => {
       res.render('list', {matchfilter})
     } else {
       const match = await Matches.find().sort({date: "asc"})
-    
       res.render('list', {match})
     }
 
