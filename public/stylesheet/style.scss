@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 body {
     font-family: 'Lato', sans-serif;
+    width:100vw;
   }
   
-
   h3{
       font-size: 1.2rem;
       font-weight: 700;
@@ -143,7 +143,7 @@ body {
   
   .sendToBack {
       position: relative;
-      z-index: -1;
+      z-index: 0;
   }
   /*-------------------HOME PAGE-----------------------*/
   /*-------------HEADER--------------*/

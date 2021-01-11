@@ -25,11 +25,24 @@
   </form>
 
 
-  <div class="matches sendToBack">
-    {{#each match}}
-    {{> matchesCard}}
+  <div class="matches">
+    {{#if match}}
+      {{#each match}}
+          {{> matchesCard}}
+      {{/each}}
+    {{else}}
+    {{#each matchfilter}}
+      {{> matchesCard}}
     {{/each}}
-</div>
+    {{/if}}
+  </div>
+
+
+
+
+
+
+
   <footer>
   {{> footer}}
 </footer>
