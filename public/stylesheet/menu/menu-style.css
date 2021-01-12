@@ -1,11 +1,23 @@
 :root {
   --screen-width:     750px;
   --screen-height:    560px;
-  --splash-bg-color:  #EEEEEE;
+  --splash-bg-color:  white;
 }
 
-.header {
-  margin: 10px;
+#nav{
+position: fixed;
+width: 100%;
+top:0;
+}
+
+.nav-colored{
+  background-color: white;
+  transition: .25s ease-in-out;
+}
+
+.nav-transparent{
+  background-color: transparent;
+  transition: .25s ease-in-out;
 }
 
 .nav__toggle {
@@ -129,21 +141,13 @@
   background-color: var(--splash-bg-color);
   width: 284vmax;
   height: 284vmax;
-  /* width: 150vmax;
-  height: 150vmax; */
   top: -142vmax;
   left: -142vmax;
-  /* top: -75vmax;
-  left: -75vmax; */
   transform: scale(0);
   transform-origin: 50% 50%;
   transition: transform 0.5s cubic-bezier(0.755, 0.05, 0.855, 0.06);
   will-change: transform;
 }
-/* 
-.fit-space{
-  width: 100vw;
-} */
 
 .nav:target > .splash::after,
 .nav--open > .splash::after {
@@ -237,7 +241,7 @@ button:hover {
   width: 100%;
 }
 /* Add padding to container elements */
-.container {
+.container1 {
   padding: 16px;
 }
 /* The Modal (background) */
