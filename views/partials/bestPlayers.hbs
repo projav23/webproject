@@ -1,4 +1,4 @@
-        <li class="table-row">
+        {{!-- <li class="table-row">
             <div class="text-center"><img></div>
             <div class="text-center">
                 <p>{{name}}</p>
@@ -6,4 +6,11 @@
             <div class="text-center">
                 <p>{{level}}</p>
             </div>
-        </li>
+        </li> --}}
+<tr class="table-row">
+    <td><img id="img-user-ranking" src="../images/default-user.jpg"></td>
+    <td>
+        {{name}}
+        <td>G:{{winEvents.length}} P:{{attendedEvents.length}}</td>
+    </td>
+</tr>
