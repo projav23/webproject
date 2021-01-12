@@ -1,6 +1,10 @@
 
         <div class="card">
-          <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
+          {{#ifeq esport "Tenis"}}
+            <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
+          {{else}}
+            <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
+          {{/ifeq}}
           <h1>{{esport}}</h1>
           <p class="title">Localidad: {{location}}</p>
           <p class="title">Nivel: {{level}}</p>

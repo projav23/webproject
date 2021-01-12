@@ -66,11 +66,34 @@ const getDetails = async (req, res, next) => {
   try {
     const {matchId} = req.params
     const match = await Matches.findById(matchId).populate("host acceptedGuests")
-    res.render('match-details', match)
+    console.log("MATCH:", match);
+    let currentUserIsAccepted;
+    match.acceptedGuests.forEach(user => {
+      if(user._id.equals(req.session.currentUser._id)) {
+        currentUserIsAccepted = true;
+      }else {
+        currentUserIsAccepted = false;
+      }
+    })
+    console.log(match.acceptedGuests.length)
+    console.log(match.numberPlayers)
+    res.render('match-details', {match, currentUserIsAccepted})
   } catch(e){
     console.error(e)
   }
 }
+// const getDetails = async (req, res, next) => {
+//   try {
+//     const {matchId} = req.params
+//     const match = await Matches.findById(matchId).populate("host acceptedGuests")
+//     console.log("Con populate", match.acceptedGuests)
+//     const matchWA = await Matches.findById(matchId)
+//     console.log("Sin populate", match.acceptedGuests)
+//     res.render('match-details', match)
+//   } catch(e){
+//     console.error(e)
+//   }
+// }
 //Incluye el usuario en pending cuando hace un join
 const joinMatch = async (req,res,next) => {
   try {
@@ -79,6 +102,7 @@ const joinMatch = async (req,res,next) => {
       console.log("Entra en hacer el join")
       const {matchId} = req.params;
       const {pendingGuests} = req.body;
+      
       const update = await  Matches.findByIdAndUpdate(
         matchId, 
         {$addToSet: {pendingGuests}},

@@ -41,7 +41,12 @@ const MatchSchema = new mongoose.Schema({
   }],
   pendingGuests: [{
     type: mongoose.Schema.Types.ObjectId, ref: "Users"
-  }]
+  }],
+  status: {
+    type: String,
+    enum: ['Cerrado', 'Abierto'],
+    default: 'Abierto'
+  }
 })
 
 module.exports = mongoose.model("Matches", MatchSchema)

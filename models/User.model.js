@@ -60,9 +60,10 @@ const UserSchema = new mongoose.Schema({
   attendedEvents: [{  
     type: mongoose.Schema.Types.ObjectId, ref: "Matches"
   }],
-  winEvents:[{
-    type: mongoose.Schema.Types.ObjectId, ref: "Matches"
-  }] 
+  score: {
+    type: Number,
+    default: 0
+  }
 })
 
 module.exports = mongoose.model("Users", UserSchema)
