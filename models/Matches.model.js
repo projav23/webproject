@@ -3,9 +3,8 @@ const mongoose = require('mongoose')
 
 const MatchSchema = new mongoose.Schema({
   center:{
-    type: String,
+    type: mongoose.Schema.Types.ObjectId, ref: "Centros",
     required: true,
-    enum: ['Artos', 'Club Tenis La Salut']
   },
   level:{
     type: String,
@@ -14,8 +13,7 @@ const MatchSchema = new mongoose.Schema({
   },
   numberPlayers:{
     type: Number,
-    min: 1,
-    max: 4,
+    enum: [2,4],
     required: true
   },
   location:{
@@ -44,7 +42,7 @@ const MatchSchema = new mongoose.Schema({
   }],
   status: {
     type: String,
-    enum: ['Cerrado', 'Abierto'],
+    enum: ['Cerrado', 'Abierto', 'Finalizado'],
     default: 'Abierto'
   }
 })

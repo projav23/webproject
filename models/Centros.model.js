@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const centro = new mongoose.Schema({
+const CenterSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -13,3 +13,5 @@ const centro = new mongoose.Schema({
     required: true
   }
 })
+
+module.exports = mongoose.model("Centros", CenterSchema)

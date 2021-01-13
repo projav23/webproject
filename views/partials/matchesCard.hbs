@@ -1,7 +1,11 @@
 
         <div class="card">
           {{#ifeq esport "Tenis"}}
+            {{#ifeq acceptedGuests.length numberPlayers}}
+            <img src="/images/tenis-logo-rojo.jpg" alt="pelota" style="width:215px;height:205px">
+            {{else}}
             <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
+            {{/ifeq}}
           {{else}}
             <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
           {{/ifeq}}
@@ -13,5 +17,9 @@
             <p class="date">{{dateFormat date "DD/MM/YYYY"}}</p>
             <p class="players"> Players: {{acceptedGuests.length}}/{{numberPlayers}}</p>
           </div>
-          <p><a href="/matches/{{_id}}">See more</a></p>
+          {{#ifeq acceptedGuests.length numberPlayers}}
+          <p><a href="/matches/{{_id}}" style="background-color: red;">See more </a></p>
+          {{else}}
+          <p><a href="/matches/{{_id}}">See more </a></p>
+          {{/ifeq}}
         </div>

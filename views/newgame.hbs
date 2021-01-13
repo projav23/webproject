@@ -7,12 +7,31 @@
 <h1 class="text-center">Crea tu partido</h1>
 </section>
 
-<form id="filter" action="/matches/newgame" method="POST">
-<input type="text" name="center" placeholder="center" required>
-<input type="text" name="level" placeholder="level" required>
-<input type="number" name="numberPlayers" placeholder="number of players" required>
+<form id="filter" action="/matches/newgame" method="POST" id="newgame">
+<label for="center">Center:</label>
+  <select name="center" id="center" form="newgame" required>
+    {{#each center}}
+      <option value={{name}}>{{name}}</option>
+    {{/each}}
+  </select>
+<label for="level">Level:</label>
+  <select name="level" id="level" form="newgame" required>
+      <option value='Principiante'>Principiante</option>
+      <option value='Medio'>Medio</option>
+      <option value='Avanzado'>Avanzado</option>
+      <option value='Profesional'>Profesional</option>
+  </select>
+<label for="players">Players:</label>
+  <select name="players" id="players" form="newgame" required>
+      <option value='2'>2</option>
+      <option value='4'>4</option>
+  </select>
 <input type="text" name="location" placeholder="location" required>
-<input type="text" name="esport" placeholder="esport" required>
+<label for="esport">Deporte:</label>
+  <select name="esport" id="esport" form="newgame" required>
+      <option value='Tenis'>Tenis</option>
+      <option value='Padel'>Padel</option>
+  </select>
 <input type="date" name="date" placeholder="Date" required>
 <input type="text" name="host" hidden>
 <button class="sendToBack" type="submit">Crear partido</button>
