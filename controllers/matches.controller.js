@@ -1,5 +1,6 @@
 const Users = require('../models/User.model')
 const Matches = require('../models/Matches.model')
+const Centros = require('../models/Centros.model')
 const mongoose = require('mongoose')
 const moment = require('moment')
 
@@ -36,8 +37,14 @@ const createMatch = async (req,res,next) => {
 }
 //Mostrar el formulario crear partido
 const showFormMatch = async (req,res,next) => {
-  const host = req.session.currentUser
-  res.render('newgame', {host})
+  try {
+    const host = req.session.currentUser
+    const centers = await Centros.find().populate('name')
+    res.render('newgame', {host, centers})
+  } catch (e) {
+    console.error(e)
+  }
+
 }
 //Mostrar listado de partidos
 const showAllMatches = async (req,res, next) => {
@@ -50,10 +57,10 @@ const showAllMatches = async (req,res, next) => {
 
     if(Object.keys(req.query).length){
       const filter = {...req.query};
-      const matchfilter = await Matches.find(filter)
+      const matchfilter = await Matches.find({$and: [{filter},{status:{$ne: 'Finalizado'}}]})
       res.render('list', {matchfilter})
     } else {
-      const match = await Matches.find().sort({date: "asc"})
+      const match = await Matches.find({$and: [{}, {status:{$ne:'Finalizado'}}]}).sort({date: "asc"})
       res.render('list', {match})
     }
 
@@ -66,7 +73,18 @@ const getDetails = async (req, res, next) => {
   try {
     const {matchId} = req.params
     const match = await Matches.findById(matchId).populate("host acceptedGuests")
-    res.render('match-details', match)
+    console.log("MATCH:", match);
+    let currentUserIsAccepted;
+    match.acceptedGuests.forEach(user => {
+      if(user._id.equals(req.session.currentUser._id)) {
+        currentUserIsAccepted = true;
+      }else {
+        currentUserIsAccepted = false;
+      }
+    })
+    console.log(match.acceptedGuests.length)
+    console.log(match.numberPlayers)
+    res.render('match-details', {match, currentUserIsAccepted})
   } catch(e){
     console.error(e)
   }
@@ -75,10 +93,11 @@ const getDetails = async (req, res, next) => {
 const joinMatch = async (req,res,next) => {
   try {
 
-    if(Object.keys(req.body).length > 0){
-      console.log("Entra en hacer el join")
+    // if(Object.keys(req.body).length > 0){
+    //   console.log("Entra en hacer el join")
       const {matchId} = req.params;
       const {pendingGuests} = req.body;
+      
       const update = await  Matches.findByIdAndUpdate(
         matchId, 
         {$addToSet: {pendingGuests}},
@@ -90,9 +109,9 @@ const joinMatch = async (req,res,next) => {
       console.log(update)
       console.log(updateUser)
       res.redirect("/matches")
-    } else {
-      next()
-    }
+    // } else {
+    //   next()
+    // }
 
   }catch(e){
     console.error(e)
@@ -101,7 +120,7 @@ const joinMatch = async (req,res,next) => {
 //Filtra los partidos que el usuario es host
 const myMatches = async (req,res,next) => {
   try{
-    const matches = await Matches.find({host: req.session.currentUser._id}).populate("host")
+    const matches = await Matches.find({$and: [{host: req.session.currentUser._id},{status: {$ne:'Finalizado'}}]}).populate("host")
     if (matches.length === 0){
       return res.render('myMatches', {message: "No se han encontrado partidos"})
     }
@@ -126,7 +145,7 @@ const pendingMatches = async (req, res, next) => {
 const acceptedMatches = async (req, res, next) => {
   try {
     //Anadir que el host no sea el usuario de currentUser
-    const matches = await Matches.find({$and: [{'acceptedGuests': req.session.currentUser._id}, {host: {$ne: req.session.currentUser._id}}]})
+    const matches = await Matches.find({$and: [{'acceptedGuests': req.session.currentUser._id}, {host: {$ne: req.session.currentUser._id}}, {status: {$ne:'Finalizado'}}]})
     if(matches.length === 0){
       return res.render("acceptedMatches", {message:"No tienes partidos aceptados"})
     }
@@ -169,5 +188,62 @@ const editMatch = async (req,res,next) => {
     console.error(e)
   }
 }
+const endMatch = async (req,res,next) => {
+  try {
+    const {matchId} = req.params;
+    const match = await Matches.findByIdAndUpdate(
+      matchId,
+      {status: "Cerrado"},
+      {new:true}
+    )
+    res.redirect('/matches/myMatches')
+  } catch (e) {
+    console.error(e)
+  }
 
-module.exports = {createMatch,deleteMatch, editMatch, myMatches,acceptedMatches, showAllMatches, showFormMatch, getDetails, joinMatch, pendingMatches}
+}
+const winners = async (req,res,next) => {
+  try {
+    if(Object.keys(req.body).length > 1){
+      const {matchId} = req.params
+      const {player1} = req.body;
+      const {player2} = req.body;
+      const user1 = await Users.findByIdAndUpdate(
+        player1,
+        {$inc: {score: 1}},
+        {new: true}
+      )
+      const user2 = await Users.findByIdAndUpdate(
+        player2,
+        {$inc: {score: 1}},
+        {new: true}
+      )
+      const match = await Matches.findByIdAndUpdate(
+        matchId,
+        {status: 'Finalizado'},
+        {new: true}
+      )
+      res.redirect('/matches')
+    } else {
+      const {matchId} = req.params
+      const {player1} = req.body;
+      console.log(player1)
+      const user1 = await Users.findByIdAndUpdate(
+        player1,
+        {$inc: {score: 1}},
+        {new: true}
+      )
+      const match = await Matches.findByIdAndUpdate(
+        matchId,
+        {status: 'Finalizado'},
+        {new: true}
+      )
+      console.log(user1)
+      res.redirect('/matches')
+    }
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+module.exports = {createMatch,deleteMatch,winners, endMatch, editMatch, myMatches,acceptedMatches, showAllMatches, showFormMatch, getDetails, joinMatch, pendingMatches}
