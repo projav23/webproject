@@ -6,7 +6,7 @@
     <div id="id02" class="modal2">
       <!-- Modal Content -->
       <form class="modal-content2 animate" action="/" method="POST">
-        <div class="container">
+        <div class="container1">
           <label>
                 <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">X</span>
           </label>
@@ -20,7 +20,7 @@
             <input type="checkbox" checked="checked" name="remember"> Remember me
           </label>
         </div>
-        <div class="container" style="background-color:#f1f1f1">
+        <div class="container1" style="background-color:#f1f1f1">
           <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancelar</button>
           <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
@@ -62,60 +62,39 @@
         </div>
       </form>
     </div>
-    <section id="one">
+      <section id="one">
       <div id="header">
-        <h1 id="homePageTitle">Crea tu partido y disfruta con tus amigos</h1>
-        <a class="btn" href="/matches/newgame">CREA TU PARTIDO</a>
+        <h1 id="homePageTitle" class="padding-left shadow-title-h1">Reta y Gana a tus amigos</h1>
+        <div class="flex-row top-space">
+              <p class="text-weight-h1 shadow-title-h1">Empieza hoy</p>
+              <a class="btnRedondo" href="/matches/newgame">-></a>  
+        </div>
+        
       </div>
-      {{!-- <form id="homePageFormMatch">
-        <div>
-          <input type="text" name="center" placeholder="Center" required>
-        </div>
-        <div>
-          <select id="levelMatch" name="level" required>
-            <option value="Principiante">Principiante</option>
-            <option value="Medio">Medio</option>
-            <option value="Avanzado">Avanzado</option>
-            <option value="Profesional">Profesional</option>
-          </select>
-        </div>
-        <div>
-          <input type="number" name="numberPlayers" placeholder="number of players" required>
-        </div>
-        <div>
-          <input type="text" name="location" placeholder="location" required>
-        </div>
-        <div>
-          <input type="text" name="esport" placeholder="esport" required>
-        </div>
-        <div>
-          <input type="date" name="date" placeholder="Date" required>
-        </div>
-        <input type="text" name="host" hidden>
-        <div class="sendToBack">
-          <button type="submit">Crear partido</button>
-        </div>
-        <div class="sendToBack">
-          <button type="reset">Restablecer</button>
-        </div>
-      </form> --}}
-    </section>
-    <section id="two">
+      
+      </section>
+      <section id="two" class="holster">
     <h2 class="shadow-title-h2">Ranking</h2>
-    <div id="ranking">
+    <div id="ranking" class="container x mandatory-scroll-snapping">
       <div class="text-center">
         <h3 class="shadow-title-h3">Mejores Jugadores Tennis</h3>
-      <ol id="table">
+      <table id="table">
       {{#each users}}  
       {{>bestPlayers}}
       {{/each}}
-      </ol>
+      </table>
     </div>
-    {{!-- <div class="width-max">
-      <h3>Mejores Jugadores Paddle</h3>
-    </div> --}}
+    <div class="text-center">
+        <h3 class="shadow-title-h3">Mejores Jugadores Paddle</h3>
+      <table id="table">
+      {{#each users}}  
+      {{>bestPlayers}}
+      {{/each}}
+      </table>
     </div>
-    </section>
+    </div>
+      </section>
+
 
 <footer>
   {{> footer}}
