@@ -344,8 +344,8 @@ hr {
 #footer{
   display:flex;
   justify-content: space-around;
-  background-color: #0a2c42;
-  color: #bfbfbf;
+  background-color: white;
+  color: black;
   padding: 20px; 
   /* position: sticky; */
   position: fixed;

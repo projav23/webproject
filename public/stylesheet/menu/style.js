@@ -3,7 +3,7 @@ const menu = document.querySelector('#menu');
 const menuToggle = document.querySelector('.nav__toggle');
 const iniciarSesion = document.querySelector("#iniciar-sesion");
 const hazteMiembro = document.querySelector("#hazte-miembro");
-const buttons = document.querySelectorAll("button")
+const buttonsToSendBack = document.querySelectorAll(".sendToBack")
 const footer = document.querySelector("#footer")
 let isMenuOpen = false;
 
@@ -17,7 +17,7 @@ menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
 menu.hidden = !isMenuOpen;
 nav.classList.toggle('nav--open');
 //Cuando abre el menú envio los btn detrás
-buttons.forEach(btn => btn.classList.toggle("sendToBack-1"))
+buttonsToSendBack.forEach(btn => btn.classList.toggle("sendToBack-1"))
 //Envio también el footer
 footer.classList.toggle("sendToBack-1")
 });

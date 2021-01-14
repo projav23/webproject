@@ -18,17 +18,17 @@ Usuarios aceptados:
 {{#ifCond host._id currentUser._id}}
   {{#include acceptedGuests currentUser._id}}
     <form action="/matches/{{id}}" method="post">
-    <button type="submit">Cancelar partido</button>
+    <button type="submit" class="sendToBack">Cancelar partido</button>
     </form>
   {{else}}
     <form action="/matches/{{id}}" method="post">
     <input type="text" name="pendingGuests" value="{{currentUser._id}}" hidden>
-    <button type="submit">Join</button>
+    <button type="submit" class="sendToBack">Join</button>
     </form>
   {{/include}}
 {{else}}
   <form action="/matches/{{id}}/delete" method="post">
-  <button type="submit">Borrar partido</button>
+  <button type="submit" class="sendToBack">Borrar partido</button>
   </form>
 {{/ifCond}}
 

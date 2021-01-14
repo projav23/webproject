@@ -136,7 +136,7 @@ button:hover, a:hover {
   justify-content: space-between;
 }
 
-.sendToBack {
+.sendToBack0 {
   position: relative;
   z-index: 0;
 }
@@ -262,6 +262,10 @@ button:hover, a:hover {
 }
 
 /*----------RANKING-----------*/
+#two {
+  height: auto;
+}
+
 #two #ranking {
   display: flex;
   align-items: center;
@@ -307,6 +311,34 @@ button:hover, a:hover {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
+
+/*----------------VIDEO------------------*/
+#three {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -100px;
+}
+
+#h3-video {
+  font-size: 2rem;
+  color: white;
+  position: relative;
+  top: 80vh;
+  margin-left: 10px;
+}
+
+#video {
+  width: 100vw;
+  height: 100vh;
+}
+
+#btn-video {
+  position: relative;
+  top: 80vh;
+  left: 32vw;
 }
 
 /*--------------MATCHES----------------------------------------------------*/

@@ -8,11 +8,11 @@
       El usuario <a href="/profile/{{id}}"></a>{{username}} ha solicitado unirse al evento que se disputará el día {{dateFormat ../date "DD/MM/YYYY"}} <br> 
 
     <form action="/solicitudes/{{../id}}/accept/{{id}}" method="post">
-    <button type="submit">Aceptar</button>
+    <button type="submit" class="sendToBack">Aceptar</button>
     </form>
 
     <form action="/solicitudes/{{../id}}/decline/{{id}}" method="post">
-    <button type="submit">Declinar</button>
+    <button type="submit" class="sendToBack">Declinar</button>
     </form>
 
     {{/each}}

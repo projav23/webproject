@@ -152,9 +152,12 @@ body {
     justify-content: space-between;
   }
   
-  .sendToBack {
-      position: relative;
-      z-index: 0;
+  .sendToBack{
+
+  }
+  .sendToBack0{
+    position: relative;
+    z-index: 0;
   }
   .sendToBack-1{
     position: relative;
@@ -280,6 +283,7 @@ text-transform: uppercase;
 /*----------RANKING-----------*/
 
 #two{
+  height: auto;
     #ranking{
         display: flex;
         align-items: center;
@@ -326,6 +330,33 @@ margin: 10px 0;
   border-radius: 50%;
 }
 
+/*----------------VIDEO------------------*/
+
+#three{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:-100px;
+}
+#h3-video{
+  font-size: 2rem;
+  color: white;
+  position: relative;
+  top: 80vh;
+  margin-left: 10px;
+}
+
+#video{
+    width: 100vw;
+    height: 100vh;
+    }
+
+#btn-video{
+  position: relative;
+  top: 80vh;
+  left: 32vw;
+}
 
 /*--------------MATCHES----------------------------------------------------*/
 
