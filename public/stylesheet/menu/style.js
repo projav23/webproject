@@ -19,6 +19,7 @@ nav.classList.toggle('nav--open');
 //Cuando abre el menú envio los btn detrás
 buttonsToSendBack.forEach(btn => btn.classList.toggle("sendToBack-1"))
 //Envio también el footer
+//Chorrada
 footer.classList.toggle("sendToBack-1")
 });
 
