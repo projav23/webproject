@@ -4,6 +4,10 @@ const Centros = require('../models/Centros.model')
 const mongoose = require('mongoose')
 const moment = require('moment')
 
+
+
+
+
 //POST MATCH
 const createMatch = async (req,res,next) => {
   try{
@@ -12,7 +16,7 @@ const createMatch = async (req,res,next) => {
     if(isMissingCredentials){
       res.render('newgame', {message: "Debes rellenar todos los campos."})
     }
-
+   
     const newmatch = await Matches.create({
       center,
       level,
@@ -38,9 +42,9 @@ const createMatch = async (req,res,next) => {
 //Mostrar el formulario crear partido
 const showFormMatch = async (req,res,next) => {
   try {
+
     const host = req.session.currentUser
     const centers = await Centros.find()
-    console.log(centers)
     res.render('newgame', {host, centers})
   } catch (e) {
     console.error(e)
@@ -58,10 +62,10 @@ const showAllMatches = async (req,res, next) => {
 
     if(Object.keys(req.query).length){
       const filter = {...req.query};
-      const matchfilter = await Matches.find({$and: [{filter},{status:{$ne: 'Finalizado'}}]})
+      const matchfilter = await Matches.find({$and: [{filter},{status:{$ne: 'Finalizado'}}]}).populate("center")
       res.render('list', {matchfilter})
     } else {
-      const match = await Matches.find({$and: [{}, {status:{$ne:'Finalizado'}}]}).sort({date: "asc"})
+      const match = await Matches.find({$and: [{}, {status:{$ne:'Finalizado'}}]}).sort({date: "asc"}).populate("center")
       res.render('list', {match})
     }
 
@@ -73,7 +77,7 @@ const showAllMatches = async (req,res, next) => {
 const getDetails = async (req, res, next) => {
   try {
     const {matchId} = req.params
-    const match = await Matches.findById(matchId).populate("host acceptedGuests")
+    const match = await Matches.findById(matchId).populate("host acceptedGuests center")
     console.log("MATCH:", match);
     let currentUserIsAccepted;
     match.acceptedGuests.forEach(user => {
@@ -121,7 +125,7 @@ const joinMatch = async (req,res,next) => {
 //Filtra los partidos que el usuario es host
 const myMatches = async (req,res,next) => {
   try{
-    const matches = await Matches.find({$and: [{host: req.session.currentUser._id},{status: {$ne:'Finalizado'}}]}).populate("host")
+    const matches = await Matches.find({$and: [{host: req.session.currentUser._id},{status: {$ne:'Finalizado'}}]}).populate("host center")
     if (matches.length === 0){
       return res.render('myMatches', {message: "No se han encontrado partidos"})
     }
@@ -133,7 +137,7 @@ const myMatches = async (req,res,next) => {
 //Filtra los partidos que el usuario es pendingGuest
 const pendingMatches = async (req, res, next) => {
   try {
-    const matches = await Matches.find({pendingGuests: req.session.currentUser._id})
+    const matches = await Matches.find({pendingGuests: req.session.currentUser._id}).populate("center")
     if(matches.length === 0){
       return res.render("pendingMatches", {message: "No hay partidos pendientes"})
     }
@@ -146,7 +150,7 @@ const pendingMatches = async (req, res, next) => {
 const acceptedMatches = async (req, res, next) => {
   try {
     //Anadir que el host no sea el usuario de currentUser
-    const matches = await Matches.find({$and: [{'acceptedGuests': req.session.currentUser._id}, {host: {$ne: req.session.currentUser._id}}, {status: {$ne:'Finalizado'}}]})
+    const matches = await Matches.find({$and: [{'acceptedGuests': req.session.currentUser._id}, {host: {$ne: req.session.currentUser._id}}, {status: {$ne:'Finalizado'}}]}).populate("center")
     if(matches.length === 0){
       return res.render("acceptedMatches", {message:"No tienes partidos aceptados"})
     }
