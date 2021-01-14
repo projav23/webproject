@@ -310,6 +310,13 @@ button:hover, a:hover {
 }
 
 /*--------------MATCHES----------------------------------------------------*/
+#headerMatches {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 15px 30px;
+}
+
 .noStyle {
   text-decoration: none;
   color: white;
