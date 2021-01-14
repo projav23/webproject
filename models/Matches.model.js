@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 
 const MatchSchema = new mongoose.Schema({
   center:{
-    type: mongoose.Schema.Types.ObjectId, ref: "Centros",
-    required: true,
+    type: String,
+    required: true
   },
   level:{
     type: String,
@@ -19,7 +19,6 @@ const MatchSchema = new mongoose.Schema({
   location:{
     type: String,
     required: true,
-    enum: []
   },
   esport:{
     type: String,

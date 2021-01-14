@@ -7,7 +7,7 @@ const moment = require('moment')
 //POST MATCH
 const createMatch = async (req,res,next) => {
   try{
-    const {center, date, numberPlayers, level, esport, location, acceptedGuests, pendingGuests} = req.body;
+    const {center, date, numberPlayers, level, esport, location, pendingGuests} = req.body;
     const isMissingCredentials = !center || !date || !numberPlayers || !level || !esport || !location
     if(isMissingCredentials){
       res.render('newgame', {message: "Debes rellenar todos los campos."})
@@ -39,7 +39,8 @@ const createMatch = async (req,res,next) => {
 const showFormMatch = async (req,res,next) => {
   try {
     const host = req.session.currentUser
-    const centers = await Centros.find().populate('name')
+    const centers = await Centros.find()
+    console.log(centers)
     res.render('newgame', {host, centers})
   } catch (e) {
     console.error(e)

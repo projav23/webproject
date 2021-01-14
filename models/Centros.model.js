@@ -11,6 +11,10 @@ const CenterSchema = new mongoose.Schema({
   mapURL:{
     type: String,
     required: true
+  },
+  location:{
+    type: String,
+    required: true
   }
 })
 
