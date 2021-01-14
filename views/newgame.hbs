@@ -17,7 +17,6 @@
     <option value='Mallorca'>Mallorca</option>
     <option value='Murcia'>Murcia</option>
     <option value='Sevilla'>Sevilla</option>
-    <option value='Ciudad Real'>Ciudad Real</option>
     <option value='Cáceres'>Cáceres</option>
     <option value='Salamanca'>Salamanca</option>
     <option value='Valladolid'>Valladolid</option>
@@ -27,12 +26,12 @@
     <option value='Málaga'>Málaga</option>
     <option value='Marbella'>Marbella</option>
     <option value='Tenerife'>Tenerife</option>
-    <option value='Gran Canaria'>Gran Canaria</option>
+    <option value='Canaria'>Gran Canaria</option>
 </select>
 <label for="center">Center:</label>
   <select name="center" id="center"  required>
     {{#each centers}}
-      <option value="{{name}}">{{name}}</option>
+      <option name="{{location}}" value={{id}}>{{name}}</option>
     {{/each}}
   </select>
 <label for="level">Level:</label>
