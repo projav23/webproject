@@ -25,6 +25,9 @@ hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 hbs.registerHelper('ifCond', function(v1, v2, options) {
   return v1 != v2 ? options.fn(this) : options.inverse(this);
 });
+hbs.registerHelper('ifeq', function(v1, v2, options) {
+  return v1 === v2 ? options.fn(this) : options.inverse(this);
+});
 
 hbs.registerHelper('include', function(array, value, options){
   if(array.includes(value)){

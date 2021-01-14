@@ -7,9 +7,9 @@ const getRequests = async (req,res, next) => {
     const matches = await Matches.find({$and: [{host: req.session.currentUser._id}, {pendingGuests: {$ne: []}}]}).populate('pendingGuests', `username`)
     if(matches.length === 0){
       res.render('solicitudes', {message: "No tienes solicitudes pendientes"})
-    }
+    } else {
     res.render('solicitudes', {matches})
-
+    }
   } catch (error) {
     console.error(error)
   }

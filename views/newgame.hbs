@@ -8,11 +8,51 @@
 </section>
 
 <form id="filter" action="/matches/newgame" method="POST">
-<input type="text" name="center" placeholder="center" required>
-<input type="text" name="level" placeholder="level" required>
-<input type="number" name="numberPlayers" placeholder="number of players" required>
-<input type="text" name="location" placeholder="location" required>
-<input type="text" name="esport" placeholder="esport" required>
+<label for="location">Location:</label>
+<select name="location" id="location" required>
+    <option value='Barcelona'>Barcelona</option>
+    <option value='Madrid'>Madrid</option>
+    <option value='Valencia'>Valencia</option>
+    <option value='Alicante'>Alicante</option>
+    <option value='Mallorca'>Mallorca</option>
+    <option value='Murcia'>Murcia</option>
+    <option value='Sevilla'>Sevilla</option>
+    <option value='Ciudad Real'>Ciudad Real</option>
+    <option value='Cáceres'>Cáceres</option>
+    <option value='Salamanca'>Salamanca</option>
+    <option value='Valladolid'>Valladolid</option>
+    <option value='Ponferrada'>Ponferrada</option>
+    <option value='Oviedo'>Oviedo</option>
+    <option value='Zaragoza'>Zaragoza</option>
+    <option value='Málaga'>Málaga</option>
+    <option value='Marbella'>Marbella</option>
+    <option value='Tenerife'>Tenerife</option>
+    <option value='Gran Canaria'>Gran Canaria</option>
+</select>
+<label for="center">Center:</label>
+  <select name="center" id="center"  required>
+    {{#each centers}}
+      <option value="{{name}}">{{name}}</option>
+    {{/each}}
+  </select>
+<label for="level">Level:</label>
+  <select name="level" id="level" required>
+      <option value='Principiante'>Principiante</option>
+      <option value='Medio'>Medio</option>
+      <option value='Avanzado'>Avanzado</option>
+      <option value='Profesional'>Profesional</option>
+  </select>
+<label for="players">Players:</label>
+  <select name="numberPlayers" id="players" required>
+      <option value="2">2</option>
+      <option value="4">4</option>
+  </select>
+
+<label for="esport">Deporte:</label>
+  <select name="esport" id="esport" required>
+      <option value='Tenis'>Tenis</option>
+      <option value='Padel'>Padel</option>
+  </select>
 <input type="date" name="date" placeholder="Date" required>
 <input type="text" name="host" hidden>
 <button class="sendToBack" type="submit">Crear partido</button>

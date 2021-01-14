@@ -4,8 +4,7 @@ const mongoose = require('mongoose')
 const MatchSchema = new mongoose.Schema({
   center:{
     type: String,
-    required: true,
-    enum: ['Artos', 'Club Tenis La Salut']
+    required: true
   },
   level:{
     type: String,
@@ -14,14 +13,12 @@ const MatchSchema = new mongoose.Schema({
   },
   numberPlayers:{
     type: Number,
-    min: 1,
-    max: 4,
+    enum: [2,4],
     required: true
   },
   location:{
     type: String,
     required: true,
-    enum: []
   },
   esport:{
     type: String,
@@ -41,7 +38,12 @@ const MatchSchema = new mongoose.Schema({
   }],
   pendingGuests: [{
     type: mongoose.Schema.Types.ObjectId, ref: "Users"
-  }]
+  }],
+  status: {
+    type: String,
+    enum: ['Cerrado', 'Abierto', 'Finalizado'],
+    default: 'Abierto'
+  }
 })
 
 module.exports = mongoose.model("Matches", MatchSchema)
