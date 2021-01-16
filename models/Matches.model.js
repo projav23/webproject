@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 const MatchSchema = new mongoose.Schema({
   center:{
-    type: String,
+    type: mongoose.Schema.Types.ObjectId, ref: "Centros",
     required: true
   },
   level:{
