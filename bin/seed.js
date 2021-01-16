@@ -11,7 +11,7 @@ const dbOptions = {
 
 async function initDb(){
   try{
-    const connect = await mongoose.connect("mongodb://localhost/proyectoWeb", dbOptions);
+    const connect = await mongoose.connect(process.env.MONGODB_URI, dbOptions);
     console.log("connect",connect)
     const centers = await Centros.create(data);
     console.log("centros",centers)
