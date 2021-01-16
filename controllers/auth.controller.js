@@ -1,6 +1,6 @@
 const Users = require('../models/User.model')
 const Matches = require('../models/Matches.model')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const mongoose = require('mongoose')
 const nodemailer = require("nodemailer")
 const moment = require('moment')
