@@ -333,6 +333,8 @@ button:hover, a:hover {
 #video {
   width: 100vw;
   height: 100vh;
+  position: relative;
+  z-index: -10;
 }
 
 #btn-video {

@@ -73,7 +73,8 @@ const showAllMatches = async (req,res, next) => {
 const getDetails = async (req, res, next) => {
   try {
     const {matchId} = req.params
-    const match = await Matches.findById(matchId).populate("host acceptedGuests")
+    //const match = await Matches.findById(matchId).populate("host acceptedGuests")
+    const match = await Matches.findById(matchId).populate("host acceptedGuests",{passwordHash: 0})
     console.log("MATCH:", match);
     let currentUserIsAccepted;
     match.acceptedGuests.forEach(user => {
