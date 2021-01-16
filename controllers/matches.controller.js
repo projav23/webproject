@@ -62,7 +62,8 @@ const showAllMatches = async (req,res, next) => {
 
     if(Object.keys(req.query).length){
       const filter = {...req.query};
-      const matchfilter = await Matches.find({$and: [{filter},{status:{$ne: 'Finalizado'}}]}).populate("center")
+      const matchfilter = await Matches.find({$and: [filter,{status:{$ne: 'Finalizado'}}]}).populate("center")
+      //const matchfilter = await Matches.find(filter).populate("center")
       res.render('list', {matchfilter})
     } else {
       const match = await Matches.find({$and: [{}, {status:{$ne:'Finalizado'}}]}).sort({date: "asc"}).populate("center")

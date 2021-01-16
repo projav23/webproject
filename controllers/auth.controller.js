@@ -2,7 +2,9 @@ const Users = require('../models/User.model')
 const Matches = require('../models/Matches.model')
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
+const nodemailer = require("nodemailer")
 const moment = require('moment')
+const templates = require('../public/templates/template')
 
 
 
@@ -77,7 +79,25 @@ const signup = async (req,res,next) =>{
       username,
       passwordHash: hashedpassword
     })
+    
 
+    const transporter = nodemailer.createTransport(
+      {
+        service: 'Gmail',
+        auth: {
+            user: process.env.NM_USER,
+            pass: process.env.NM_PASS
+        }
+      }
+    )
+  
+    await transporter.sendMail({
+      from: '"Together" <togetherironhack@gmail.com>',
+      to: email, 
+      subject: `Bienvenido ${username}`, 
+      text: username,
+      html: templates.templateWelcome(username)
+    })
 
     res.redirect("/")
   }catch(e){
