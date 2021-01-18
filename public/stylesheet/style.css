@@ -63,9 +63,9 @@ h2 {
   text-decoration: none;
 }
 
-button:hover, a:hover {
+/* button:hover, a:hover {
   opacity: 0.7;
-}
+} */
 
 /*Listado de partidos*/
 .match {
@@ -384,31 +384,44 @@ button:hover, a:hover {
 
 /* Style the tab */
 .tab {
+  display: flex;
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+
+  
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
   background-color: inherit;
+  color: #136408;
   float: left;
-  border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   transition: 0.3s;
 }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #ddd;
-}
+/* Change background color of as on hover */
+
 
 /* Create an active/current tablink class */
-.tab button.active {
-  background-color: #ccc;
+
+.active{
+  border-bottom: 10px solid red;
+  background-color: red;
 }
+.tablinks{
+  background-color: none;
+  border: none;
+}
+/* .tab button:active{
+  background-color: none;
+  border-bottom: 10px solid red;
+} */
+
 
 /* Style the tab content */
 .tabcontent {
@@ -416,4 +429,38 @@ button:hover, a:hover {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+}
+
+.win{
+justify-content: center;
+display: flex;
+align-items: center;
+border-radius: 10px;
+width: 25px;
+height: 25px;
+border: 2px solid green;
+background-color: green;
+}
+
+.lost{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  width: 25px;
+  height: 25px;
+  border: 2px solid red;
+  background-color: red;
+}
+
+.rowGames{
+  display: flex;
+  width: 125px;
+  border: 1px solid black;
+
+}
+
+#my-canvas{
+  width: 500px;
+  height: 500px;
 }

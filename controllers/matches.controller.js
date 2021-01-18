@@ -79,7 +79,7 @@ const getDetails = async (req, res, next) => {
   try {
     const {matchId} = req.params
     const match = await Matches.findById(matchId).populate("host acceptedGuests center", {passwordHash: 0})
-    console.log("MATCH:", match);
+
     let currentUserIsAccepted;
     match.acceptedGuests.forEach(user => {
       if(user._id.equals(req.session.currentUser._id)) {
@@ -88,8 +88,7 @@ const getDetails = async (req, res, next) => {
         currentUserIsAccepted = false;
       }
     })
-    console.log(match.acceptedGuests.length)
-    console.log(match.numberPlayers)
+
     res.render('match-details', {match, currentUserIsAccepted})
   } catch(e){
     console.error(e)
@@ -112,8 +111,7 @@ const joinMatch = async (req,res,next) => {
         req.session.currentUser._id,
         {$addToSet: {pendingEvents: matchId}},
         {new: true})
-      console.log(update)
-      console.log(updateUser)
+
       res.redirect("/matches")
     // } else {
     //   next()
@@ -173,22 +171,21 @@ const deleteMatch = async (req,res, next) => {
 }
 const editMatch = async (req,res,next) => {
   try {
-    console.log("Entra en editar y cancelar")
+
     const {matchId} = req.params;
-    console.log("matchId", matchId)
+
     const match = await Matches.findByIdAndUpdate(
       matchId,
       {$pull: {acceptedGuests: req.session.currentUser._id}},
       {new: true}
     )
-    console.log("user", req.session.currentUser._id)
-    console.log("match", match)
+
     const user = await Users.findByIdAndUpdate(
       req.session.currentUser._id,
       {$pull: {attendedEvents: matchId}},
       {new: true}
     )
-    console.log(user)
+
     res.redirect("/matches")
   } catch (e) {
     console.error(e)
@@ -202,7 +199,7 @@ const endMatch = async (req,res,next) => {
       {status: "Cerrado"},
       {new:true}
     )
-    res.redirect('/matches/myMatches')
+    res.redirect(`/matches/${matchId}`)
   } catch (e) {
     console.error(e)
   }
@@ -216,36 +213,41 @@ const winners = async (req,res,next) => {
       const {player2} = req.body;
       const user1 = await Users.findByIdAndUpdate(
         player1,
-        {$inc: {score: 1}},
+        {$inc: {scoreDob: 1}},
         {new: true}
       )
       const user2 = await Users.findByIdAndUpdate(
         player2,
-        {$inc: {score: 1}},
+        {$inc: {scoreDob: 1}},
         {new: true}
       )
       const match = await Matches.findByIdAndUpdate(
         matchId,
-        {status: 'Finalizado'},
+        {
+          $addToSet: {playersWinners: player1, player2},
+          status: 'Finalizado'
+        },
         {new: true}
       )
-      res.redirect('/matches')
+      res.redirect('/matches/')
     } else {
       const {matchId} = req.params
       const {player1} = req.body;
-      console.log(player1)
+
       const user1 = await Users.findByIdAndUpdate(
         player1,
-        {$inc: {score: 1}},
+        {$inc: {scoreInd: 1}},
         {new: true}
       )
       const match = await Matches.findByIdAndUpdate(
         matchId,
-        {status: 'Finalizado'},
+        {
+          status: 'Finalizado',
+          $addToSet: {playerWinners: player1},
+      },
         {new: true}
       )
-      console.log(user1)
-      res.redirect('/matches')
+      res.redirect('/matches/')
     }
   } catch (e) {
     console.error(e)
