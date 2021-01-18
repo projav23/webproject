@@ -9,7 +9,12 @@ position: fixed;
 width: 100%;
 top:0;
 }
-
+.white-color{
+  color: white ;
+}
+.black-color{
+  color: black ;
+}
 .nav-colored{
   background-color: white;
   transition: .25s ease-in-out;
@@ -82,7 +87,7 @@ top:0;
 }
 
 .nav__link {
-  color: black;
+  /* color: white; */
   display: block;
   text-transform: uppercase;
   letter-spacing: 5px;
@@ -107,10 +112,17 @@ top:0;
   transform: rotate(0deg);
 }
 
-.menuicon__bar, .menuicon__circle {
+.menuicon__barWhite, .menuicon__circleWhite {
+  fill: none;
+  stroke: white;
+  stroke-width: 3;
+  transition: .25s ease-in-out;
+}
+.menuicon__barBlack, .menuicon__circleBlack {
   fill: none;
   stroke: black;
   stroke-width: 3;
+  transition: .25s ease-in-out;
 }
 
 .menuicon__bar {
@@ -188,7 +200,7 @@ top:0;
 }
 
 .logo {
-  color: black;
+  /* color: black; */
   text-transform: uppercase;
   align-items: center;
   letter-spacing: 5px;
@@ -227,9 +239,9 @@ button {
   width: 100%;
   opacity: 0.9;
 }
-button:hover {
+/* button:hover {
   opacity:1;
-}
+} */
 /* Extra styles for the cancel button */
 .cancelbtn {
   padding: 14px 20px;
