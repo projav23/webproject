@@ -11,9 +11,9 @@
 <input type="number" name="score" id="score" value={{chartScore.scoreInd}} hidden>
 <input type="number" name="games" id="games" value={{chartGames.length}} hidden>
 <div class="tab">
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')">Mi perfil</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')">Mis solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Mis estadisticas</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')">Perfil</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')">Solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Estadisticas</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Contact')">Contacta conmigo</button>
 </div>
 <!-- Tab content -->
@@ -82,36 +82,44 @@
     <div class="rowGames">
         {{#each matchStats}}
             {{#ifeq playerWinners.length 1}}
-                {{#ifCond ../currentUser._id playerWinners.[0]}}
+                {{#ifCond ../user._id playerWinners.[0]}}
                     <div class="lost"><a href="/matches/{{id}}">L</a></div>
                 {{else}}
-                    <div class="win"><a href="/matches/{{id}}">G</a></div>
+                    <div class="win"><a href="/matches/{{id}}">W</a></div>
                 {{/ifCond}}
-            {{else}}
-                {{#ifeq playersWinners.[0] user._id}}
-                    <div class="win"><a href="/matches/{{id}}">G</a></div>
-                {{/ifeq}}
-                {{#ifeq playersWinners.[1]._id user._id}}
-                    <div class="win"><a href="/matches/{{id}}">G</a></div>
+            {{/ifeq}}
+            {{#ifeq playerWinners.length 2}}
+                {{#ifCond ../user._id playerWinners.[0] }}
+                    {{#ifCond ../user._id playerWinners.[1]}}
+                        <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                    {{else}}
+                        <div class="win"><a href="/matches/{{id}}">W</a></div>
+                    {{/ifCond}}
                 {{else}}
-                    <div class="win"><a href="/matches/{{id}}">G</a></div>
-                {{/ifeq}}
+                    <div class="win"><a href="/matches/{{id}}">W</a></div>
+                {{/ifCond}}
+            {{/ifeq}}
+            {{#ifeq playerWinners.length 0}}
+                <div class="void"><a href="/matches/{{id}}">V</a></div>
             {{/ifeq}}
         {{/each}}
     </div>
 </div>
 <div id="Contact" class="tabcontent">
-<div>Contacta conmigo:</div>
-<br>
-<br>
-<form action="/profile/{{currentUser._id}}/contact" method="post">
-    <label for="name">Usuario</label>
-        <input type="text" value="{{currentUser.username}}" name="name" id="name" readonly>
-    <label for="asunto">Asunto</label>
-        <input type="text" name="asunto" id="asunto" required>
-    <label for="mensaje">Mensaje</label>
-        <input type="text" name="mensaje" id="mensaje" required>
-    <button type="submit">Enviar correo</button>
-</form>
-
-</div>
+{{#ifCond user._id currentUser._id}}
+    <div>Contacta conmigo:</div>
+    <br>
+    <br>
+    <form action="/profile/{{currentUser._id}}/contact" method="post">
+        <label for="name">¿Quién soy?</label>
+            <input type="text" value="{{currentUser.username}}" name="name" id="name" readonly>
+        <label for="asunto">Asunto</label>
+            <input type="text" name="asunto" id="asunto" required>
+        <label for="mensaje">Mensaje</label>
+            <input type="text" name="mensaje" id="mensaje" required>
+        <button type="submit">Enviar correo</button>
+    </form>
+    </div>
+{{else}}
+<p>Mirate a un espejo</p>
+{{/ifCond}}

@@ -465,6 +465,16 @@ height: 25px;
 border: 2px solid green;
 background-color: green;
 }
+.void{
+justify-content: center;
+display: flex;
+align-items: center;
+border-radius: 10px;
+width: 25px;
+height: 25px;
+border: 2px solid gray;
+background-color: gray;
+}
 
 .lost{
   justify-content: center;

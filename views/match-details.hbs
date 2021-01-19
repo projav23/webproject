@@ -85,10 +85,10 @@ Usuarios aceptados:
   {{/ifeq}}
   {{#ifeq match.status "Finalizado"}}
     {{#ifeq match.acceptedGuests.length 2}}
-      <p>El ganador del partido es: {{match.playerWinners.[0].username}}</p>
+      <p>El ganador del partido es: <a href="/profile/{{match.playerWinners.[0].id}}">{{match.playerWinners.[0].username}}</a></p>
     {{/ifeq}}
     {{#ifeq match.acceptedGuests.length 4}}
-          <p>Los ganadores del partido son: {{match.playerWinners.[0].username}} y {{match.playerWinners.[1].username}}</p>
+          <p>Los ganadores del partido son: <a href="/profile/{{match.playerWinners.[0].id}}">{{match.playerWinners.[0].username}}</a> y <a href="/profile/{{match.playerWinners.[1].id}}">{{match.playerWinners.[1].username}}</a></p>
 
     {{/ifeq}}
   {{/ifeq}}
