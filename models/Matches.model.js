@@ -43,7 +43,10 @@ const MatchSchema = new mongoose.Schema({
     type: String,
     enum: ['Cerrado', 'Abierto', 'Finalizado'],
     default: 'Abierto'
-  }
+  },
+  playerWinners:[{
+    type: mongoose.Schema.Types.ObjectId, ref: "Users"
+  }]
 })
 
 module.exports = mongoose.model("Matches", MatchSchema)

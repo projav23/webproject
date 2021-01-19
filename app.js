@@ -29,12 +29,11 @@ hbs.registerHelper('ifeq', function(v1, v2, options) {
   return v1 === v2 ? options.fn(this) : options.inverse(this);
 });
 
-hbs.registerHelper('include', function(array, value, options){
-  if(array.includes(value)){
+hbs.registerHelper('ifIn', function(elem, list, options) {
+  if(list.indexOf(elem) > -1) {
     return options.fn(this);
-  } else{
-    return options.inverse(this);
   }
+  return options.inverse(this);
 });
 
 
