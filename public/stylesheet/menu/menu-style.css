@@ -60,10 +60,14 @@ top:0;
   margin-top: 30px;
 }
 
+.flex_items{
+  display:flex
+}
 
 .nav__item {
   opacity: 0;
   transition: all 0.3s cubic-bezier(0, 0.995, 0.99, 1) 0.3s;
+  margin-top: 20px
 }
 
 .nav__item:nth-child(1) {
@@ -94,7 +98,7 @@ top:0;
   font-size: 1.75rem;
   text-decoration: none;
   padding: 1rem;
-  margin-top: 20px;
+  /* margin-top: 20px; TT*/
 }
 
 .nav__link:hover, .nav__link:focus {

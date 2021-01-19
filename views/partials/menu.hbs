@@ -4,25 +4,26 @@
     <!--Actual Navigation Menu-->
     {{#if currentUser}}
     <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
-      <li class="nav__item">
-        <a href="/profile/{{currentUser._id}}" class="nav__link black-color">Mi perfil</a>
+      <li class="nav__item flex_items">
+        <img id="img-user-ranking" src="../images/default-user.jpg">
+        <a href="/profile/{{currentUser._id}}" class="nav__link black-color">{{currentUser.name}}</a>
       </li>
-      <li class="nav__item">
+      <li class="nav__item flex_items">
         <a href="/solicitudes" class="nav__link black-color">Solicitudes</a>
       </li>
-      <li class="nav__item">
+      <li class="nav__item flex_items">
         <a href="/matches" class="nav__link black-color">Partidos</a>
       </li>
-      <li class="nav__item">
+      <li class="nav__item flex_items">
         <a href="/matches/newgame" class="nav__link black-color">Crear partido</a>
       </li>
-      <li class="nav__item">
+      <li class="nav__item flex_items">
         <a href="/ranking" class="nav__link black-color">Ranking</a>
       </li>
-      <li class="nav__item">
+      <li class="nav__item flex_items">
         <a href="/torneos" class="nav__link black-color">Torneos</a>
       </li>
-      <li class="nav__item">
+      <li class="nav__item flex_items">
         <a href="/logout" class="nav__link black-color">Logout</a>
       </li>
     </ul>

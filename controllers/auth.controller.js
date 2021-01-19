@@ -131,7 +131,7 @@ const getAllUsers = async (req,res) => {
   const users = await Users.find();
   console.log("USUARIOS",users);
   res.render('index',{users})
-  console.log(req.session.currentUser)
+  console.log("Users",req.session.currentUser)
   }catch(e){
     console.error(e);
   }

@@ -69,7 +69,7 @@ var myNav = document.getElementById('nav');
 window.onscroll = function () { 
     "use strict";
      if(!isMenuOpen){
-      if (document.body.scrollTop >= 200 || document.documentElement.scrollTop >= 200) {
+      if (document.body.scrollTop >= 100 || document.documentElement.scrollTop >= 100) {
 
         //Cambio color Nav
           myNav.classList.add("nav-colored");
