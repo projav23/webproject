@@ -178,9 +178,19 @@ h2 {
   flex: none;
 }
 
+.container > td {
+  text-align: center;
+  scroll-snap-align: center;
+  flex: none;
+}
+
 .x.container > div {
   width: 100%;
   height: auto;
+}
+
+.width-100vw {
+  width: 100vw;
 }
 
 /*-------------HEADER--------------*/
@@ -297,6 +307,17 @@ h2 {
 
 .table-row {
   background-color: #EEEEEE;
+  font-size: 20px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 10px 0;
+}
+
+table thead {
   font-size: 20px;
   text-transform: uppercase;
   display: flex;
