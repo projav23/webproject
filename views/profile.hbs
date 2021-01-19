@@ -12,7 +12,7 @@
 <input type="number" name="games" id="games" value={{chartGames.length}} hidden>
 <div class="tab">
   <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')">Mi perfil</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')">Mis solicitudes</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')">Mis solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Mis estadisticas</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Contact')">Contacta conmigo</button>
 </div>
@@ -83,18 +83,18 @@
         {{#each matchStats}}
             {{#ifeq playerWinners.length 1}}
                 {{#ifCond ../currentUser._id playerWinners.[0]}}
-                    <div class="lost">L</div>
+                    <div class="lost"><a href="/matches/{{id}}">L</a></div>
                 {{else}}
-                    <div class="win">G</div>
+                    <div class="win"><a href="/matches/{{id}}">G</a></div>
                 {{/ifCond}}
             {{else}}
                 {{#ifeq playersWinners.[0] user._id}}
-                    <div class="win">G</div>
+                    <div class="win"><a href="/matches/{{id}}">G</a></div>
                 {{/ifeq}}
                 {{#ifeq playersWinners.[1]._id user._id}}
-                    <div class="win">G</div>
+                    <div class="win"><a href="/matches/{{id}}">G</a></div>
                 {{else}}
-                    <div class="win">G</div>
+                    <div class="win"><a href="/matches/{{id}}">G</a></div>
                 {{/ifeq}}
             {{/ifeq}}
         {{/each}}

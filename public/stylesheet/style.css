@@ -37,6 +37,28 @@ h2 {
   margin-bottom: 100px;
   text-align: center;
 }
+/* .card {
+  display: block;
+  top: 0px;
+  position: relative;
+  max-width: 262px;
+  background-color: #f2f8f9;
+  border-radius: 4px;
+  padding: 32px 24px;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  border: 1px solid #f2f8f9; */
+
+.card:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    /* top: -4px; */
+    border: 1px solid white;
+    background-color: white;
+}
+
 
 .title {
   color: grey;
@@ -395,13 +417,15 @@ h2 {
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
-  background-color: inherit;
-  color: #136408;
+  background-color: white;
+  color: green;
   float: left;
   outline: none;
   cursor: pointer;
+  height: 58px;
   padding: 14px 16px;
   transition: 0.3s;
+
 }
 
 /* Change background color of as on hover */
@@ -463,4 +487,23 @@ background-color: green;
 #my-canvas{
   width: 500px;
   height: 500px;
+}
+
+/* notificacion */
+
+.notificacion{
+  position: relative;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border: 1px solid white;
+  top: -40px;
+  left: 55px;
+}
+.notificacion p {
+  font-size: 0.8em;
+  color: white;
+  text-align: center;
+  padding: 1px 1px;
 }
