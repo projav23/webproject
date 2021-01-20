@@ -31,7 +31,10 @@ hbs.registerHelper('ifeq', function(v1, v2, options) {
 hbs.registerHelper('ifeq1', function(v1, v2, options) {
   return v1 !== v2 ? options.fn(this) : options.inverse(this);
 });
-
+hbs.registerHelper("inc", function(value, options)
+{
+    return parseInt(value) + 1;
+});
 hbs.registerHelper('ifIn', function(elem, list, options) {
   if(list.indexOf(elem) > -1) {
     return options.fn(this);
