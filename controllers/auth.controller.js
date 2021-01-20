@@ -131,7 +131,7 @@ const getAllUsers = async (req,res) => {
   const users = await Users.find();
 
   res.render('index',{users})
-
+   
   }catch(e){
     console.error(e);
   }

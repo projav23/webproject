@@ -5,6 +5,8 @@ const iniciarSesion = document.querySelector("#iniciar-sesion");
 const hazteMiembro = document.querySelector("#hazte-miembro");
 const buttonsToSendBack = document.querySelectorAll(".sendToBack")
 const footer = document.querySelector("#footer")
+const lines = document.querySelectorAll("#line")
+const titleLogo = document.querySelector(".logo")
 let isMenuOpen = false;
 
 
@@ -16,10 +18,13 @@ isMenuOpen = !isMenuOpen;
 menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
 menu.hidden = !isMenuOpen;
 nav.classList.toggle('nav--open');
+
+//Cambio color hamburguesa
+lines.forEach(line => line.classList.toggle("menuicon__barBlack"))
+// lines.forEach(line => line.classList.remove("menuicon__barWhite"))
 //Cuando abre el menú envio los btn detrás
 buttonsToSendBack.forEach(btn => btn.classList.toggle("sendToBack-1"))
 //Envio también el footer
-//Chorrada
 footer.classList.toggle("sendToBack-1")
 });
 
@@ -63,14 +68,37 @@ if (e.keyCode === 9) {
 var myNav = document.getElementById('nav');
 window.onscroll = function () { 
     "use strict";
-    if (document.body.scrollTop >= 200 || document.documentElement.scrollTop >= 200 ) {
-        myNav.classList.add("nav-colored");
-        myNav.classList.remove("nav-transparent");
-    } 
-    else {
-        myNav.classList.add("nav-transparent");
-        myNav.classList.remove("nav-colored");
+     if(!isMenuOpen){
+      if (document.body.scrollTop >= 100 || document.documentElement.scrollTop >= 100) {
+
+        //Cambio color Nav
+          myNav.classList.add("nav-colored");
+          myNav.classList.remove("nav-transparent");
+  
+        //Cambio color hamburguesa
+        lines.forEach(line => line.classList.add("menuicon__barBlack"))
+        lines.forEach(line => line.classList.remove("menuicon__barWhite"))
+  
+        //Cambio color TitleLogo
+        titleLogo.classList.remove("white-color")
+        titleLogo.classList.add("black-color")
+      } 
+      else {
+         //Cambio color Nav
+          myNav.classList.add("nav-transparent");
+          myNav.classList.remove("nav-colored");
+  
+          //Cambio color hamburguesa
+        lines.forEach(line => line.classList.add("menuicon__barWhite"))
+        lines.forEach(line => line.classList.remove("menuicon__barBlack"))
+        
+         //Cambio color TitleLogo
+        titleLogo.classList.remove("black-color")
+        titleLogo.classList.add("white-color")
+  
+      }
     }
+    
 };
 
 
