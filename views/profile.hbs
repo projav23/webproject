@@ -20,11 +20,11 @@
 {{!-- Grafico padel dobles --}}
 <input type="number" name="scorePadDob" id="scorePadDob" value={{chartScorePadel.scorePadelDob}} hidden>
 <input type="number" name="gamesPadDob" id="gamesPadDob" value={{chartGamesPadelDob.length}} hidden>
-
+{{!-- <input type="text" name="params" id="params" value={{user._id}} hidden> --}}
 
 <div class="tab">
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')">Mi perfil</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')">Mis solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')" id="defaultOpen">Mi perfil</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')" id="defaultOpenRequest">Mis solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Mis estadisticas</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Contact')">Contacta conmigo</button>
 </div>
@@ -41,6 +41,14 @@
             <input type="text" name="name" id="name" value="{{user.name}}">
         <label for="name">Apellido</label>
             <input type="text" name="lastname" id="lastname" value="{{user.lastname}}">
+        <label for="comunidad">Comunidad autonoma</label>
+            <select name="comunidad" id="comunidad">
+                {{#each comunidades}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        <label for="age">Edad</label>
+            <input type="number" name="age" id="age" value="{{user.age}}">
         <label for="email">Email</label>
             <input type="email" name="email" id="email" value="{{user.email}}">
         <label for="level">Nivel</label>

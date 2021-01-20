@@ -6,7 +6,39 @@
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+
+Ranking Individual Tenis
 {{#each rankingInd}}
 <br>
-{{inc @index}} {{username}} {{scoreTenisInd}}
+{{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scoreTenisInd}}
+{{/each}}
+<br>
+<br>
+<br>
+<br>
+Ranking Dobles Tenis
+{{#each rankingDob}}
+<br>
+{{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scoreTenisDob}}
+{{/each}}
+<br>
+<br>
+<br>
+<br>
+Ranking Individual Padel
+{{#each rankingIndPadel}}
+<br>
+{{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scorePadelInd}}
+{{/each}}
+<br>
+<br>
+<br>
+<br>
+Ranking Dobles Padel
+{{#each rankingDobPadel}}
+<br>
+{{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scorePadelDob}}
 {{/each}}

@@ -26,8 +26,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "Spain"
   },
-  city:{
-    type: String,
+  comunidad:{
+    type: mongoose.Schema.Types.ObjectId, ref: "Comunidades"
   },
   level:{
     type: String,

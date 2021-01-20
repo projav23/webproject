@@ -1,5 +1,6 @@
 const Users = require('../models/User.model')
 const Matches = require('../models/Matches.model')
+const Comunidades = require('../models/Comunidades.model')
 const mongoose = require('mongoose')
 const nodemailer = require("nodemailer")
 const templates = require('../public/templates/template')
@@ -11,6 +12,8 @@ const getProfile = async (req, res, next) => {
   try {
   const {userId} = req.params
   const user = await Users.findById(userId)
+  //Comunidades
+  const comunidades = await Comunidades.find()
   //Data para el grafico Tenis individual
   const chartGames = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Tenis"}, {numberPlayers: 2}]})
   //Data para el grafico Tenis dobles
@@ -38,9 +41,9 @@ const getProfile = async (req, res, next) => {
   //Solicitudes
   const matches = await Matches.find({$and: [{host: userId}, {pendingGuests: {$ne: []}}]}).populate('pendingGuests center', {passwordHash: 0})
   if(matches.length === 0){
-    res.render('profile', {message: "No tienes solicitudes pendientes", user, matchStats, posInd, posDob, chartGames, chartScore, userId, chartGamesPadel,chartScorePadel,matchStatsPadel, posIndPadel, posDobPadel, chartGamesDob, chartGamesPadelDob})
+    res.render('profile', {message: "No tienes solicitudes pendientes", user, matchStats, posInd, posDob, chartGames, chartScore, userId, chartGamesPadel,chartScorePadel,matchStatsPadel, posIndPadel, posDobPadel, chartGamesDob, chartGamesPadelDob, comunidades})
   } else {
-  res.render('profile', {matches, user, matchStats, posInd, posDob, chartGames, chartScore, userId, chartGamesPadel,chartScorePadel,matchStatsPadel, posIndPadel, posDobPadel, chartGamesDob, chartGamesPadelDob})
+  res.render('profile', {matches, user, matchStats, posInd, posDob, chartGames, chartScore, userId, chartGamesPadel,chartScorePadel,matchStatsPadel, posIndPadel, posDobPadel, chartGamesDob, chartGamesPadelDob, comunidades})
   }
   } catch (e) {
   console.error(e)
@@ -50,13 +53,15 @@ const getProfile = async (req, res, next) => {
 const editProfile = async (req,res,next) => {
   try {
     const {userId} = req.params;
-    const {name, lastname, level, age, location} = req.body
+    const {name, lastname, level, age, comunidad} = req.body
     const user = await Users.findByIdAndUpdate(
       userId,
       {
-        name: name,
-        lastname: lastname,
-        level: level
+        name,
+        lastname,
+        level,
+        age,
+        comunidad
       },
       {new:true}
       )
