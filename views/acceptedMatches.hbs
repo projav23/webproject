@@ -10,12 +10,12 @@
           <h1>{{esport}}</h1>
           <p class="title">Localidad: {{location}}</p>
           <p class="title">Nivel: {{level}}</p>
-          <p class="center">{{center}}</p>
+          <p class="center">{{center.name}}</p>
           <div class="row">
             <p class="date">{{dateFormat date "DD/MM/YYYY"}}</p>
             <p class="players"> Players: {{acceptedGuests.length}}/{{numberPlayers}}</p>
           </div>
-          <p><a href="/matches/{{_id}}">See more</a></p>
+          <p><a href="/matches/{{_id}}">See more details</a></p>
         </div>
       {{/each}}
     {{else}}

@@ -36,45 +36,63 @@ Usuarios aceptados:
     {{#ifeq match.acceptedGuests.length match.numberPlayers}}
     <form action="/matches/{{match._id}}/endMatch" method="post">
     <button class="sendToBack" type="submit">Cerrar partido</button>
-    {{/ifeq}}
     </form>
+    {{/ifeq}}
     <form action="/matches/{{match._id}}/delete" method="post">
     <button  class="sendToBack" type="submit">Borrar partido</button>
     </form>
   {{/ifCond}}
 {{else}}
-  {{#ifCond match.host._id currentUser._id}}
-  <a href="#">El partido ha finalizado</a>
-  {{else}}
-    {{#ifeq match.acceptedGuests.length 4}}
-      <form action="/matches/{{match._id}}/winners" method="post" id="winners">
-        <button class="sendToBack" type="submit">Enviar resultado</button>
+  {{#ifeq match.status "Cerrado"}}
+    {{#ifCond match.host._id currentUser._id}}
+    <a href="#">El partido ha finalizado</a>
+    {{else}}
+      {{#ifeq match.acceptedGuests.length 4}}
+        <form action="/matches/{{match._id}}/delete" method="post">
+        <button  class="sendToBack" type="submit">Borrar partido</button>
+        </form>
+        <form action="/matches/{{match._id}}/winners" method="post" id="winners">
+          <button class="sendToBack" type="submit">Enviar resultado</button>
+        </form>
+          <label for="win">Choose the winners:</label>
+            <select name="player1" id="win" form="winners" required>
+              <option value={{match.acceptedGuests.[0]._id}}>{{match.acceptedGuests.[0].username}}</option>
+              <option value={{match.acceptedGuests.[1]._id}}>{{match.acceptedGuests.[1].username}}</option>
+              <option value={{match.acceptedGuests.[2]._id}}>{{match.acceptedGuests.[2].username}}</option>
+              <option value={{match.acceptedGuests.[3]._id}}>{{match.acceptedGuests.[3].username}}</option>
+            </select>
+            <select name="player2" id="win" form="winners" required>
+              <option value={{match.acceptedGuests.[0]._id}}>{{match.acceptedGuests.[0].username}}</option>
+              <option value={{match.acceptedGuests.[1]._id}}>{{match.acceptedGuests.[1].username}}</option>
+              <option value={{match.acceptedGuests.[2]._id}}>{{match.acceptedGuests.[2].username}}</option>
+              <option value={{match.acceptedGuests.[3]._id}}>{{match.acceptedGuests.[3].username}}</option>
+            </select>
+      {{/ifeq}}
+      {{#ifeq match.acceptedGuests.length 2}}
+          <form action="/matches/{{match._id}}/delete" method="post">
+      <button  class="sendToBack" type="submit">Borrar partido</button>
       </form>
+        <form action="/matches/{{match._id}}/winners" method="post" id='winners'>
+          <button class="sendToBack" type="submit">Enviar resultado</button>
+        </form>
         <label for="win">Choose the winners:</label>
           <select name="player1" id="win" form="winners" required>
             <option value={{match.acceptedGuests.[0]._id}}>{{match.acceptedGuests.[0].username}}</option>
             <option value={{match.acceptedGuests.[1]._id}}>{{match.acceptedGuests.[1].username}}</option>
-            <option value={{match.acceptedGuests.[2]._id}}>{{match.acceptedGuests.[2].username}}</option>
-            <option value={{match.acceptedGuests.[3]._id}}>{{match.acceptedGuests.[3].username}}</option>
           </select>
-          <select name="player2" id="win" form="winners" required>
-            <option value={{match.acceptedGuests.[0]._id}}>{{match.acceptedGuests.[0].username}}</option>
-            <option value={{match.acceptedGuests.[1]._id}}>{{match.acceptedGuests.[1].username}}</option>
-            <option value={{match.acceptedGuests.[2]._id}}>{{match.acceptedGuests.[2].username}}</option>
-            <option value={{match.acceptedGuests.[3]._id}}>{{match.acceptedGuests.[3].username}}</option>
-          </select>
-    {{/ifeq}}
+      {{/ifeq}}
+    {{/ifCond}}
+  {{/ifeq}}
+  {{#ifeq match.status "Finalizado"}}
     {{#ifeq match.acceptedGuests.length 2}}
-      <form action="/matches/{{match._id}}/winners" method="post" id='winners'>
-        <button class="sendToBack" type="submit">Enviar resultado</button>
-      </form>
-      <label for="win">Choose the winners:</label>
-        <select name="player1" id="win" form="winners" required>
-          <option value={{match.acceptedGuests.[0]._id}}>{{match.acceptedGuests.[0].username}}</option>
-          <option value={{match.acceptedGuests.[1]._id}}>{{match.acceptedGuests.[1].username}}</option>
-        </select>
+      <p>El ganador del partido es: {{match.playerWinners.[0].username}}</p>
     {{/ifeq}}
-  {{/ifCond}}
+    {{#ifeq match.acceptedGuests.length 4}}
+          <p>Los ganadores del partido son: {{match.playerWinners.[0].username}} y {{match.playerWinners.[1].username}}</p>
+
+    {{/ifeq}}
+  {{/ifeq}}
+
 {{/ifeq}}
 
 <iframe src={{match.center.mapURL}} width="375" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>

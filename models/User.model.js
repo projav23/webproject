@@ -26,6 +26,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "Spain"
   },
+  city:{
+    type: String,
+  },
   level:{
     type: String,
     enum: ['Principiante', 'Medio', 'Avanzado', 'Profesional'],
@@ -60,7 +63,11 @@ const UserSchema = new mongoose.Schema({
   attendedEvents: [{  
     type: mongoose.Schema.Types.ObjectId, ref: "Matches"
   }],
-  score: {
+  scoreInd: {
+    type: Number,
+    default: 0
+  },
+  scoreDob: {
     type: Number,
     default: 0
   }

@@ -45,7 +45,7 @@ const login = async (req,res,next) => {
         res.render('index', {message: "Invalid credentials"})
       }else {
         req.session.currentUser = user
-        console.log(req.session.currentUser)
+
         // return res.render('index', user)
         res.redirect("/")
       }
@@ -129,9 +129,9 @@ const logout = async (req, res) => {
 const getAllUsers = async (req,res) => {
   try{
   const users = await Users.find();
-  console.log("USUARIOS",users);
+
   res.render('index',{users})
-  console.log("Users",req.session.currentUser)
+   
   }catch(e){
     console.error(e);
   }
