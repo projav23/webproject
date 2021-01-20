@@ -211,42 +211,81 @@ const winners = async (req,res,next) => {
       const {matchId} = req.params
       const {player1} = req.body;
       const {player2} = req.body;
-      const user1 = await Users.findByIdAndUpdate(
-        player1,
-        {$inc: {scoreDob: 1}},
-        {new: true}
-      )
-      const user2 = await Users.findByIdAndUpdate(
-        player2,
-        {$inc: {scoreDob: 1}},
-        {new: true}
-      )
-      const match = await Matches.findByIdAndUpdate(
-        matchId,
-        {
-          $addToSet: {playersWinners: player1, player2},
-          status: 'Finalizado'
-        },
-        {new: true}
-      )
+
+      const matchTenis = await Matches.find(matchId)
+
+      if (matchTenis.esport === "Tenis"){
+        const user1 = await Users.findByIdAndUpdate(
+          player1,
+          {$inc: {scoreTenisDob: 1}},
+          {new: true}
+        )
+        const user2 = await Users.findByIdAndUpdate(
+          player2,
+          {$inc: {scoreTenisDob: 1}},
+          {new: true}
+        )
+        const match = await Matches.findByIdAndUpdate(
+          matchId,
+          {
+            $addToSet: {playersWinners: player1, player2},
+            status: 'Finalizado'
+          },
+          {new: true}
+        )
+      } else {
+        const user1 = await Users.findByIdAndUpdate(
+          player1,
+          {$inc: {scorePadelDob: 1}},
+          {new: true}
+        )
+        const user2 = await Users.findByIdAndUpdate(
+          player2,
+          {$inc: {scorePadelDob: 1}},
+          {new: true}
+        )
+        const match = await Matches.findByIdAndUpdate(
+          matchId,
+          {
+            $addToSet: {playersWinners: player1, player2},
+            status: 'Finalizado'
+          },
+          {new: true}
+        )
+      }
       res.redirect('/matches/')
     } else {
       const {matchId} = req.params
       const {player1} = req.body;
-
-      const user1 = await Users.findByIdAndUpdate(
-        player1,
-        {$inc: {scoreInd: 1}},
-        {new: true}
-      )
-      const match = await Matches.findByIdAndUpdate(
-        matchId,
-        {
-          status: 'Finalizado',
-          $addToSet: {playerWinners: player1},
-      },
-        {new: true}
-      )
+      if (matchTenis.esport === "Tenis"){
+        const user1 = await Users.findByIdAndUpdate(
+          player1,
+          {$inc: {scoreTenisInd: 1}},
+          {new: true}
+        )
+        const match = await Matches.findByIdAndUpdate(
+          matchId,
+          {
+            status: 'Finalizado',
+            $addToSet: {playerWinners: player1},
+        },
+          {new: true}
+        )
+      } else {
+        const user1 = await Users.findByIdAndUpdate(
+          player1,
+          {$inc: {scoreTenisInd: 1}},
+          {new: true}
+        )
+        const match = await Matches.findByIdAndUpdate(
+          matchId,
+          {
+            status: 'Finalizado',
+            $addToSet: {playerWinners: player1},
+        },
+          {new: true}
+        )
+      }
       res.redirect('/matches/')
     }
   } catch (e) {

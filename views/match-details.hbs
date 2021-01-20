@@ -5,17 +5,26 @@
 <p>Centro del evento: <a href={{match.center.url}}>{{match.center.name}}</a></p>
 <p>Nivel del evento: {{match.level}}</p>
 <p>Localidad: {{match.location}}</p>
-<p>Creador del evento: {{match.host.id}}</p>
+<p>Creador del evento: {{match.host.username}}</p>
 <p>Estado del partido: {{match.status}}</p>
-Usuario logueado {{currentUser._id}}
 
 
+{{#if match.pendingGuests}}
+Usuarios pendientes:
+{{#each match.pendingGuests}}
+  <p><a href="/profile/{{id}}">{{username}}</a></p>
+{{/each}}
+{{/if}}
 
 Usuarios aceptados: 
-{{#each match.acceptedGuests}}
-  <p><a href="/profile/{{id}}">{{id}}</a></p>
-{{/each}}
-
+{{#if match.acceptedGuests}}
+  {{#each match.acceptedGuests}}
+    <p><a href="/profile/{{id}}">{{username}}</a></p>
+  {{/each}}
+{{else}}
+  <a href="#">Todavia no hay jugadores aceptados</a>
+{{/if}}
+{{!-- //Logica de los botones --}}
 {{#ifeq match.status "Abierto"}}
   {{#ifCond match.host._id currentUser._id}}
     {{#if currentUserIsAccepted}}

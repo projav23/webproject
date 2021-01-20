@@ -8,12 +8,24 @@
 <br>
 <br>
 <br>
-<input type="number" name="score" id="score" value={{chartScore.scoreInd}} hidden>
+{{!-- Grafico tenis individual --}}
+<input type="number" name="score" id="score" value={{chartScore.scoreTenisInd}} hidden>
 <input type="number" name="games" id="games" value={{chartGames.length}} hidden>
+{{!-- Grafico tenis dobles --}}
+<input type="number" name="scoreDob" id="scoreDob" value={{chartScore.scoreTenisDob}} hidden>
+<input type="number" name="gamesDob" id="gamesDob" value={{chartGamesDob.length}} hidden>
+{{!-- Grafico padel individual --}}
+<input type="number" name="scorePadInd" id="scorePadInd" value={{chartScorePadel.scorePadelInd}} hidden>
+<input type="number" name="gamesPadInd" id="gamesPadInd" value={{chartGamesPadel.length}} hidden>
+{{!-- Grafico padel dobles --}}
+<input type="number" name="scorePadDob" id="scorePadDob" value={{chartScorePadel.scorePadelDob}} hidden>
+<input type="number" name="gamesPadDob" id="gamesPadDob" value={{chartGamesPadelDob.length}} hidden>
+
+
 <div class="tab">
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')">Perfil</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')">Solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Estadisticas</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')">Mi perfil</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')">Mis solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Mis estadisticas</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Contact')">Contacta conmigo</button>
 </div>
 <!-- Tab content -->
@@ -69,40 +81,91 @@
 {{/ifCond}}
 </div>
 <div id="Estadisticas" class="tabcontent">
-
-    <div class="rankingInd">
-       RANKING INDIVIDUAL: {{posInd}} 
-    </div>
-    <div class="rankingDob">
-       RANKING DOBLES: {{posDob}} 
-    </div>
-<canvas id="my-canvas"></canvas>
-
-    Ultimos 5 encuentros
-    <div class="rowGames">
-        {{#each matchStats}}
-            {{#ifeq playerWinners.length 1}}
-                {{#ifCond ../user._id playerWinners.[0]}}
-                    <div class="lost"><a href="/matches/{{id}}">L</a></div>
+    <div class="Tenis">
+        <p>TENIS</p>
+        <div class="rankingInd">
+            RANKING INDIVIDUAL: {{posInd}} 
+        </div>
+        <div class="rankingDob">
+        RANKING DOBLES: {{posDob}} 
+        </div>
+        <canvas id="my-canvas"></canvas>
+        <canvas id="my-canvas-dob"></canvas>
+        <div class="containerLastGames">
+            <div>Ultimos 5 encuentros</div> 
+            <div class="rowGames">
+                {{#if matchStats}}
+                    {{#each matchStats}}
+                        {{#ifeq playerWinners.length 1}}
+                            {{#ifCond ../userId playerWinners.[0]}}
+                                <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                            {{else}}
+                                <div class="win"><a href="/matches/{{id}}">W</a></div>
+                            {{/ifCond}}
+                        {{/ifeq}}
+                        {{#ifeq playerWinners.length 2}}
+                            {{#ifCond ../userId playerWinners.[0] }}
+                                {{#ifCond ../userId playerWinners.[1]}}
+                                    <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                                {{else}}
+                                    <div class="win"><a href="/matches/{{id}}">W</a></div>
+                                {{/ifCond}}
+                            {{else}}
+                                <div class="win"><a href="/matches/{{id}}">W</a></div>
+                            {{/ifCond}}
+                        {{/ifeq}}
+                        {{#ifeq playerWinners.length 0}}
+                            <div class="void"><a href="/matches/{{id}}">V</a></div>
+                        {{/ifeq}}
+                    {{/each}}
                 {{else}}
-                    <div class="win"><a href="/matches/{{id}}">W</a></div>
-                {{/ifCond}}
-            {{/ifeq}}
-            {{#ifeq playerWinners.length 2}}
-                {{#ifCond ../user._id playerWinners.[0] }}
-                    {{#ifCond ../user._id playerWinners.[1]}}
-                        <div class="lost"><a href="/matches/{{id}}">L</a></div>
-                    {{else}}
-                        <div class="win"><a href="/matches/{{id}}">W</a></div>
-                    {{/ifCond}}
+                <p>Aun no ha jugado partidos</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="Padel">
+        <p>Padel</p>
+        <div class="rankingInd">
+            RANKING INDIVIDUAL: {{posIndPadel}} 
+        </div>
+        <div class="rankingDob">
+        RANKING DOBLES: {{posDobPadel}} 
+        </div>
+        <canvas id="my-canvas-padel-ind"></canvas>
+        <canvas id="my-canvas-padel-dob"></canvas>
+        <div class="containerLastGames">
+            <div>Ultimos 5 encuentros</div> 
+            <div class="rowGames">
+                {{#if matchStatsPadel}}
+                    {{#each matchStatPadels}}
+                        {{#ifeq playerWinners.length 1}}
+                            {{#ifCond ../userId playerWinners.[0]}}
+                                <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                            {{else}}
+                                <div class="win"><a href="/matches/{{id}}">W</a></div>
+                            {{/ifCond}}
+                        {{/ifeq}}
+                        {{#ifeq playerWinners.length 2}}
+                            {{#ifCond ../userId playerWinners.[0] }}
+                                {{#ifCond ../userId playerWinners.[1]}}
+                                    <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                                {{else}}
+                                    <div class="win"><a href="/matches/{{id}}">W</a></div>
+                                {{/ifCond}}
+                            {{else}}
+                                <div class="win"><a href="/matches/{{id}}">W</a></div>
+                            {{/ifCond}}
+                        {{/ifeq}}
+                        {{#ifeq playerWinners.length 0}}
+                            <div class="void"><a href="/matches/{{id}}">V</a></div>
+                        {{/ifeq}}
+                    {{/each}}
                 {{else}}
-                    <div class="win"><a href="/matches/{{id}}">W</a></div>
-                {{/ifCond}}
-            {{/ifeq}}
-            {{#ifeq playerWinners.length 0}}
-                <div class="void"><a href="/matches/{{id}}">V</a></div>
-            {{/ifeq}}
-        {{/each}}
+                <p>Aun no ha jugado partidos</p>
+                {{/if}}
+            </div>
+        </div>
     </div>
 </div>
 <div id="Contact" class="tabcontent">
@@ -111,7 +174,7 @@
     <br>
     <br>
     <form action="/profile/{{currentUser._id}}/contact" method="post">
-        <label for="name">¿Quién soy?</label>
+        <label for="name">¿Quién</label>
             <input type="text" value="{{currentUser.username}}" name="name" id="name" readonly>
         <label for="asunto">Asunto</label>
             <input type="text" name="asunto" id="asunto" required>

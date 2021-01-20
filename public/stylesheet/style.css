@@ -488,13 +488,23 @@ background-color: gray;
 }
 
 .rowGames{
+  margin-top: 2%;
   display: flex;
   width: 125px;
-  border: 1px solid black;
-
+  /* border: 1px solid black; */
 }
-
+.rowGames a{
+  text-decoration: none;
+  color: white;
+}
+.containerLastGames{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
 #my-canvas{
+  margin-top: 10%;
   width: 500px;
   height: 500px;
 }
