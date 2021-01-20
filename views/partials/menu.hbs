@@ -1,40 +1,43 @@
 <header class="header">
   <nav id="nav" class="nav">    
-    <a class="logo nav__link" href="/">T🎾GETHER</a>
+    <a class="logo nav__link white-color" href="/">T🎾GETHER</a>
     <!--Actual Navigation Menu-->
     {{#if currentUser}}
     <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
-      <li class="nav__item">
-        <a href="/profile/{{currentUser._id}}"  class="nav__link">Mi perfil</a>
+      <li class="nav__item flex_items">
+        <img id="img-user-ranking" src="../images/default-user.jpg">
+        <a href="/profile/{{currentUser._id}}" class="nav__link black-color">{{currentUser.name}}</a>
       </li>
-      <li class="nav__item">
-        <a href="/profile/{{currentUser._id}}/" class="nav__link">Solicitudes</a>
+      <li class="nav__item flex_items">
+        <img id="img-user-ranking" src="../images/iconos/inbox.png">
+        <a href="/profile/{{currentUser._id}}/" class="nav__link black-color">Solicitudes</a>
       </li>
-      <li class="nav__item">
-        <a href="/matches" class="nav__link">Partidos</a>
+      <li class="nav__item flex_items">
+        <img id="img-user-ranking" src="../images/iconos/pelota.png">
+        <a href="/matches" class="nav__link black-color">Partidos</a>
       </li>
-      <li class="nav__item">
-        <a href="/matches/newgame" class="nav__link">Crear partido</a>
+      <li class="nav__item flex_items">
+        <img id="img-user-ranking" src="../images/iconos/pelota2.png">
+        <a href="/matches/newgame" class="nav__link black-color">Crear partido</a>
       </li>
-      <li class="nav__item">
-        <a href="/ranking" class="nav__link">Ranking</a>
+      <li class="nav__item flex_items">
+        <img id="img-user-ranking" src="../images/iconos/ranking.png">
+        <a href="/ranking" class="nav__link black-color">Ranking</a>
       </li>
-      <li class="nav__item">
-        <a href="/torneos" class="nav__link">Torneos</a>
-      </li>
-      <li class="nav__item">
-        <a href="/logout" class="nav__link">Logout</a>
+      <li class="nav__item flex_items">
+        <img id="img-user-ranking" src="../images/iconos/logout.png">
+        <a href="/logout" class="nav__link black-color">Logout</a>
       </li>
     </ul>
     {{else}}
     <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
       <li class="nav__item">
-        <a id="iniciar-sesion" class="nav__link" onclick="document.getElementById('id02').style.display='block'">Iniciar
+        <a id="iniciar-sesion" class="nav__link black-color" onclick="document.getElementById('id02').style.display='block'">Iniciar
           sesión</a>
       </li>
       <li class="nav__item">
         <!--Button to open the modal-->
-        <a id="hazte-miembro" class="nav__link" onclick="document.getElementById('id01').style.display='block'">Hazte
+        <a id="hazte-miembro" class="nav__link black-color" onclick="document.getElementById('id01').style.display='block'">Hazte
           miembro</a>
       </li>
     </ul>
@@ -43,11 +46,11 @@
     <a href="#nav" class="nav__toggle" role="button" aria-expanded="false" aria-controls="menu">
       <svg class="menuicon" xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 50 50">
         <g>
-          <line class="menuicon__bar" x1="13" y1="16.5" x2="37" y2="16.5" />
-          <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5" />
-          <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5" />
-          <line class="menuicon__bar" x1="13" y1="32.5" x2="37" y2="32.5" />
-          <circle class="menuicon__circle" r="23" cx="25" cy="25" />
+          <line id="line" class="menuicon__bar menuicon__barWhite" x1="13" y1="16.5" x2="37" y2="16.5" />
+          <line id="line" class="menuicon__bar menuicon__barWhite" x1="13" y1="24.5" x2="37" y2="24.5" />
+          <line id="line" class="menuicon__bar menuicon__barWhite" x1="13" y1="24.5" x2="37" y2="24.5" />
+          <line id="line" class="menuicon__bar menuicon__barWhite" x1="13" y1="32.5" x2="37" y2="32.5" />
+          <circle class="menuicon__circle menuicon__circleBlack" r="23" cx="25" cy="25" />
         </g>
       </svg>
     </a>

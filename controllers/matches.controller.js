@@ -16,7 +16,7 @@ const createMatch = async (req,res,next) => {
     if(isMissingCredentials){
       res.render('newgame', {message: "Debes rellenar todos los campos."})
     }
-   
+
     const newmatch = await Matches.create({
       center,
       level,

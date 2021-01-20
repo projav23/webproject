@@ -17,6 +17,9 @@ $violeta:#960ec7;
 
 body {
     font-family: 'Lato', sans-serif;
+    :-webkit-scrollbar {
+      display: none;
+  }
   }
   
   h3{
@@ -78,9 +81,9 @@ body {
     text-decoration: none;
   }
   
-  button:hover, a:hover {
-    opacity: 0.7;
-  }
+  // button:hover, a:hover {
+  //   opacity: 0.7;
+  // }
   
   /*Listado de partidos*/
   .match {
@@ -153,7 +156,6 @@ body {
   }
   
   .sendToBack{
-
   }
   .sendToBack0{
     position: relative;
@@ -194,11 +196,21 @@ body {
     scroll-snap-align: center;
     flex: none;
   }
+
+  .container > td {
+    text-align: center;
+    scroll-snap-align: center;
+    flex: none;
+  }
   
   .x.container > div {
     width: 100%;
     height: auto;
   }
+
+.width-100vw{
+  width: 100vw;
+}
 
   /*-------------HEADER--------------*/
 
@@ -301,6 +313,19 @@ text-transform: uppercase;
   left: 14px;
 }
 
+#td-img{
+  margin-left: 25px;
+}
+#td-points{
+  margin-right:  25px;
+}
+
+#td-name{
+  margin-right:  25px;
+  margin-left: 25px;
+  width: 70px;
+}
+
 .shadow-title-h1{
   text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.3);
 }
@@ -324,10 +349,23 @@ padding-bottom: 5px;
 margin: 10px 0;
 }
 
+table{
+  thead{
+
+    font-size: 20px;
+text-transform: uppercase;
+display: flex;
+align-items: center;
+justify-content: space-around;
+padding-top: 5px;
+padding-bottom: 5px;
+margin: 10px 0;
+}
+}
+
 #img-user-ranking{
   height: 50px;
   width: 50px;
-  border-radius: 50%;
 }
 
 /*----------------VIDEO------------------*/

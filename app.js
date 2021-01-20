@@ -80,5 +80,5 @@ app.use("/profile", profile)
 app.use("/ranking", ranking)
 
 //Puerto de escucha
-app.listen(process.env.PORT, ()=>console.log("Esta corriendo en el puerto 4000"))
+app.listen(process.env.PORT, ()=>console.log("Esta corriendo en el puerto 3000"))
 

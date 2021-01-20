@@ -78,10 +78,31 @@
     <div id="ranking" class="container x mandatory-scroll-snapping">
       <div class="text-center">
         <h3 class="shadow-title-h3">Mejores Jugadores Tennis</h3>
-      <table id="table">
-      {{#each users}}  
-      {{>bestPlayers}}
-      {{/each}}
+      <table id="table" class="container x mandatory-scroll-snapping">
+        <td>
+          <table class="width-100vw">
+                <thead class="sendToBack-1">
+                      <td>INDIVIDUAL</td>
+                </thead>
+                <tbody>
+                    {{#each users}}  
+                    {{>bestPlayers}}
+                    {{/each}}
+                </tbody>
+          </table>
+        </td>
+        <td>
+          <table class="width-100vw">
+                <thead class="sendToBack-1">
+                  <td>DOBLES</td>
+            </thead>
+            <tbody>
+                {{#each users}}  
+                {{>bestPlayers}}
+                {{/each}}
+            </tbody>
+        </table>
+        </td>
       </table>
     </div>
     <div class="text-center">
