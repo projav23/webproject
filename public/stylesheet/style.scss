@@ -156,7 +156,6 @@ body {
   }
   
   .sendToBack{
-
   }
   .sendToBack0{
     position: relative;
@@ -312,6 +311,19 @@ text-transform: uppercase;
   width: 95vw;
   position: relative;
   left: 14px;
+}
+
+#td-img{
+  margin-left: 25px;
+}
+#td-points{
+  margin-right:  25px;
+}
+
+#td-name{
+  margin-right:  25px;
+  margin-left: 25px;
+  width: 70px;
 }
 
 .shadow-title-h1{

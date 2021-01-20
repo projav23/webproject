@@ -293,6 +293,20 @@ h2 {
   left: 14px;
 }
 
+#td-img {
+  margin-left: 25px;
+}
+
+#td-points {
+  margin-right: 25px;
+}
+
+#td-name {
+  margin-right: 25px;
+  margin-left: 25px;
+  width: 70px;
+}
+
 .shadow-title-h1 {
   text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.3);
 }
