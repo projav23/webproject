@@ -504,6 +504,16 @@ height: 25px;
 border: 2px solid green;
 background-color: green;
 }
+.void{
+justify-content: center;
+display: flex;
+align-items: center;
+border-radius: 10px;
+width: 25px;
+height: 25px;
+border: 2px solid gray;
+background-color: gray;
+}
 
 .lost{
   justify-content: center;
@@ -517,13 +527,23 @@ background-color: green;
 }
 
 .rowGames{
+  margin-top: 2%;
   display: flex;
   width: 125px;
-  border: 1px solid black;
-
+  /* border: 1px solid black; */
 }
-
+.rowGames a{
+  text-decoration: none;
+  color: white;
+}
+.containerLastGames{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
 #my-canvas{
+  margin-top: 10%;
   width: 500px;
   height: 500px;
 }
@@ -546,3 +566,11 @@ background-color: green;
   text-align: center;
   padding: 1px 1px;
 }
+
+
+.comunity{
+  width: 25px;
+  height: 18px;
+  border: 1px solid grey;
+}
+
