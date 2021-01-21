@@ -7,11 +7,11 @@
 
 <section class="top-less-space">
 <form id="form-login" action="/auth/login" method="POST">
-<div class="flex-row-inputs paint-div-input bottom-space">
+<div id="loginDiv" class="flex-row-inputs paint-div-input bottom-space">
 <img id="imgLogin" src="/images/iconos/email-icon.png" width="8%">
 <input id="inputsLogin" type="email" name="email" required>
 </div>
-<div class="flex-row-inputs paint-div-input bottom-space">
+<div id="loginDiv"class="flex-row-inputs paint-div-input bottom-space">
   <img  id="imgLogin" src="/images/iconos/password-icon.png" width="8%">
 <input  id="inputsLogin" type="password" name="password" required>
 </div>
@@ -19,11 +19,11 @@
 <button class="btn-login" type="submit">Login</button>
 </form>
 {{#if message}}
-<p class="top-less-space">{{message}}</p>
+<p class="blanco-difuminado top-less-space">{{message}}</p>
 {{/if}}
 </section>
 
-<p class="blanco-difuminado top-less-space noStyle">¿No tienes aún una cuenta?<a id="Registrate" class="noStyle" href="/signup">Registrate aquí</a></p>
+<p class="blanco-difuminado top-less-space noStyle">¿No tienes cuenta?<a id="Registrate" class="noStyle" href="/auth/signup"> Registrate aquí</a></p>
 </section>
 
 

@@ -30,12 +30,12 @@ footer.classList.toggle("sendToBack-1")
 
 if(iniciarSesion){
   iniciarSesion.addEventListener('click', e => {
-    e.preventDefault();
+    //e.preventDefault();
     nav.classList.toggle('nav--open');
     });
   
     hazteMiembro.addEventListener('click', e => {
-      e.preventDefault();
+      //e.preventDefault();
       nav.classList.toggle('nav--open');
       });
 }
@@ -124,3 +124,19 @@ function openTab(evt, name) {
   document.getElementById(name).style.display = "block";
   evt.currentTarget.className += "active";
 }
+
+
+
+//SIGNUP
+
+// // Radios
+
+// $("#fancy-radio input[type=radio]").click(function() {
+//   $('label.radio').removeClass('selected');
+//   var inputID = $(this).attr('id');
+//   if ($(this).is(':checked')) {
+//     $('.' + inputID).addClass('selected');
+//   } else {
+//     $('.' + inputID).removeClass('selected');
+//   }
+// });

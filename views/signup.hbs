@@ -1,26 +1,89 @@
+<section id="login">
+</section>
+
+<section id="loginForm">
+<h1>T🎾GETHER</h1>
+<section class="top-less-space">
 <form action="/auth/signup" method="POST">
-<input type="text" name="name" required placeholder="name"><br>
-<input type="text" name="lastname" required placeholder="lastname"><br>
-<input type="number" name="age" required placeholder="age"><br>
-<input type="text" name="country" required value="Spain" readonly='readonly' placeholder="country"><br>
-<input type="text" name="favoriteClub" placeholder="Club"><br>
-<label for="level">Choose a level:</label>
-<select id="level" name="level" required>
-  <option value="Principiante">Principiante</option>
-  <option value="Medio">Medio</option>
-  <option value="Avanzado">Avanzado</option>
-  <option value="Profesional">Profesional</option>
-</select><br>
-<label for="level">Choose an esport:</label>
-<select id="esports" name="esports" required>
-  <option value="Padel">Padel</option>
-  <option value="Tenis">Tenis</option>
-</select><br>
-<input type="email" name="email" required placeholder="email"><br>
-<input type="text" name="username" required placeholder="username"><br>
-<input type="password" name="password" required placeholder="password"><br>
-<button type="submit">SignUp</button>
+  <div id="loginDiv" class="flex-row-inputs paint-div-input bottom-space">
+    <input id="inputsLogin" type="text" name="name" required placeholder="NAME"><br>
+    <input id="inputsLogin" type="text" name="lastname" required placeholder="LASTNAME"><br>
+  </div>
+  <div id="loginDiv" class="flex-row-inputs paint-div-input bottom-space">
+    <input id="inputsLogin" type="number" name="age" required placeholder="AGE"><br>
+
+    {{!-- <div  id="fancy-radio" class="flex-row-inputs">
+        <input type="radio" name="genre" style="display: none;">
+          <a class="radio">HOMBRE</a>
+        <input type="radio" name="genre" style="display: none;">
+          <a class="radio">MUJER</a>
+    </div> --}}
+
+  </div>
+  <div id="loginDiv" class="flex-row-inputs bottom-space">
+    <div class="div-label">
+          <label class="blanco-difuminado" for="center">Center:</label>
+    <select name="center" id="center"  required>
+    {{#each centers}}
+      <option name="{{location}}" value={{id}}>{{name}}</option>
+    {{/each}}
+  </select>
+    </div>
+  <div class="div-label">
+      <label class="blanco-difuminado" for="location">Location:</label>
+    <select name="location" id="location" required>
+          <option value='Barcelona'>Barcelona</option>
+          <option value='Madrid'>Madrid</option>
+          <option value='Valencia'>Valencia</option>
+          <option value='Alicante'>Alicante</option>
+          <option value='Mallorca'>Mallorca</option>
+          <option value='Murcia'>Murcia</option>
+          <option value='Sevilla'>Sevilla</option>
+          <option value='Cáceres'>Cáceres</option>
+          <option value='Salamanca'>Salamanca</option>
+          <option value='Valladolid'>Valladolid</option>
+          <option value='Ponferrada'>Ponferrada</option>
+          <option value='Oviedo'>Oviedo</option>
+          <option value='Zaragoza'>Zaragoza</option>
+          <option value='Málaga'>Málaga</option>
+          <option value='Marbella'>Marbella</option>
+          <option value='Tenerife'>Tenerife</option>
+          <option value='Canaria'>Gran Canaria</option>
+      </select><br>
+  </div>
+  </div>
+  <div id="loginDiv" class="flex-row-inputs bottom-space">
+    <div class="div-label">
+    <label class="blanco-difuminado" for="level">Choose an esport:</label>
+      <select id="esports" name="esports" required>
+          <option value="Padel">Padel</option>
+          <option value="Tenis">Tenis</option>
+      </select><br>
+    </div>
+    <div class="div-label">
+      <label class="blanco-difuminado" for="level">Choose a level:</label>
+      <select id="level" name="level" required>
+          <option value="Principiante">Principiante</option>
+          <option value="Medio">Medio</option>
+          <option value="Avanzado">Avanzado</option>
+          <option value="Profesional">Profesional</option>
+      </select>
+    </div>
+  </div>
+  <div id="loginDiv" class="flex-row-inputs paint-div-input bottom-space">
+    <input id="inputsLogin" type="email" name="email" required placeholder="EMAIL"><br>
+  </div>
+  <div id="loginDiv" class="flex-row-inputs paint-div-input bottom-space">
+    <input id="inputsLogin" type="text" name="username" required placeholder="USERNAME"><br>
+    <input id="inputsLogin" type="password" name="password" required placeholder="PASSWORD"><br>
+  </div>
+<input type="text" name="country" required value="Spain" readonly='readonly' placeholder="country" hidden>
+
+<button class="btn-login" type="submit">SignUp</button>
 </form>
 {{#if message}}
 <p>{{message}}</p>
 {{/if}}
+</section>
+</section>
+

@@ -515,6 +515,10 @@ margin: 10px 0;
   color:rgba(255, 255, 255, 0.8);
 }
 
+#loginDiv{
+  border-radius: 5px;
+}
+
 .btn-login{
   width:40vw;
   border: none;
@@ -557,4 +561,60 @@ margin: 10px 0;
       height: 115%;
     }
   }
+}
+
+//----------------------------------------------------SIGNUP----------------//
+
+// Fancy radio btns
+
+#fancy-radio{
+  float: left;
+  width: 100%;
+  margin: 0 0 30px 0;
+  a.radio{
+    float: left;
+    width: auto;
+    line-height: 30px;
+    margin: 0 0 10px 0;
+    color: #fff;
+    font-size: 22px;
+    position: relative;
+  
+    &:before{
+      content: '';
+      float: left;
+      width: 29px;
+      height: 29px;
+      margin: 0 5px 0 0;
+      background-color: #fff;
+      border-radius: 100%;
+      font-size: 22px;
+      text-indent: 40px;
+    }
+    &:after{
+      content: '';
+      width: 5px;
+      height: 5px;
+      background-color: green;
+      border-radius: 100%;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      opacity: 0;
+    }
+    &.selected{
+      &:after{
+        width: 15.5px;
+        height: 15.5px;			
+        top: 7px;
+        left: 7px;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.div-label{
+  display: flex;
+  flex-direction: column;
 }

@@ -47,8 +47,8 @@ const login = async (req,res,next) => {
       }else {
         req.session.currentUser = user
         console.log("Redirect /");
-        return res.render('index', user)
-        //res.redirect("/")
+        //return res.render('index', user)
+        res.redirect("/")
       }
     }
   }catch(e){
