@@ -26,8 +26,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "Spain"
   },
-  city:{
-    type: String,
+  comunidad:{
+    type: mongoose.Schema.Types.ObjectId, ref: "Comunidades"
   },
   level:{
     type: String,
@@ -63,11 +63,19 @@ const UserSchema = new mongoose.Schema({
   attendedEvents: [{  
     type: mongoose.Schema.Types.ObjectId, ref: "Matches"
   }],
-  scoreInd: {
+  scoreTenisInd: {
     type: Number,
     default: 0
   },
-  scoreDob: {
+  scoreTenisDob: {
+    type: Number,
+    default: 0
+  },
+  scorePadelInd: {
+    type: Number,
+    default: 0
+  },
+  scorePadelDob: {
     type: Number,
     default: 0
   }

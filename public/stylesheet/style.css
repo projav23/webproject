@@ -536,50 +536,43 @@ table thead {
 .btn-login:after {
   filter: blur(0.3px);
 }
+.void{
+justify-content: center;
+display: flex;
+align-items: center;
+border-radius: 10px;
+width: 25px;
+height: 25px;
+border: 2px solid gray;
+background-color: gray;
+}
 
 .btn-login:hover:before {
   width: 115%;
   height: 115%;
 }
 
-#fancy-radio {
-  float: left;
-  width: 100%;
-  margin: 0 0 30px 0;
+.rowGames{
+  margin-top: 2%;
+  display: flex;
+  width: 125px;
+  /* border: 1px solid black; */
 }
-
-#fancy-radio a.radio {
-  float: left;
-  width: auto;
-  line-height: 30px;
-  margin: 0 0 10px 0;
-  color: #fff;
-  font-size: 22px;
-  position: relative;
+.rowGames a{
+  text-decoration: none;
+  color: white;
 }
-
-#fancy-radio a.radio:before {
-  content: '';
-  float: left;
-  width: 29px;
-  height: 29px;
-  margin: 0 5px 0 0;
-  background-color: #fff;
-  border-radius: 100%;
-  font-size: 22px;
-  text-indent: 40px;
+.containerLastGames{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
 }
+#my-canvas{
+  margin-top: 10%;
+  width: 500px;
+  height: 500px;
 
-#fancy-radio a.radio:after {
-  content: '';
-  width: 5px;
-  height: 5px;
-  background-color: green;
-  border-radius: 100%;
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  opacity: 0;
 }
 
 #fancy-radio a.radio.selected:after {
@@ -611,3 +604,11 @@ table thead {
   justify-content: space-around;
   align-items: center;
 }
+
+
+.comunity{
+  width: 25px;
+  height: 18px;
+  border: 1px solid grey;
+}
+

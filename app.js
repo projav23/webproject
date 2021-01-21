@@ -28,7 +28,13 @@ hbs.registerHelper('ifCond', function(v1, v2, options) {
 hbs.registerHelper('ifeq', function(v1, v2, options) {
   return v1 === v2 ? options.fn(this) : options.inverse(this);
 });
-
+hbs.registerHelper('ifeq1', function(v1, v2, options) {
+  return v1 !== v2 ? options.fn(this) : options.inverse(this);
+});
+hbs.registerHelper("inc", function(value, options)
+{
+    return parseInt(value) + 1;
+});
 hbs.registerHelper('ifIn', function(elem, list, options) {
   if(list.indexOf(elem) > -1) {
     return options.fn(this);
@@ -64,12 +70,14 @@ const matches = require('./routes/matches.routes')
 const logout = require("./routes/logout.routes")
 const requests = require('./routes/solicitudes.routes')
 const profile = require("./routes/profile.routes")
+const ranking = require('./routes/ranking.routes')
 app.use('/', index)
 app.use('/auth', auth)
 app.use('/matches', matches)
 app.use('/solicitudes', requests)
 app.use("/logout", logout)
 app.use("/profile", profile)
+app.use("/ranking", ranking)
 
 //Puerto de escucha
 app.listen(process.env.PORT, ()=>console.log("Esta corriendo en el puerto 3000"))

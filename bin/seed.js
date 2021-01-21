@@ -2,6 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const data = require("./data")
 const Centros = require("../models/Centros.model")
+const Comunidades = require("../models/Comunidades.model")
 
 const dbOptions = {
   useCreateIndex: true,
@@ -13,7 +14,7 @@ async function initDb(){
   try{
     const connect = await mongoose.connect(process.env.MONGODB_URI, dbOptions);
     console.log("connect",connect)
-    const centers = await Centros.create(data);
+    const centers = await Comunidades.create(data);
     console.log("centros",centers)
     mongoose.connection.close();
   }catch(e){

@@ -8,11 +8,23 @@
 <br>
 <br>
 <br>
-<input type="number" name="score" id="score" value={{chartScore.scoreInd}} hidden>
+{{!-- Grafico tenis individual --}}
+<input type="number" name="score" id="score" value={{chartScore.scoreTenisInd}} hidden>
 <input type="number" name="games" id="games" value={{chartGames.length}} hidden>
+{{!-- Grafico tenis dobles --}}
+<input type="number" name="scoreDob" id="scoreDob" value={{chartScore.scoreTenisDob}} hidden>
+<input type="number" name="gamesDob" id="gamesDob" value={{chartGamesDob.length}} hidden>
+{{!-- Grafico padel individual --}}
+<input type="number" name="scorePadInd" id="scorePadInd" value={{chartScorePadel.scorePadelInd}} hidden>
+<input type="number" name="gamesPadInd" id="gamesPadInd" value={{chartGamesPadel.length}} hidden>
+{{!-- Grafico padel dobles --}}
+<input type="number" name="scorePadDob" id="scorePadDob" value={{chartScorePadel.scorePadelDob}} hidden>
+<input type="number" name="gamesPadDob" id="gamesPadDob" value={{chartGamesPadelDob.length}} hidden>
+{{!-- <input type="text" name="params" id="params" value={{user._id}} hidden> --}}
+
 <div class="tab">
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')">Mi perfil</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')">Mis solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')" id="defaultOpen">Mi perfil</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')" id="defaultOpenRequest">Mis solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Mis estadisticas</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Contact')">Contacta conmigo</button>
 </div>
@@ -29,6 +41,14 @@
             <input type="text" name="name" id="name" value="{{user.name}}">
         <label for="name">Apellido</label>
             <input type="text" name="lastname" id="lastname" value="{{user.lastname}}">
+        <label for="comunidad">Comunidad autonoma</label>
+            <select name="comunidad" id="comunidad">
+                {{#each comunidades}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        <label for="age">Edad</label>
+            <input type="number" name="age" id="age" value="{{user.age}}">
         <label for="email">Email</label>
             <input type="email" name="email" id="email" value="{{user.email}}">
         <label for="level">Nivel</label>
@@ -69,49 +89,108 @@
 {{/ifCond}}
 </div>
 <div id="Estadisticas" class="tabcontent">
-
-    <div class="rankingInd">
-       RANKING INDIVIDUAL: {{posInd}} 
-    </div>
-    <div class="rankingDob">
-       RANKING DOBLES: {{posDob}} 
-    </div>
-<canvas id="my-canvas"></canvas>
-
-    Ultimos 5 encuentros
-    <div class="rowGames">
-        {{#each matchStats}}
-            {{#ifeq playerWinners.length 1}}
-                {{#ifCond ../currentUser._id playerWinners.[0]}}
-                    <div class="lost"><a href="/matches/{{id}}">L</a></div>
+    <div class="Tenis">
+        <p>TENIS</p>
+        <div class="rankingInd">
+            RANKING INDIVIDUAL: {{posInd}} 
+        </div>
+        <div class="rankingDob">
+        RANKING DOBLES: {{posDob}} 
+        </div>
+        <canvas id="my-canvas"></canvas>
+        <canvas id="my-canvas-dob"></canvas>
+        <div class="containerLastGames">
+            <div>Ultimos 5 encuentros</div> 
+            <div class="rowGames">
+                {{#if matchStats}}
+                    {{#each matchStats}}
+                        {{#ifeq playerWinners.length 1}}
+                            {{#ifCond ../userId playerWinners.[0]}}
+                                <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                            {{else}}
+                                <div class="win"><a href="/matches/{{id}}">W</a></div>
+                            {{/ifCond}}
+                        {{/ifeq}}
+                        {{#ifeq playerWinners.length 2}}
+                            {{#ifCond ../userId playerWinners.[0] }}
+                                {{#ifCond ../userId playerWinners.[1]}}
+                                    <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                                {{else}}
+                                    <div class="win"><a href="/matches/{{id}}">W</a></div>
+                                {{/ifCond}}
+                            {{else}}
+                                <div class="win"><a href="/matches/{{id}}">W</a></div>
+                            {{/ifCond}}
+                        {{/ifeq}}
+                        {{#ifeq playerWinners.length 0}}
+                            <div class="void"><a href="/matches/{{id}}">V</a></div>
+                        {{/ifeq}}
+                    {{/each}}
                 {{else}}
-                    <div class="win"><a href="/matches/{{id}}">G</a></div>
-                {{/ifCond}}
-            {{else}}
-                {{#ifeq playersWinners.[0] user._id}}
-                    <div class="win"><a href="/matches/{{id}}">G</a></div>
-                {{/ifeq}}
-                {{#ifeq playersWinners.[1]._id user._id}}
-                    <div class="win"><a href="/matches/{{id}}">G</a></div>
+                <p>Aun no ha jugado partidos</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="Padel">
+        <p>Padel</p>
+        <div class="rankingInd">
+            RANKING INDIVIDUAL: {{posIndPadel}} 
+        </div>
+        <div class="rankingDob">
+        RANKING DOBLES: {{posDobPadel}} 
+        </div>
+        <canvas id="my-canvas-padel-ind"></canvas>
+        <canvas id="my-canvas-padel-dob"></canvas>
+        <div class="containerLastGames">
+            <div>Ultimos 5 encuentros</div> 
+            <div class="rowGames">
+                {{#if matchStatsPadel}}
+                    {{#each matchStatPadels}}
+                        {{#ifeq playerWinners.length 1}}
+                            {{#ifCond ../userId playerWinners.[0]}}
+                                <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                            {{else}}
+                                <div class="win"><a href="/matches/{{id}}">W</a></div>
+                            {{/ifCond}}
+                        {{/ifeq}}
+                        {{#ifeq playerWinners.length 2}}
+                            {{#ifCond ../userId playerWinners.[0] }}
+                                {{#ifCond ../userId playerWinners.[1]}}
+                                    <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                                {{else}}
+                                    <div class="win"><a href="/matches/{{id}}">W</a></div>
+                                {{/ifCond}}
+                            {{else}}
+                                <div class="win"><a href="/matches/{{id}}">W</a></div>
+                            {{/ifCond}}
+                        {{/ifeq}}
+                        {{#ifeq playerWinners.length 0}}
+                            <div class="void"><a href="/matches/{{id}}">V</a></div>
+                        {{/ifeq}}
+                    {{/each}}
                 {{else}}
-                    <div class="win"><a href="/matches/{{id}}">G</a></div>
-                {{/ifeq}}
-            {{/ifeq}}
-        {{/each}}
+                <p>Aun no ha jugado partidos</p>
+                {{/if}}
+            </div>
+        </div>
     </div>
 </div>
 <div id="Contact" class="tabcontent">
-<div>Contacta conmigo:</div>
-<br>
-<br>
-<form action="/profile/{{currentUser._id}}/contact" method="post">
-    <label for="name">Usuario</label>
-        <input type="text" value="{{currentUser.username}}" name="name" id="name" readonly>
-    <label for="asunto">Asunto</label>
-        <input type="text" name="asunto" id="asunto" required>
-    <label for="mensaje">Mensaje</label>
-        <input type="text" name="mensaje" id="mensaje" required>
-    <button type="submit">Enviar correo</button>
-</form>
-
-</div>
+{{#ifCond user._id currentUser._id}}
+    <div>Contacta conmigo:</div>
+    <br>
+    <br>
+    <form action="/profile/{{currentUser._id}}/contact" method="post">
+        <label for="name">¿Quién</label>
+            <input type="text" value="{{currentUser.username}}" name="name" id="name" readonly>
+        <label for="asunto">Asunto</label>
+            <input type="text" name="asunto" id="asunto" required>
+        <label for="mensaje">Mensaje</label>
+            <input type="text" name="mensaje" id="mensaje" required>
+        <button type="submit">Enviar correo</button>
+    </form>
+    </div>
+{{else}}
+<p>Mirate a un espejo</p>
+{{/ifCond}}
