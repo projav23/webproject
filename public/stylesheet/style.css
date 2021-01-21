@@ -590,7 +590,24 @@ table thead {
   opacity: 1;
 }
 
+.align-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .div-label {
   display: flex;
   flex-direction: column;
+}
+
+.flex-row-inputs-space-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
