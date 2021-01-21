@@ -3,7 +3,7 @@
   {{> menu}}
 </section>
 <!-- The Modal -->
-    <div id="id02" class="modal2">
+    {{!-- <div id="id02" class="modal2">
       <!-- Modal Content -->
       <form class="modal-content2 animate" action="/" method="POST">
         <div class="container1">
@@ -25,10 +25,10 @@
           <span class="psw">Forgot <a href="#">password?</a></span>
         </div>
       </form>
-    </div>
+    </div> --}}
 
 <!-- The Modal (contains the Sign Up form) -->
-    <div id="id01" class="modal">
+    {{!-- <div id="id01" class="modal">
       <form class="modal-content2 animate" action="/" method="POST">
         <div class="container">
           <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">X</span>
@@ -61,7 +61,7 @@
           </div>
         </div>
       </form>
-    </div>
+    </div> --}}
       <section id="one">
       <div id="header">
         <h1 id="homePageTitle" class="padding-left shadow-title-h1">Reta y Gana a tus amigos</h1>
@@ -82,7 +82,7 @@
         <td>
           <table class="width-100vw">
                 <thead class="sendToBack-1">
-                      <td>INDIVIDUAL</td>
+                      <td id="td-title">INDIVIDUAL</td>
                 </thead>
                 <tbody>
                     {{#each users}}  
@@ -94,7 +94,7 @@
         <td>
           <table class="width-100vw">
                 <thead class="sendToBack-1">
-                  <td>DOBLES</td>
+                  <td id="td-title">DOBLES</td>
             </thead>
             <tbody>
                 {{#each users}}  

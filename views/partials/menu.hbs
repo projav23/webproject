@@ -32,12 +32,16 @@
     {{else}}
     <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
       <li class="nav__item">
-        <a id="iniciar-sesion" class="nav__link black-color" onclick="document.getElementById('id02').style.display='block'">Iniciar
+        {{!-- <a id="iniciar-sesion" class="nav__link black-color" onclick="document.getElementById('id02').style.display='block'">Iniciar
+          sesión</a> --}}
+          <a href="/login" id="iniciar-sesion" class="nav__link black-color">Iniciar
           sesión</a>
       </li>
       <li class="nav__item">
         <!--Button to open the modal-->
-        <a id="hazte-miembro" class="nav__link black-color" onclick="document.getElementById('id01').style.display='block'">Hazte
+        {{!-- <a id="hazte-miembro" class="nav__link black-color" onclick="document.getElementById('id01').style.display='block'">Hazte
+          miembro</a> --}}
+          <a href="/signup" id="hazte-miembro" class="nav__link black-color">Hazte
           miembro</a>
       </li>
     </ul>
