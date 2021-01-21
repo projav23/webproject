@@ -81,7 +81,7 @@ h2 {
   display: inline-block;
   padding: 8px;
   color: white;
-  background-color: green;
+  background-color: #206a5d;
   text-align: center;
   cursor: pointer;
   width: 100%;
@@ -457,16 +457,19 @@ table thead {
 /* Style the buttons that are used to open the tab content */
 .tab button {
   background-color: white;
-  color: green;
+  color: #206a5d;
   float: left;
   outline: none;
   cursor: pointer;
   height: 58px;
   padding: 14px 16px;
   transition: 0.3s;
-
+  font-size: 0.9em;
 }
 
+.tab button:focus{
+  border-bottom: 5px solid #206a5d;
+}
 /* Change background color of as on hover */
 
 
@@ -490,9 +493,44 @@ table thead {
 .tabcontent {
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
   border-top: none;
+  margin-top: 5%;
 }
+#Solicitudes:target{
+  display: block
+}
+#Perfil:target{
+  display: block
+}
+/* .tabcontent{
+  display: block;
+
+}
+
+.tabPerfil {
+  
+  padding: 6px 12px;
+  border-top: none;
+  margin-top: 5%;
+}
+.tabSol {
+
+  padding: 6px 12px;
+  border-top: none;
+  margin-top: 5%;
+}
+.tabStats {
+
+  padding: 6px 12px;
+  border-top: none;
+  margin-top: 5%;
+}
+.tabContact {
+ 
+  padding: 6px 12px;
+  border-top: none;
+  margin-top: 5%;
+} */
 
 .win{
 justify-content: center;
@@ -574,3 +612,74 @@ background-color: gray;
   border: 1px solid grey;
 }
 
+#title_profile{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-left: 10%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+#title_profile img {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+
+}
+#user_profile{
+  margin-left: 5%;
+  margin-top: -5%;
+}
+#name_profile{
+  font-weight: bold;
+  color: #206a5d;
+}
+#username_profile{
+  color: #ddd;
+  margin-top: 2px;
+  font-size: 0.9em;
+}
+#age_profile{
+  color: gray;
+  margin-top: 5px;
+  font-size: 0.8em;
+}
+.input_profile{
+  background-color: ddd;
+}
+label {
+  color: gray;
+}
+
+/* bbe1fa */
+
+.btn-save{
+  background-color: #206a5d;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  opacity: 0.9;
+  border-radius: 5px;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+.accept-form{
+
+}
+.btn-accept{
+
+}
+.btn-accept img{
+  width: 5%;
+  height: auto;
+}
+#spiderman{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
