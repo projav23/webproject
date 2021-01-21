@@ -29,24 +29,25 @@ const userLogin = async (req,res,next) => {
 const login = async (req,res,next) => {
   try{
     if(Object.keys(req.body).length > 3){
-      return next()
+      //return next()
+      res.render("signup")
     }else {
       const {email, password} = req.body
       const isMissingCredentials = !email || !password;
       if(isMissingCredentials){
-        res.render('index', {message: "Missing credentials"})
+        res.render('login', {message: "Missing credentials"})
       }
       const {passwordHash,...user} = await Users.findOne({email}).lean()
       if(!user){
-        res.render('index', {message: "User does not exist. Please signup."})
+        res.render('login', {message: "User does not exist. Please signup."})
       }
       const verifiedPassword = await bcrypt.compare(password, passwordHash);
       if (!verifiedPassword) {
-        res.render('index', {message: "Invalid credentials"})
+        res.render('login', {message: "Invalid credentials"})
       }else {
         req.session.currentUser = user
-
-        // return res.render('index', user)
+        console.log("Redirect /");
+        //return res.render('index', user)
         res.redirect("/")
       }
     }
@@ -54,16 +55,28 @@ const login = async (req,res,next) => {
     console.error(e)
   }
 }
+//GET LOGIN
+const renderSignIn = async (req,res)=>{
+  res.render("login")
+}
+
+//GET SIGNUP
+const renderSignUp = async (req,res)=>{
+  res.render("signup")
+}
+
+
 //POST SIGNUP
 const signup = async (req,res,next) =>{
   try{
     const {name, lastname, age, country, level, username, email, password} = req.body;
     const isMissingCredentials = !email || !country || !password || !name || !lastname || !age || !username || !level 
+    
     if(isMissingCredentials){
-      res.render('index', {message: "Missing fields"})
+      res.render('signup', {message: "Missing fields"})
     }
     if(!hasCorrectPasswordFormat){
-      res.render('index', {message: "Invalid password format"})
+      res.render('signup', {message: "Invalid password format"})
     }
     const saltRounds = 10;
     const salt = await bcrypt.genSalt(saltRounds)
@@ -138,4 +151,4 @@ const getAllUsers = async (req,res) => {
 }
 
 
-module.exports = {login, signup, userLogin, logout, getAllUsers}
+module.exports = {login, signup, userLogin, logout, getAllUsers, renderSignIn,renderSignUp}

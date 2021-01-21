@@ -1,26 +1,39 @@
+<section id="login">
+</section>
+
+<section id="loginForm">
+<h1>T🎾GETHER</h1>
+<section class="top-less-space">
 <form action="/auth/signup" method="POST">
-<input type="text" name="name" required placeholder="name"><br>
-<input type="text" name="lastname" required placeholder="lastname"><br>
-<input type="number" name="age" required placeholder="age"><br>
-<input type="text" name="country" required value="Spain" readonly='readonly' placeholder="country"><br>
-<input type="text" name="favoriteClub" placeholder="Club"><br>
-<label for="level">Choose a level:</label>
-<select id="level" name="level" required>
-  <option value="Principiante">Principiante</option>
-  <option value="Medio">Medio</option>
-  <option value="Avanzado">Avanzado</option>
-  <option value="Profesional">Profesional</option>
-</select><br>
-<label for="level">Choose an esport:</label>
-<select id="esports" name="esports" required>
-  <option value="Padel">Padel</option>
-  <option value="Tenis">Tenis</option>
-</select><br>
-<input type="email" name="email" required placeholder="email"><br>
-<input type="text" name="username" required placeholder="username"><br>
-<input type="password" name="password" required placeholder="password"><br>
-<button type="submit">SignUp</button>
+  <div id="loginDiv" class="flex-row-inputs paint-div-input bottom-space">
+    {{!-- NAME --}}
+    <input id="inputsLogin" type="text" name="name" required placeholder="NAME"><br>
+    {{!-- LASTNAME --}}
+    <input id="inputsLogin" type="text" name="lastname" required placeholder="LASTNAME"><br>
+  </div>
+  <div id="loginDiv" class="flex-row-inputs bottom-space paint-div-input">
+    {{!-- AGE --}}
+        <input id="inputsLogin"  type="number" name="age" required placeholder="AGE"><br>
+  </div>
+  {{!-- EMAIL --}}
+  <div id="loginDiv" class="flex-row-inputs paint-div-input bottom-space">
+    <input id="inputsLogin" type="email" name="email" required placeholder="EMAIL"><br>
+  </div>
+  {{!-- USERNAME --}}
+  <div id="loginDiv" class="flex-row-inputs paint-div-input bottom-space">
+    <input id="inputsLogin" type="text" name="username" required placeholder="USERNAME"><br>
+  </div>
+  {{!-- PASSWORD --}}
+    <div id="loginDiv" class="flex-row-inputs paint-div-input bottom-space">
+    <input id="inputsLogin" type="password" name="password" required placeholder="PASSWORD"><br>
+  </div>
+<input type="text" name="country" required value="Spain" readonly='readonly' placeholder="country" hidden>
+
+<button class="btn-login" type="submit">SignUp</button>
 </form>
 {{#if message}}
-<p>{{message}}</p>
+<p class="blanco-difuminado top-less-space">{{message}}</p>
 {{/if}}
+</section>
+</section>
+

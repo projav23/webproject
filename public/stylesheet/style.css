@@ -41,28 +41,6 @@ h2 {
   margin-bottom: 100px;
   text-align: center;
 }
-/* .card {
-  display: block;
-  top: 0px;
-  position: relative;
-  max-width: 262px;
-  background-color: #f2f8f9;
-  border-radius: 4px;
-  padding: 32px 24px;
-  margin: 12px;
-  text-decoration: none;
-  z-index: 0;
-  overflow: hidden;
-  border: 1px solid #f2f8f9; */
-
-.card:hover {
-    transition: all 0.2s ease-out;
-    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
-    /* top: -4px; */
-    border: 1px solid white;
-    background-color: white;
-}
-
 
 .title {
   color: grey;
@@ -88,12 +66,6 @@ h2 {
   font-size: 18px;
   text-decoration: none;
 }
-
-
-
-/* button:hover, a:hover {
-  opacity: 0.7;
-} */
 
 /*Listado de partidos*/
 .match {
@@ -278,6 +250,11 @@ h2 {
   color: white;
 }
 
+.btnWhite {
+  color: black;
+  background-color: white;
+}
+
 .btn:hover {
   background-color: #136408;
 }
@@ -319,6 +296,12 @@ h2 {
   width: 95vw;
   position: relative;
   left: 14px;
+}
+
+#td-title {
+  width: 80vw;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 #td-img {
@@ -440,69 +423,118 @@ table thead {
   margin-top: 40px;
 }
 
-
-/*PROFILE*/
-
-/* Style the tab */
-.tab {
+#login {
+  background-image: url(../images/front-view-tennis-ball-on-court-ground-2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
-  overflow: hidden;
-  align-items: center;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: -10;
+  background-position: 50% 50%;
+}
+
+#login::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+#loginForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
   text-align: center;
-
-  
 }
 
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  background-color: white;
-  color: green;
-  float: left;
-  outline: none;
-  cursor: pointer;
-  height: 58px;
-  padding: 14px 16px;
-  transition: 0.3s;
-
+#form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Change background color of as on hover */
-
-
-/* Create an active/current tablink class */
-
-.active{
-  border-bottom: 10px solid red;
-  background-color: red;
+.paint-div-input {
+  background-color: rgba(255, 255, 255, 0.1);
 }
-.tablinks{
-  background-color: none;
+
+.flex-row-inputs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#inputsLogin {
+  margin: 0;
+  background-color: transparent;
+  color: white;
+  font-size: medium;
+}
+
+#imgLogin {
+  margin: 10px;
+}
+
+#Registrate {
+  color: #aadd4f;
+}
+
+.blanco-difuminado {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#loginDiv {
+  border-radius: 5px;
+}
+
+.btn-login {
+  width: 40vw;
   border: none;
+  padding: 1em;
+  outline: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: 1.2em;
+  letter-spacing: 0.2em;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  background: none;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
 }
-/* .tab button:active{
-  background-color: none;
-  border-bottom: 10px solid red;
-} */
 
-
-/* Style the tab content */
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+.btn-login:before, .btn-login:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 5%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 105%;
+  height: 105%;
+  content: '';
+  z-index: -2;
+  background-size: 400% 400%;
+  background: #aadd4f;
 }
 
-.win{
-justify-content: center;
-display: flex;
-align-items: center;
-border-radius: 10px;
-width: 25px;
-height: 25px;
-border: 2px solid green;
-background-color: green;
+.btn-login:before {
+  filter: blur(3px);
+  transition: all .25s ease;
+  animation: pulse 10s infinite ease;
+}
+
+.btn-login:after {
+  filter: blur(0.3px);
 }
 .void{
 justify-content: center;
@@ -515,15 +547,9 @@ border: 2px solid gray;
 background-color: gray;
 }
 
-.lost{
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-  width: 25px;
-  height: 25px;
-  border: 2px solid red;
-  background-color: red;
+.btn-login:hover:before {
+  width: 115%;
+  height: 115%;
 }
 
 .rowGames{
@@ -546,25 +572,37 @@ background-color: gray;
   margin-top: 10%;
   width: 500px;
   height: 500px;
+
 }
 
-/* notificacion */
-
-.notificacion{
-  position: relative;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  background-color: red;
-  border: 1px solid white;
-  top: -40px;
-  left: 55px;
+#fancy-radio a.radio.selected:after {
+  width: 15.5px;
+  height: 15.5px;
+  top: 7px;
+  left: 7px;
+  opacity: 1;
 }
-.notificacion p {
-  font-size: 0.8em;
-  color: white;
-  text-align: center;
-  padding: 1px 1px;
+
+.align-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.div-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row-inputs-space-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 

@@ -30,12 +30,12 @@ footer.classList.toggle("sendToBack-1")
 
 if(iniciarSesion){
   iniciarSesion.addEventListener('click', e => {
-    e.preventDefault();
+    //e.preventDefault();
     nav.classList.toggle('nav--open');
     });
   
     hazteMiembro.addEventListener('click', e => {
-      e.preventDefault();
+      //e.preventDefault();
       nav.classList.toggle('nav--open');
       });
 }
@@ -124,8 +124,7 @@ function openTab(evt, name) {
   document.getElementById(name).style.display = "block";
   evt.currentTarget.className += "active";
 }
+
   document.getElementById("defaultOpen").click();
 
-
-// 
 
