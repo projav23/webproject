@@ -60,12 +60,18 @@ const renderSignIn = async (req,res)=>{
   res.render("login")
 }
 
+//GET SIGNUP
+const renderSignUp = async (req,res)=>{
+  res.render("signup")
+}
+
 
 //POST SIGNUP
 const signup = async (req,res,next) =>{
   try{
     const {name, lastname, age, country, level, username, email, password} = req.body;
     const isMissingCredentials = !email || !country || !password || !name || !lastname || !age || !username || !level 
+    
     if(isMissingCredentials){
       res.render('signup', {message: "Missing fields"})
     }
@@ -145,4 +151,4 @@ const getAllUsers = async (req,res) => {
 }
 
 
-module.exports = {login, signup, userLogin, logout, getAllUsers, renderSignIn}
+module.exports = {login, signup, userLogin, logout, getAllUsers, renderSignIn,renderSignUp}
