@@ -94,11 +94,17 @@
 {{/if}}
 {{/ifCond}}
 </div>
-<div id="Estadisticas" class="tabcontent tabStats">
+<div id="Estadisticas" class="tabcontent tabStats holster">
     <div class="Tenis">
-        <h3>TENIS</h3>
-        <canvas id="my-canvas"></canvas>
-        <canvas id="my-canvas-dob"></canvas>
+        <h3 class="text-center">TENIS</h3>
+        <div class="container x mandatory-scroll-snapping">
+            <div>
+                <canvas id="my-canvas"></canvas>
+            </div>
+            <div>
+                <canvas id="my-canvas-dob"></canvas>
+            </div>
+        </div>
         <div class="containerLastGames">
             <div>Ultimos 5 encuentros</div> 
             <div class="rowGames">
@@ -133,9 +139,15 @@
         </div>
     </div>
     <div class="Padel">
-        <p>Padel</p>
-        <canvas id="my-canvas-padel-ind"></canvas>
-        <canvas id="my-canvas-padel-dob"></canvas>
+        <h3 class="text-center">Padel</h3>
+        <div class="container x mandatory-scroll-snapping">
+            <div>
+                <canvas id="my-canvas-padel-ind"></canvas>
+            </div>
+            <div>
+                <canvas id="my-canvas-padel-dob"></canvas>
+            </div>
+        </div>
         <div class="containerLastGames">
             <div>Ultimos 5 encuentros</div> 
             <div class="rowGames">

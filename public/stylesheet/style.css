@@ -644,12 +644,12 @@ background-color: gray;
   align-items: center;
   margin-top: 10%;
 }
-#my-canvas{
+#my-canvas,#my-canvas-dob,#my-canvas-padel-ind,#my-canvas-padel-dob{
   margin-top: 10%;
   width: 500px;
   height: 500px;
-
 }
+
 
 #fancy-radio a.radio.selected:after {
   width: 15.5px;
