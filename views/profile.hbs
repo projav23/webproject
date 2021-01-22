@@ -8,6 +8,7 @@
 <br>
 <br>
 <br>
+{{!-- UsernameID --}}
 {{!-- Grafico tenis individual --}}
 <input type="number" name="score" id="score" value={{chartScore.scoreTenisInd}} hidden>
 <input type="number" name="games" id="games" value={{chartGames.length}} hidden>
@@ -21,63 +22,75 @@
 <input type="number" name="scorePadDob" id="scorePadDob" value={{chartScorePadel.scorePadelDob}} hidden>
 <input type="number" name="gamesPadDob" id="gamesPadDob" value={{chartGamesPadelDob.length}} hidden>
 {{!-- <input type="text" name="params" id="params" value={{user._id}} hidden> --}}
+<div id="title_profile">
+    <img src="/images/Captura de pantalla 2021-01-20 a las 19.15.14.png" alt="">
+    <div id="user_profile">
+        <p id="name_profile">{{user.name}} {{user.lastname}}</p>
+        <p id="username_profile">@{{user.username}}</p>
+        <p id="age_profile">{{user.age}} años</p>
 
+    </div>
+</div>
 <div class="tab">
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')" id="defaultOpen">Mi perfil</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')" id="defaultOpenRequest">Mis solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Mis estadisticas</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Contact')">Contacta conmigo</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')" id="defaultOpen">Perfil</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')" id="defaultOpenRequest">Solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Estadisticas</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Contact')">Contacto</button>
 </div>
 <!-- Tab content -->
-<div id="Perfil" class="tabcontent">
+<div id="Perfil" class="tabcontent tabPerfil">
 {{#ifCond user._id currentUser._id}}
-<p>No es tu perfil sabandija</p>
+<p>No es tu perfil.</p>
 {{else}}
 <section>
-    <p>Perfil de {{user.username}}</p>
-    <hr>
+    <br>
     <form action="/profile/{{user._id}}/update" method="post">
         <label for="name">Nombre</label>
-            <input type="text" name="name" id="name" value="{{user.name}}">
+            <input class="input_profile" type="text" name="name" id="name" value="{{user.name}}">
         <label for="name">Apellido</label>
-            <input type="text" name="lastname" id="lastname" value="{{user.lastname}}">
+            <input class="input_profile" type="text" name="lastname" id="lastname" value="{{user.lastname}}">
         <label for="comunidad">Comunidad autonoma</label>
-            <select name="comunidad" id="comunidad">
+            <select class="input_profile" name="comunidad" id="comunidad">
                 {{#each comunidades}}
-                    <option value="{{id}}">{{name}}</option>
+                    {{#ifeq ../user.comunidad.name name}}
+                        <option value="{{id}}" selected>{{name}}</option>
+                    {{else}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/ifeq}}
                 {{/each}}
             </select>
         <label for="age">Edad</label>
-            <input type="number" name="age" id="age" value="{{user.age}}">
+            <input class="input_profile" type="number" name="age" id="age" value="{{user.age}}">
         <label for="email">Email</label>
-            <input type="email" name="email" id="email" value="{{user.email}}">
+            <input class="input_profile" type="email" name="email" id="email" value="{{user.email}}">
         <label for="level">Nivel</label>
-            <select name="level" id="level">
+            <select class="input_profile" name="level" id="level">
                 <option value="Principiante">Principiante</option>
                 <option value="Medio">Medio</option>
                 <option value="Avanzado">Avanzado</option>
                 <option value="Profesional">Profesional</option>
             </select>
-        <button type="submit">Guardar cambios</button>
+            <div class="center">
+                <button class="btn-save" type="submit">Guardar cambios</button>
+            </div>
     </form>
 </section>
 {{/ifCond}}
 </div>
-<div id="Solicitudes" class="tabcontent">
+<div id="Solicitudes" class="tabcontent tabSol">
 {{#ifCond user._id currentUser._id }}
-<p>No es tu perfil sabandija</p>
+<p>No es tu perfil.</p>
 {{else}}
 {{#if matches}}
   {{#each matches}}
-  Las siguientes personas han solicitado unirse al <a href="/matches/{{id}}">partido</a> que se disputará el dia {{dateFormat date "DD/MM/YYYY"}} en el centro {{center.name}} ({{location}}): <br> <br>
     {{#each pendingGuests}} 
-     <li> <a href="/profile/{{id}}">{{username}} </a>ha solicitado unirse al evento que se disputará el día {{dateFormat ../date "DD/MM/YYYY"}} </li><br> 
+     <a href="/profile/{{id}}">{{username}} </a>ha solicitado unirse al <a href="/matches/{{../id}}">partido</a><br> 
 
-    <form action="/solicitudes/{{../id}}/accept/{{id}}" method="post">
-    <button type="submit" class="sendToBack">Aceptar</button>
+    <form class="accept-form" action="/profile/{{../host._id}}/{{../id}}/accept/{{id}}" method="post">
+    <button class="btn-accept" type="submit" class="sendToBack"><img src="/images/check.png" alt=""></button>
     </form>
 
-    <form action="/solicitudes/{{../id}}/decline/{{id}}" method="post">
+    <form action="/profile/{{../host._id}}/{{../id}}/accept/{{id}}" method="post">
     <button type="submit" class="sendToBack decline">Declinar</button>
     </form>
 
@@ -88,15 +101,9 @@
 {{/if}}
 {{/ifCond}}
 </div>
-<div id="Estadisticas" class="tabcontent">
+<div id="Estadisticas" class="tabcontent tabStats">
     <div class="Tenis">
-        <p>TENIS</p>
-        <div class="rankingInd">
-            RANKING INDIVIDUAL: {{posInd}} 
-        </div>
-        <div class="rankingDob">
-        RANKING DOBLES: {{posDob}} 
-        </div>
+        <h3>TENIS</h3>
         <canvas id="my-canvas"></canvas>
         <canvas id="my-canvas-dob"></canvas>
         <div class="containerLastGames">
@@ -134,12 +141,6 @@
     </div>
     <div class="Padel">
         <p>Padel</p>
-        <div class="rankingInd">
-            RANKING INDIVIDUAL: {{posIndPadel}} 
-        </div>
-        <div class="rankingDob">
-        RANKING DOBLES: {{posDobPadel}} 
-        </div>
         <canvas id="my-canvas-padel-ind"></canvas>
         <canvas id="my-canvas-padel-dob"></canvas>
         <div class="containerLastGames">
@@ -176,7 +177,7 @@
         </div>
     </div>
 </div>
-<div id="Contact" class="tabcontent">
+<div id="Contact" class="tabcontent tabContact">
 {{#ifCond user._id currentUser._id}}
     <div>Contacta conmigo:</div>
     <br>
@@ -190,7 +191,8 @@
             <input type="text" name="mensaje" id="mensaje" required>
         <button type="submit">Enviar correo</button>
     </form>
-    </div>
 {{else}}
-<p>Mirate a un espejo</p>
+    <img id="spiderman" src="/images/meme-spiderman.jpg" alt="">
 {{/ifCond}}
+</div>
+

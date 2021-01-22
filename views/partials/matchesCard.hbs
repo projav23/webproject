@@ -1,13 +1,9 @@
 
         <div class="card">
           {{#ifeq esport "Tenis"}}
-            {{#ifeq acceptedGuests.length numberPlayers}}
-            <img src="/images/tenis-logo-rojo.jpg" alt="pelota" style="width:215px;height:205px">
-            {{else}}
-            <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
-            {{/ifeq}}
+            <img src="/images/tenis-card.png" alt="pelota" style="width:215px;height:205px">
           {{else}}
-            <img src="/images/tenis-logo.jpg" alt="pelota" style="width:215px;height:205px">
+            <img src="/images/padel-card.png" alt="pelota" style="width:215px;height:205px">
           {{/ifeq}}
           <h1>{{esport}}</h1>
           <p class="title">Localidad: {{location}}</p>
@@ -17,9 +13,17 @@
             <p class="date">{{dateFormat date "DD/MM/YYYY"}}</p>
             <p class="players"> Players: {{acceptedGuests.length}}/{{numberPlayers}}</p>
           </div>
-          {{#ifeq acceptedGuests.length numberPlayers}}
-          <p><a href="/matches/{{_id}}" style="background-color: red;">See more </a></p>
+          {{#ifeq esport "Padel"}}
+            {{#ifeq acceptedGuests.length numberPlayers}}
+              <p><a href="/matches/{{_id}}" style="background-color: #06509A;">Full event </a></p>
+            {{else}}
+              <p><a href="/matches/{{_id}}" style="background-color: #06509A;">See more </a></p>
+            {{/ifeq}}
           {{else}}
-          <p><a href="/matches/{{_id}}">See more </a></p>
+            {{#ifeq acceptedGuests.length numberPlayers}}
+              <p><a href="/matches/{{_id}}">Full event </a></p>
+            {{else}}
+              <p><a href="/matches/{{_id}}">See more </a></p>
+            {{/ifeq}}
           {{/ifeq}}
         </div>

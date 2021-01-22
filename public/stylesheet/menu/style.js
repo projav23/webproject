@@ -106,25 +106,58 @@ window.onscroll = function () {
 
 function openTab(evt, name) {
   // Declare all variables
-  let i, tabcontent, tablinks;
+  let i, tabcontent;
 
   // Get all elements with class="tabcontent" and hide them
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
-
+  const perf = document.getElementById('Perfil').style.display = "none";
+  const solici =document.getElementById('Solicitudes').style.display = "none";
+  const stats = document.getElementById('Estadisticas').style.display = "none";
+  const contact = document.getElementById('Contact').style.display = "none";
   //Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 1; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace("active");
-  }
+  // tablinks = document.getElementsByClassName("tablinks");
+  // for (i = 1; i < tablinks.length; i++) {
+  //   tablinks[i].className = tablinks[i].className.replace("active");
+  // }
 
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(name).style.display = "block";
   evt.currentTarget.className += "active";
 }
+// <<<<<<< HEAD
 
-  document.getElementById("defaultOpen").click();
+//   document.getElementById("defaultOpen").click();
+// =======
+//document.getElementById('defaultOpen').click()
+
+
+
+
+
+// function openTab(evt, name) {
+
+// const perf = document.getElementByClassName("tabPerfil")
+// const solici =document.getElementByClassName("tabSol")
+// const stats = document.getElementByClassName("tabStats")
+// const contact = document.getElementByClassName("tabContact")
+
+
+// perf.style.display = "none"
+  
+
+//   //Get all elements with class="tablinks" and remove the class "active"
+//   tablinks = document.getElementsByClassName("tablinks");
+//   for (i = 1; i < tablinks.length; i++) {
+//     tablinks[i].className = tablinks[i].className.replace("active");
+//   }
+
+//   // Show the current tab, and add an "active" class to the button that opened the tab
+//   document.getElementById(name).style.display = "block";
+//   evt.currentTarget.className += "active";
+// }
+
 
 

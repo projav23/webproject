@@ -5,27 +5,27 @@
     {{#if currentUser}}
     <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
       <li class="nav__item flex_items">
-        <img id="img-user-ranking" src="../images/default-user.jpg">
-        <a href="/profile/{{currentUser._id}}" class="nav__link black-color">{{currentUser.name}}</a>
+        <img id="img-user-ranking" src="/images/default-user.jpg">
+        <a href="/profile/{{currentUser._id}}/#Perfil"  class="nav__link black-color">{{currentUser.name}}</a>
       </li>
       <li class="nav__item flex_items">
-        <img id="img-user-ranking" src="../images/iconos/inbox.png">
-        <a href="/profile/{{currentUser._id}}/" class="nav__link black-color">Solicitudes</a>
+        <img id="img-user-ranking" src="/images/iconos/inbox.png">
+        <a href="/profile/{{currentUser._id}}/solicitudes/#Solicitudes"  class="nav__link black-color">Solicitudes</a>
       </li>
       <li class="nav__item flex_items">
-        <img id="img-user-ranking" src="../images/iconos/pelota.png">
+        <img id="img-user-ranking" src="/images/iconos/pelota.png">
         <a href="/matches" class="nav__link black-color">Partidos</a>
       </li>
       <li class="nav__item flex_items">
-        <img id="img-user-ranking" src="../images/iconos/pelota2.png">
+        <img id="img-user-ranking" src="/images/iconos/pelota2.png">
         <a href="/matches/newgame" class="nav__link black-color">Crear partido</a>
       </li>
       <li class="nav__item flex_items">
-        <img id="img-user-ranking" src="../images/iconos/ranking.png">
+        <img id="img-user-ranking" src="/images/iconos/ranking.png">
         <a href="/ranking" class="nav__link black-color">Ranking</a>
       </li>
       <li class="nav__item flex_items">
-        <img id="img-user-ranking" src="../images/iconos/logout.png">
+        <img id="img-user-ranking" src="/images/iconos/logout.png">
         <a href="/logout" class="nav__link black-color">Logout</a>
       </li>
     </ul>

@@ -5,6 +5,7 @@ const {acceptedGuest, declineGuest} = require('../controllers/solicitudes.contro
 
 router
 .get("/:userId", getProfile)
+.get("/:userId/solicitudes", getProfile)
 .post('/:userId/update', editProfile)
 .post('/:userId/contact', sendEmail)
 .post('/:userId/:matchId/accept/:guestId', acceptedGuest)
