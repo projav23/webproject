@@ -10,6 +10,13 @@
 <br>
 <br>
 
+
+<div class="tab">
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Tenis')" >Tenis</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Paddle')">Paddle</button>
+</div>
+
+<div id="Tenis" class="tabcontent">
 Ranking Individual Tenis
 {{#each rankingInd}}
 <br>
@@ -28,17 +35,22 @@ Ranking Dobles Tenis
 <br>
 <br>
 <br>
-Ranking Individual Padel
-{{#each rankingIndPadel}}
-<br>
-{{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scorePadelInd}}
-{{/each}}
-<br>
-<br>
-<br>
-<br>
+</div>
+<div id="Paddle" style="display:none" class="tabcontent">
 Ranking Dobles Padel
 {{#each rankingDobPadel}}
 <br>
 {{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scorePadelDob}}
 {{/each}}
+</div>
+
+<script>
+function openTab(Sport) {
+  var i;
+  var x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  document.getElementById(Sport).style.display = "block";  
+}
+</script>

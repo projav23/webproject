@@ -41,11 +41,11 @@ function ChartStats(canvas,lost, wins){
           {
               fill: true,
               backgroundColor: [
-                  '#ec4646',
-                  '#007965'],
+                  '#6fc1f9',
+                  '#aadd4f'],
               data: [lost, wins ],
     // Notice the borderColor 
-              borderColor:	['black', 'black'],
+              borderColor:	['rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.2)'],
               borderWidth: [1,1]
           }
       ]
