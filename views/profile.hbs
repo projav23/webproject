@@ -26,7 +26,7 @@
 </div>
 <div class="tab">
   <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')" id="defaultOpen">Perfil</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')" id="defaultOpenRequest">Solicitudes{{#if matches}}<div class="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')" id="defaultOpenRequest">Solicitudes{{#if matches}}<div id="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Estadisticas</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Contact')">Contacto</button>
 </div>
@@ -78,16 +78,27 @@
 {{else}}
 {{#if matches}}
   {{#each matches}}
-    {{#each pendingGuests}} 
-     <a href="/profile/{{id}}">{{username}} </a>ha solicitado unirse al <a href="/matches/{{../id}}">partido</a><br> 
-
-    <form class="accept-form" action="/profile/{{../host._id}}/{{../id}}/accept/{{id}}" method="post">
-    <button class="btn-accept" type="submit" class="sendToBack"><img src="/images/check.png" alt=""></button>
-    </form>
-
-    <form action="/profile/{{../host._id}}/{{../id}}/accept/{{id}}" method="post">
-    <button type="submit" class="sendToBack decline">Declinar</button>
-    </form>
+    {{#each pendingGuests}}
+    <section id="notification" class="top-less-space ">
+        <div>
+            <div id="notification-img-name">
+                <img width="15%"src="/images/default-user.jpg">
+                <a class="link" href="/profile/{{id}}">{{username }} </a> ha solicitado unirse al <a class="link" href="/matches/{{../id}}"> partido</a>
+            </div>
+            <div id="btns-notification"class="flex-row">
+                <div>
+                        <form class="accept-form" action="/profile/{{../host._id}}/{{../id}}/accept/{{id}}" method="post">
+                        <button class="sendToBack btn-accept" type="submit" class="sendToBack">Aceptar</button>
+                        </form>
+                </div>
+                <div>
+                    <form action="/profile/{{../host._id}}/{{../id}}/accept/{{id}}" method="post">
+                    <button type="submit" class="sendToBack decline">Declinar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section> 
 
     {{/each}}
   {{/each }}
@@ -186,7 +197,7 @@
 </div>
 <div id="Contact" class="tabcontent tabContact">
 {{#ifCond user._id currentUser._id}}
-    <h3 class="text-center shadow-title-h3 top-less-space">Contacta conmigo:</h3>
+    <h3 class="text-center shadow-title-h3 top-less-space">Contacta conmigo</h3>
     <br>
     <br>
     <form action="/profile/{{currentUser._id}}/contact" method="post">

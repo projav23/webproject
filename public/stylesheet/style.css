@@ -571,6 +571,18 @@ table thead {
 #Perfil:target{
   display: block
 }
+#notificacion{
+  position: relative;
+  top: -25px;
+  left: 75px;
+  width:fit-content;
+  background-color: #aadd4f;
+  border-radius: 50%;
+}
+#notificacion p{
+  width:15px;
+  color: black;
+}
 /* .tabcontent{
   display: block;
 
@@ -752,12 +764,35 @@ label {
 
 }
 .btn-accept{
+  background-color: #aadd4f;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
 
+#notification{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-.btn-accept img{
-  width: 5%;
-  height: auto;
+
+#notification-img-name{
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
 }
+#notification-img-name a{
+  text-decoration: none;
+}
+.link{
+  color:#aadd4f
+}
+#btns-notification{
+  margin-left: 50px;
+}
+
 #spiderman{
   width: 100%;
   height: auto;
