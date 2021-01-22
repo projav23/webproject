@@ -776,6 +776,7 @@ label {
 
 #notification{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
 
 #notification-img-name{
@@ -791,6 +792,11 @@ label {
 }
 #btns-notification{
   margin-left: 50px;
+  margin-top:-18px;
+}
+#btns-notification button{
+  padding:7px 10px;
+  border-radius: 5px;
 }
 
 #spiderman{
