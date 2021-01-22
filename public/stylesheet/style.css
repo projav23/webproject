@@ -489,15 +489,20 @@ table thead {
 .tab button {
   background-color: white;
   color: #206a5d;
-  float: left;
+  /* float: left; */
   outline: none;
   cursor: pointer;
   height: 58px;
   padding: 14px 16px;
   transition: 0.3s;
   font-size: 0.9em;
+  border: none;
 }
 
+.tab {
+  display: flex;
+  justify-content: space-around;
+}
 .tab button:focus{
   border-bottom: 5px solid #206a5d;
 }
