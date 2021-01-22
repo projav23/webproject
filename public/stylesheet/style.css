@@ -497,6 +497,7 @@ table thead {
   transition: 0.3s;
   font-size: 0.9em;
   border: none;
+  font-weight: bold;
 }
 
 .tab {
@@ -762,4 +763,17 @@ label {
   width: 100%;
   height: auto;
   border-radius: 10px;
+}
+
+.container-col{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-col img{
+  max-width: 50%;
+  height: auto;
+}
+.container-col p{
+  font-weight: bold;
 }
