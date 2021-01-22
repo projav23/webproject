@@ -186,17 +186,17 @@
 </div>
 <div id="Contact" class="tabcontent tabContact">
 {{#ifCond user._id currentUser._id}}
-    <div>Contacta conmigo:</div>
+    <h3 class="text-center shadow-title-h3 top-less-space">Contacta conmigo:</h3>
     <br>
     <br>
     <form action="/profile/{{currentUser._id}}/contact" method="post">
-        <label for="name">¿Quién</label>
+        <label for="name">¿Quién?</label>
             <input type="text" value="{{currentUser.username}}" name="name" id="name" readonly>
         <label for="asunto">Asunto</label>
             <input type="text" name="asunto" id="asunto" required>
         <label for="mensaje">Mensaje</label>
             <input type="text" name="mensaje" id="mensaje" required>
-        <button type="submit">Enviar correo</button>
+        <button class="btn" type="submit">Enviar correo</button>
     </form>
 {{else}}
     <img id="spiderman" src="/images/meme-spiderman.jpg" alt="">
