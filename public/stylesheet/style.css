@@ -615,7 +615,16 @@ width: 25px;
 height: 25px;
 border: 2px solid green;
 background-color: green;
-
+}
+.lost{
+justify-content: center;
+display: flex;
+align-items: center;
+border-radius: 10px;
+width: 25px;
+height: 25px;
+border: 2px solid red;
+background-color: red;
 }
 .void{
 justify-content: center;
@@ -648,12 +657,12 @@ background-color: gray;
   flex-direction: column;
   align-items: center;
   margin-top: 10%;
+  margin-bottom: 10%;
 }
-#my-canvas{
+.my-canvas{
   margin-top: 10%;
   width: 500px;
   height: 500px;
-
 }
 
 #fancy-radio a.radio.selected:after {

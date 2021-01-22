@@ -23,7 +23,7 @@
 <input type="number" name="gamesPadDob" id="gamesPadDob" value={{chartGamesPadelDob.length}} hidden>
 {{!-- <input type="text" name="params" id="params" value={{user._id}} hidden> --}}
 <div id="title_profile">
-    <img src="/images/Captura de pantalla 2021-01-20 a las 19.15.14.png" alt="">
+    <img src={{user.imgURL}} alt="">
     <div id="user_profile">
         <p id="name_profile">{{user.name}} {{user.lastname}}</p>
         <p id="username_profile">@{{user.username}}</p>
@@ -105,97 +105,115 @@
 {{/ifCond}}
 </div>
 <div id="Estadisticas" class="tabcontent tabStats">
-    <div class="Tenis">
-        <h3>TENIS</h3>
-        <canvas id="my-canvas"></canvas>
-        <canvas id="my-canvas-dob"></canvas>
-        <div class="containerLastGames">
-            <div>Ultimos 5 encuentros</div> 
-            <div class="rowGames">
-                {{#if matchStats}}
-                    {{#each matchStats}}
-                        {{#ifeq playerWinners.length 1}}
-                            {{#ifCond ../userId playerWinners.[0]}}
-                                <div class="lost"><a href="/matches/{{id}}">L</a></div>
-                            {{else}}
-                                <div class="win"><a href="/matches/{{id}}">W</a></div>
-                            {{/ifCond}}
-                        {{/ifeq}}
-                        {{#ifeq playerWinners.length 2}}
-                            {{#ifCond ../userId playerWinners.[0] }}
-                                {{#ifCond ../userId playerWinners.[1]}}
+    {{#if matchEnd}}
+        {{#if matchStats}}
+            <div class="Tenis">
+                <h3>TENIS</h3>
+                {{#if chartGames}}
+                    <canvas class="my-canvas" id="my-canvas"></canvas>
+                {{else}}
+                    <p>No ha jugado partidos individuales a tenis.</p>
+                {{/if}}
+                {{#if chartGamesDob}}
+                    <canvas class="my-canvas" id="my-canvas-dob"></canvas>
+                {{else}}
+                    <p>No ha jugado partidos de dobles a tenis.</p>                    
+                {{/if}}
+                <div class="containerLastGames">
+                    <div>Ultimos 5 encuentros</div> 
+                    <div class="rowGames">
+                        {{#each matchStats}}
+                            {{#ifeq playerWinners.length 1}}
+                                {{#ifCond ../userId playerWinners.[0]}}
                                     <div class="lost"><a href="/matches/{{id}}">L</a></div>
                                 {{else}}
                                     <div class="win"><a href="/matches/{{id}}">W</a></div>
                                 {{/ifCond}}
-                            {{else}}
-                                <div class="win"><a href="/matches/{{id}}">W</a></div>
-                            {{/ifCond}}
-                        {{/ifeq}}
-                        {{#ifeq playerWinners.length 0}}
-                            <div class="void"><a href="/matches/{{id}}">V</a></div>
-                        {{/ifeq}}
-                    {{/each}}
-                {{else}}
-                <p>Aun no ha jugado partidos</p>
-                {{/if}}
+                            {{/ifeq}}
+                            {{#ifeq playerWinners.length 2}}
+                                {{#ifCond ../userId playerWinners.[0] }}
+                                    {{#ifCond ../userId playerWinners.[1]}}
+                                        <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                                    {{else}}
+                                        <div class="win"><a href="/matches/{{id}}">W</a></div>
+                                    {{/ifCond}}
+                                {{else}}
+                                    <div class="win"><a href="/matches/{{id}}">W</a></div>
+                                {{/ifCond}}
+                            {{/ifeq}}
+                            {{#ifeq playerWinners.length 0}}
+                                <div class="void"><a href="/matches/{{id}}">V</a></div>
+                            {{/ifeq}}
+                        {{/each}}
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="Padel">
-        <p>Padel</p>
-        <canvas id="my-canvas-padel-ind"></canvas>
-        <canvas id="my-canvas-padel-dob"></canvas>
-        <div class="containerLastGames">
-            <div>Ultimos 5 encuentros</div> 
-            <div class="rowGames">
-                {{#if matchStatsPadel}}
-                    {{#each matchStatPadels}}
-                        {{#ifeq playerWinners.length 1}}
-                            {{#ifCond ../userId playerWinners.[0]}}
-                                <div class="lost"><a href="/matches/{{id}}">L</a></div>
-                            {{else}}
-                                <div class="win"><a href="/matches/{{id}}">W</a></div>
-                            {{/ifCond}}
-                        {{/ifeq}}
-                        {{#ifeq playerWinners.length 2}}
-                            {{#ifCond ../userId playerWinners.[0] }}
-                                {{#ifCond ../userId playerWinners.[1]}}
+        {{else}}
+        <p>Aun no ha jugado partidos</p>
+        {{/if}}
+        {{#if matchStatsPadel}}
+            <div class="Padel">
+            <p>Padel</p>
+                {{#if chartGamesPadel}}
+                    <canvas class="my-canvas" id="my-canvas-padel-ind"></canvas>
+                {{else}}
+                    <p>No ha jugado partidos individuales a Padel</p>
+                {{/if}}
+                {{#if chartGamesPadelDob}}
+                    <canvas class="my-canvas" id="my-canvas-padel-dob"></canvas>
+                {{else}}
+                    <p>No ha jugado partidos de dobles a Padel</p>
+                {{/if}}
+                <div class="containerLastGames">
+                    <div>Ultimos 5 encuentros</div> 
+                    <div class="rowGames">
+                        {{#each matchStatsPadel}}
+                            {{#ifeq playerWinners.length 1}}
+                                {{#ifCond ../userId playerWinners.[0]}}
                                     <div class="lost"><a href="/matches/{{id}}">L</a></div>
                                 {{else}}
                                     <div class="win"><a href="/matches/{{id}}">W</a></div>
                                 {{/ifCond}}
-                            {{else}}
-                                <div class="win"><a href="/matches/{{id}}">W</a></div>
-                            {{/ifCond}}
-                        {{/ifeq}}
-                        {{#ifeq playerWinners.length 0}}
-                            <div class="void"><a href="/matches/{{id}}">V</a></div>
-                        {{/ifeq}}
-                    {{/each}}
-                {{else}}
-                <p>Aun no ha jugado partidos</p>
-                {{/if}}
+                            {{/ifeq}}
+                            {{#ifeq playerWinners.length 2}}
+                                {{#ifCond ../userId playerWinners.[0] }}
+                                    {{#ifCond ../userId playerWinners.[1]}}
+                                        <div class="lost"><a href="/matches/{{id}}">L</a></div>
+                                    {{else}}
+                                        <div class="win"><a href="/matches/{{id}}">W</a></div>
+                                    {{/ifCond}}
+                                {{else}}
+                                    <div class="win"><a href="/matches/{{id}}">W</a></div>
+                                {{/ifCond}}
+                            {{/ifeq}}
+                            {{#ifeq playerWinners.length 0}}
+                                <div class="void"><a href="/matches/{{id}}">V</a></div>
+                            {{/ifeq}}
+                        {{/each}}
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        {{/if}}
+    {{else}}
+    <p>Aún no ha jugado ningún partido. <a href="/matches">Únete</a> a uno.</p> 
+    {{/if}}
 </div>
 <div id="Contact" class="tabcontent tabContact">
-{{#ifCond user._id currentUser._id}}
-    <div>Contacta conmigo:</div>
-    <br>
-    <br>
-    <form action="/profile/{{currentUser._id}}/contact" method="post">
-        <label for="name">¿Quién</label>
-            <input type="text" value="{{currentUser.username}}" name="name" id="name" readonly>
-        <label for="asunto">Asunto</label>
-            <input type="text" name="asunto" id="asunto" required>
-        <label for="mensaje">Mensaje</label>
-            <input type="text" name="mensaje" id="mensaje" required>
-        <button type="submit">Enviar correo</button>
-    </form>
-{{else}}
-    <img id="spiderman" src="/images/meme-spiderman.jpg" alt="">
-{{/ifCond}}
+    {{#ifCond user._id currentUser._id}}
+        <div>Contacta conmigo:</div>
+        <br>
+        <br>
+        <form action="/profile/{{currentUser._id}}/contact" method="post">
+            <label for="name">¿Quién</label>
+                <input type="text" value="{{currentUser.username}}" name="name" id="name" readonly>
+            <label for="asunto">Asunto</label>
+                <input type="text" name="asunto" id="asunto" required>
+            <label for="mensaje">Mensaje</label>
+                <input type="text" name="mensaje" id="mensaje" required>
+            <button type="submit">Enviar correo</button>
+        </form>
+    {{else}}
+        <img id="spiderman" src="/images/meme-spiderman.jpg" alt="">
+    {{/ifCond}}
 </div>
 
