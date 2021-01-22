@@ -46,7 +46,7 @@ const login = async (req,res,next) => {
         res.render('login', {message: "Invalid credentials"})
       }else {
         req.session.currentUser = user
-        console.log("Redirect /");
+
         //return res.render('index', user)
         res.redirect("/")
       }
@@ -70,7 +70,7 @@ const renderSignUp = async (req,res)=>{
 const signup = async (req,res,next) =>{
   try{
     const {name, lastname, age, country, level, username, email, password} = req.body;
-    const isMissingCredentials = !email || !country || !password || !name || !lastname || !age || !username || !level 
+    const isMissingCredentials = !email  || !password || !name || !lastname || !age || !username 
     
     if(isMissingCredentials){
       res.render('signup', {message: "Missing fields"})
@@ -87,7 +87,6 @@ const signup = async (req,res,next) =>{
       lastname,
       age, 
       country,
-      level,
       email,
       username,
       passwordHash: hashedpassword
@@ -117,12 +116,12 @@ const signup = async (req,res,next) =>{
     //Mostrar el error de duplicado
     if(isMongoError(e)){
       console.error(e)
-      res.render('index', {message: 'El usuario ya existe.'})
+      res.render('signup', {message: 'El usuario ya existe.'})
     }
     //Mostrar el error de validacion
     if(isMongooseErrorValidation(e)){
       console.error(e)
-      res.render('index', {message: 'Failed validation'})
+      res.render('signup', {message: 'Failed validation'})
     }
   }
 }
