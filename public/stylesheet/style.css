@@ -496,6 +496,7 @@ table thead {
   padding: 14px 16px;
   transition: 0.3s;
   font-size: 0.9em;
+  border-style:none;
 }
 
 .tab button:focus{
@@ -688,12 +689,16 @@ background-color: gray;
 }
 
 #title_profile{
+  background-image: url("../images/front-view-tennis-ball-on-court-ground-2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: start;
-  margin-left: 10%;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  padding-left: 10%;
+  padding-top: 20vh;
+  padding-bottom: 10%;
+  background-size: 175%;
 }
 #title_profile img {
   border-radius: 50%;
