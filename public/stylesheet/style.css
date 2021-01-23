@@ -576,6 +576,18 @@ table thead {
 #Perfil:target{
   display: block
 }
+#notificacion{
+  position: relative;
+  top: -25px;
+  left: 75px;
+  width:fit-content;
+  background-color: #aadd4f;
+  border-radius: 50%;
+}
+#notificacion p{
+  width:15px;
+  color: black;
+}
 /* .tabcontent{
   display: block;
 
@@ -659,11 +671,12 @@ background-color: gray;
   margin-top: 10%;
   margin-bottom: 10%;
 }
-.my-canvas{
+#my-canvas,#my-canvas-dob,#my-canvas-padel-ind,#my-canvas-padel-dob{
   margin-top: 10%;
   width: 500px;
   height: 500px;
 }
+
 
 #fancy-radio a.radio.selected:after {
   width: 15.5px;
@@ -703,12 +716,16 @@ background-color: gray;
 }
 
 #title_profile{
+  background-image: url("../images/front-view-tennis-ball-on-court-ground-2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: start;
-  margin-left: 10%;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  padding-left: 10%;
+  padding-top: 20vh;
+  padding-bottom: 10%;
+  background-size: 175%;
 }
 #title_profile img {
   border-radius: 50%;
@@ -762,12 +779,41 @@ label {
 
 }
 .btn-accept{
+  background-color: #aadd4f;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
 
+#notification{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
-.btn-accept img{
-  width: 5%;
-  height: auto;
+
+#notification-img-name{
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
 }
+#notification-img-name a{
+  text-decoration: none;
+}
+.link{
+  color:#aadd4f
+}
+#btns-notification{
+  margin-left: 50px;
+  margin-top:-18px;
+}
+#btns-notification button{
+  padding:7px 10px;
+  border-radius: 5px;
+}
+
 #spiderman{
   width: 100%;
   height: auto;
