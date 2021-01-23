@@ -66,7 +66,8 @@ function ChartStats(canvas,lost, wins){
         options: options
       });
 }
-ChartStats(canvasPadelInd, perdidosIndPad, scorePadelInd)
-ChartStats(canvasDob, perdidosDob, scoreDob)
+
 ChartStats(canvas, perdidos, scoreInd)
+ChartStats(canvasDob, perdidosDob, scoreDob)
+ChartStats(canvasPadelInd, perdidosIndPad, scorePadelInd)
 ChartStats(canvasPadelDob,perdidosDobPad, scorePadelDob)

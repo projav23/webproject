@@ -356,6 +356,7 @@ table thead {
 #img-user-ranking {
   height: 50px;
   width: 50px;
+  border-radius: 50%;
 }
 
 /*----------------VIDEO------------------*/
@@ -384,6 +385,7 @@ table thead {
   position: relative;
   top: 80vh;
   left: 32vw;
+  z-index: 10;
 }
 
 /*--------------MATCHES----------------------------------------------------*/

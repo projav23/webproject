@@ -27,7 +27,13 @@
                 </thead>
                 <tbody>
                     {{#each users}}  
-                    {{>bestPlayers}}
+                      <tr class="table-row sendToBack-1">
+                          <td id="td-img"><img id="img-user-ranking" src="{{imgURL}}"></td>
+                          <td id="td-name">
+                              {{name}}
+                          </td>
+                          <td id="td-points">Points: {{scoreTenisInd}}</td>
+                      </tr>
                     {{/each}}
                 </tbody>
           </table>
@@ -39,7 +45,13 @@
             </thead>
             <tbody>
                 {{#each users}}  
-                {{>bestPlayers}}
+                      <tr class="table-row sendToBack-1">
+                          <td id="td-img"><img id="img-user-ranking" src="{{imgURL}}"></td>
+                          <td id="td-name">
+                              {{name}}
+                          </td>
+                          <td id="td-points">Points: {{scoreTenisDob}}</td>
+                      </tr>
                 {{/each}}
             </tbody>
         </table>
@@ -49,16 +61,22 @@
       <div class="text-center">
         <h3 class="shadow-title-h3">Mejores Jugadores Paddle</h3>
       <table id="table">
-      {{#each users}}  
-      {{>bestPlayers}}
-      {{/each}}
+        {{#each users}}  
+          <tr class="table-row sendToBack-1">
+              <td id="td-img"><img id="img-user-ranking" src="{{imgURL}}"></td>
+              <td id="td-name">
+                  {{name}}
+              </td>
+              <td id="td-points">Points: {{scorePadelDob}}</td>
+          </tr>
+        {{/each}}
       </table>
       </div>
     </div>
       </section>
       <section id="three">
         <h3 id="h3-video" class="shadow-title-h1 sendToBack">Empieza hoy a ganar partidos</h3>
-        <a  id="btn-video" class="btnRedondo sendToBack" href="/matches/newgame">-></a>
+        <a  id="btn-video" class="btnRedondo sendToBack" href="/matches/">-></a>
       <video id="video" class="sendToBack" loop autoplay muted>
         <source src="../videos/mobile.mp4" type="video/mp4">
       </video>
