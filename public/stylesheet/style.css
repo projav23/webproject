@@ -786,3 +786,58 @@ label {
 .container-col p{
   font-weight: bold;
 }
+
+.status{
+  display: flex;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  width: 80%;
+  justify-content: center;
+}
+.status p{
+  border: 2px solid ;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  width: 80px;
+  text-align: center;
+}
+.disable-status {
+  background-color: rgba(175, 172, 172, 0.699);
+  color: rgba(255, 255, 255, 0.555);
+  font-weight: 100;
+}
+.green-status{
+  background-color: rgba(45, 206, 45, 0.911);
+}
+.red-status{
+  background-color: rgba(219, 69, 64, 0.863);
+}
+.container-row{
+  display: flex;
+  margin-bottom: 15%;
+  width: 80%;
+  height: 150px;
+  align-items: flex-start;
+}
+hr{
+  margin-bottom: 5px;
+}
+.center-text{
+  text-align: center;
+}
+#corona{
+  max-width: 9%;
+  height: auto;
+}
+
+.column-players{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 5%;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}

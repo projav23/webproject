@@ -12,28 +12,66 @@
 <br>
 <br>
 <br>
-<p>Centro del evento: <a href={{match.center.url}}>{{match.center.name}}</a></p>
-<p>Nivel del evento: {{match.level}}</p>
-<p>Localidad: {{match.location}}</p>
-<p>Creador del evento: {{match.host.username}}</p>
-<p>Estado del partido: {{match.status}}</p>
+<div class="container-col">
+  <p class="centro-match"><a href={{match.center.url}}>{{match.center.name}}</a></p>
+  <p class="nivel-match">Nivel del evento: {{match.level}}</p>
+  <p class="localidad-match">Localidad: {{match.location}}</p>
+  <p class="create-user">Creador del evento: {{match.host.username}}</p>
+
+  <div class="status">
+    {{#ifeq match.status "Abierto"}} 
+    <p class="green-status">Abierto</p>
+    <p class="disable-status">Cerrado</p>
+    <p class="disable-status">Finalizado</p>
+    {{/ifeq}}
+    {{#ifeq match.status "Cerrado"}} 
+    <p class="disable-status">Abierto</p>
+    <p class="green-status">Cerrado</p>
+    <p class="disable-status">Finalizado</p>
+    {{/ifeq}}
+    {{#ifeq match.status "Finalizado"}} 
+    <p class="disable-status">Abierto</p>
+    <p class="disable-status">Cerrado</p>
+    <p class="red-status">Finalizado</p>
+    {{/ifeq}}
+  </div>
+
+<div class="container-row">
+  <div class="column-players">
+    <div class="center-text">Usuarios pendientes <hr></div>
+    <div>
+      {{#if match.pendingGuests}}
+      {{#each match.pendingGuests}}
+        <p><a href="/profile/{{id}}">{{username}}</a></p>
+      {{/each}}
+      {{else}}
+        <p>No players</p>
+      {{/if}}
+    </div>
+  </div>
+  <div class="column-players">
+    <div class="center-text">Usuarios aceptados <hr></div>
+    <div>
+      {{#if match.acceptedGuests}}
+        {{#each match.acceptedGuests}}
+          <p class="center-text"><a href="/profile/{{id}}">{{username}}</a>{{#ifeq ../match.host.username username}} <img id="corona" src="/images/corona.png" alt=""> {{else}}<img id="corona" src="/images/blanco.png" alt=""> {{/ifeq}}</p>
+        {{/each}}
+      {{else}}
+        <p>No players</p>
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+
 
 
 {{#if match.pendingGuests}}
-Usuarios pendientes:
 {{#each match.pendingGuests}}
   <p><a href="/profile/{{id}}">{{username}}</a></p>
 {{/each}}
 {{/if}}
 
-Usuarios aceptados: 
-{{#if match.acceptedGuests}}
-  {{#each match.acceptedGuests}}
-    <p><a href="/profile/{{id}}">{{username}}</a></p>
-  {{/each}}
-{{else}}
-  <a href="#">Todavia no hay jugadores aceptados</a>
-{{/if}}
 
 
 
@@ -128,3 +166,4 @@ Usuarios aceptados:
 
 <iframe src={{match.center.mapURL}} width="375" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
+</div>
