@@ -12,6 +12,7 @@ const perdidosDob = gamesDob - scoreDob
 const scorePadelInd = document.querySelector("#scorePadInd").value
 const gamesIndPadel = document.querySelector("#gamesPadInd").value
 const perdidosIndPad = gamesIndPadel - scorePadelInd
+console.log(perdidosIndPad)
 
 //Variables partidos padel dobles
 const scorePadelDob = document.querySelector("#scorePadDob").value
@@ -23,8 +24,10 @@ const perdidosDobPad = gamesDobPadel - scorePadelDob
 const canvas = document.getElementById('my-canvas')
 //Canvas dob tenis
 const canvasDob = document.getElementById('my-canvas-dob')
+console.log(canvasDob)
 //Canvas ind padel
 const canvasPadelInd = document.getElementById('my-canvas-padel-ind')
+console.log(canvasPadelInd)
 //Canvas dob padel
 const canvasPadelDob = document.getElementById('my-canvas-padel-dob')
 
@@ -63,7 +66,7 @@ function ChartStats(canvas,lost, wins){
         options: options
       });
 }
-ChartStats(canvas, perdidos, scoreInd)
-ChartStats(canvasDob, perdidosDob, scoreDob)
 ChartStats(canvasPadelInd, perdidosIndPad, scorePadelInd)
+ChartStats(canvasDob, perdidosDob, scoreDob)
+ChartStats(canvas, perdidos, scoreInd)
 ChartStats(canvasPadelDob,perdidosDobPad, scorePadelDob)
