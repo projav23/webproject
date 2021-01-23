@@ -9,7 +9,7 @@ const MatchSchema = new mongoose.Schema({
   level:{
     type: String,
     required: true,
-    enum: ['Principiante', 'Medio', 'Avanzado', 'Profesional']
+    enum: ['Principiante', 'Aficionado', 'Profesional']
   },
   numberPlayers:{
     type: Number,

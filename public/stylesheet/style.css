@@ -838,8 +838,8 @@ label {
 .status{
   display: flex;
   margin-top: 5%;
-  margin-bottom: 10%;
-  width: 80%;
+ 
+  width: 85%;
   justify-content: center;
 }
 .status p{
@@ -848,7 +848,7 @@ label {
   padding: 5px;
   border-radius: 4px;
   font-size: 0.9em;
-  width: 80px;
+  width: 90px;
   text-align: center;
 }
 .disable-status {
@@ -862,12 +862,16 @@ label {
 .red-status{
   background-color: rgba(219, 69, 64, 0.863);
 }
+.blue-status{
+  background-color: #6fc1f9;
+}
 .container-row{
   display: flex;
   margin-bottom: 15%;
   width: 80%;
   height: 150px;
   align-items: flex-start;
+  margin-top: 7%;
 }
 hr{
   margin-bottom: 5px;
@@ -888,4 +892,10 @@ hr{
   width: 80%;
   justify-content: center;
   align-items: center;
+}
+.btn-delete{
+  border: none;
+  max-width: 20%;
+  height: auto;
+  background: none;
 }
