@@ -31,10 +31,8 @@ const canvasPadelDob = document.getElementById('my-canvas-padel-dob')
 
 //Funcion para el grafico
 function ChartStats(canvas,lost, wins){
-  
-
   const ctx = canvas.getContext('2d')
-  // ctx.clearRect(0,0,300,300)
+  ctx.clearRect(0,0,300,300)
     let data = {
       labels: ["Perdidos ", "Ganados"],
         datasets: [

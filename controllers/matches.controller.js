@@ -212,8 +212,8 @@ const winners = async (req,res,next) => {
       const {player1} = req.body;
       const {player2} = req.body;
 
-      const matchTenis = await Matches.find(matchId)
-
+      const matchTenis = await Matches.findById(matchId)
+      console.log(matchTenis)
       if (matchTenis.esport === "Tenis"){
         const user1 = await Users.findByIdAndUpdate(
           player1,
@@ -257,7 +257,9 @@ const winners = async (req,res,next) => {
     } else {
       const {matchId} = req.params
       const {player1} = req.body;
-      if (matchTenis.esport === "Tenis"){
+      const matchTenisP = await Matches.findById(matchId)
+      console.log(matchTenisP)
+      if (matchTenisP.esport === "Tenis"){
         const user1 = await Users.findByIdAndUpdate(
           player1,
           {$inc: {scoreTenisInd: 1}},
@@ -274,7 +276,7 @@ const winners = async (req,res,next) => {
       } else {
         const user1 = await Users.findByIdAndUpdate(
           player1,
-          {$inc: {scoreTenisInd: 1}},
+          {$inc: {scorePadelInd: 1}},
           {new: true}
         )
         const match = await Matches.findByIdAndUpdate(

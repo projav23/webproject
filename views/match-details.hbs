@@ -1,7 +1,17 @@
 <section>
     {{> menu}}
 </section>
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <p>Centro del evento: <a href={{match.center.url}}>{{match.center.name}}</a></p>
 <p>Nivel del evento: {{match.level}}</p>
 <p>Localidad: {{match.location}}</p>
@@ -24,6 +34,18 @@ Usuarios aceptados:
 {{else}}
   <a href="#">Todavia no hay jugadores aceptados</a>
 {{/if}}
+
+
+
+
+
+
+
+
+
+
+
+
 {{!-- //Logica de los botones --}}
 {{#ifeq match.status "Abierto"}}
   {{#ifCond match.host._id currentUser._id}}
