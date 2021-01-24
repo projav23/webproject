@@ -1,6 +1,6 @@
-<section>
+<header class="header">
     {{> menu}}
-</section>
+</header>
 {{!-- UsernameID --}}
 {{!-- Grafico tenis individual --}}
 <input type="number" name="score" id="score" value={{chartScore.scoreTenisInd}} hidden>
@@ -225,8 +225,6 @@
     <p>Aún no ha jugado ningún partido. <a href="/matches">Únete</a> a uno.</p> 
     {{/if}}
 </div>
-
-
 <div id="Contact" class="tabcontent tabContact">
 {{#ifCond user._id currentUser._id}}
     <h3 class="text-center shadow-title-h3 top-less-space">Contacta conmigo</h3>
