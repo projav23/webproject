@@ -123,10 +123,7 @@ function openTab(evt, name) {
   const solici =document.getElementById('Solicitudes').style.display = "none";
   const stats = document.getElementById('Estadisticas').style.display = "none";
   const contact = document.getElementById('Contact').style.display = "none";
-  const tenis = document.getElementById("Tenis").style.display="none"
-  const paddle = document.getElementById("Paddle").style.display="none"
- console.log("Tenis",tenis);
- console.log("Paddle",paddle);
+
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(name).style.display = "block";
   evt.currentTarget.className += " active";
@@ -151,5 +148,4 @@ function openTabRanking(evt, name) {
   evt.currentTarget.className += " active";
 }
 
-
-
+document.getElementById('defaultOpenRanking').click()

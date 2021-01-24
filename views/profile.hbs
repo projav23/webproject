@@ -70,7 +70,7 @@
                 <option value="Profesional">Profesional</option>
             </select>
             <div class="center">
-                <button class="btn-save sendToBack" type="submit">Guardar cambios</button>
+                <button class="bottom-space1 sendToBack" type="submit">Guardar cambios</button>
             </div>
     </form>
 </section>
@@ -84,10 +84,10 @@
 {{#if matches}}
   {{#each matches}}
     {{#each pendingGuests}}
-    <section id="notification" class="top-less-space ">
+    <section id="notification">
         <div>
             <div id="notification-img-name">
-                <img width="15%"src="/images/default-user.jpg">
+                <img id="img-notification" src={{imgURL}}>
                 <a class="link" href="/profile/{{id}}">{{username }} </a>ha solicitado unirse al<a class="link" href="/matches/{{../id}}"> partido</a>
             </div>
             <div id="btns-notification"class="flex-row">
@@ -221,6 +221,3 @@
 {{/ifCond}}
 </div>
 
-<footer>
-  {{> footer}}
-</footer>

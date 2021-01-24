@@ -379,13 +379,14 @@ table thead {
 #video {
   width: 100vw;
   height: 100vh;
+  z-index: -1;
 }
 
 #btn-video {
   position: relative;
   top: 80vh;
   left: 32vw;
-  z-index: 10;
+  z-index: 0;
 }
 
 /*--------------MATCHES----------------------------------------------------*/
@@ -792,7 +793,7 @@ label {
 }
 
 #notification{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(179, 11, 11, 0.2);
   border-radius: 5px;
 }
 
@@ -930,5 +931,12 @@ hr{
   cursor: pointer;
   background: none;
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+}
 
+#img-notification{
+  width: 15%;
+  height: auto;
+  margin-top: 5%;
+  margin-left: 5%;
+  border-radius: 50%;
 }
