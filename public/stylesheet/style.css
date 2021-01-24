@@ -578,16 +578,13 @@ table thead {
 }
 #notificacion{
   position: relative;
-  top: -25px;
-  left: 75px;
+  top: -10px;
   width:fit-content;
   background-color: #aadd4f;
   border-radius: 50%;
+  padding: 0 3px;
 }
-#notificacion p{
-  width:15px;
-  color: black;
-}
+
 /* .tabcontent{
   display: block;
 
@@ -673,8 +670,6 @@ background-color: gray;
 }
 #my-canvas,#my-canvas-dob,#my-canvas-padel-ind,#my-canvas-padel-dob{
   margin-top: 10%;
-  width: 500px;
-  height: 500px;
 }
 
 
