@@ -23,7 +23,7 @@ const userLogin = async (req,res,next) => {
   if(req.session.currentUser){
     return next()
   }
-  res.redirect('/')
+  res.redirect('/auth/login')
 }
 //POST LOGIN
 const login = async (req,res,next) => {
@@ -82,11 +82,18 @@ const signup = async (req,res,next) =>{
     const salt = await bcrypt.genSalt(saltRounds)
     const hashedpassword = await bcrypt.hash(password, salt)
 
+  const arrayImg = ["/images/shwartzman.png","/images/berretini.png","/images/barty.png","/images/bouchard.png","/images/player.png","/images/rublev.png","/images/zverez.png","/images/tsitsipas.png","/images/federer.png","/images/thiem.png","/images/medvedev.png","/images/kirilenko.png","/images/sharapova.png","/images/nadal.png","/images/djokovic.png",]
+  function randomImg(array){
+    const i = Math.floor(Math.random() * array.length);
+  return array[i]
+  }
+
     const user = await Users.create({
       name,
       lastname,
       age, 
       country,
+      imgURL: randomImg(arrayImg),
       email,
       username,
       passwordHash: hashedpassword

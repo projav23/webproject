@@ -8,6 +8,7 @@ const helpers = require("handlebars-helpers")
 const path = require('path');
 const connectSession = require("./config/session.config");
 const app = express()
+
 //array helper
 // const array = helpers.array()
 
