@@ -14,28 +14,25 @@
 <br>
 <div class="container-col">
   <p class="centro-match"><a href={{match.center.url}}>{{match.center.name}}</a></p>
-  <p class="localidad-match">{{match.location}}</p>
 <br>
 <br>
-  <p class="nivel-match">Nivel del evento: {{match.level}}</p>
 
-  <p class="create-user">Creador del evento: {{match.host.username}}</p>
 
   <div class="status">
     {{#ifeq match.level "Principiante"}} 
-    <p class="green-status">Principiante</p>
+    <p class="orange-status">Principiante</p>
     <p class="disable-status">Aficionado</p>
     <p class="disable-status">Profesional</p>
     {{/ifeq}}
     {{#ifeq match.level "Aficionado"}} 
     <p class="disable-status">Principiante</p>
-    <p class="blue-status">Aficionado</p>
+    <p class="orange-status">Aficionado</p>
     <p class="disable-status">Profesional</p>
     {{/ifeq}}
     {{#ifeq match.level "Profesional"}} 
     <p class="disable-status">Principiante</p>
     <p class="disable-status">Aficionado</p>
-    <p class="red-status">Profesional</p>
+    <p class="orange-status">Profesional</p>
     {{/ifeq}}
   </div>
   <div class="status">
@@ -84,23 +81,9 @@
 </div>
 
 
-
-
-{{#if match.pendingGuests}}
-{{#each match.pendingGuests}}
-  <p><a href="/profile/{{id}}">{{username}}</a></p>
-{{/each}}
-{{/if}}
-
-
-
-
-
-
-
-
-
-
+<div class="numberPlayers">
+  <span>{{match.acceptedGuests.length}} / {{match.numberPlayers}}</span>
+</div>
 
 
 
@@ -187,3 +170,7 @@
 <iframe src={{match.center.mapURL}} width="375" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
 </div>
+
+<footer>
+  {{> footer}}
+</footer>

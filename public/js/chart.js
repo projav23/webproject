@@ -8,6 +8,11 @@ const scoreDob = document.querySelector("#scoreDob").value
 const gamesDob = document.querySelector("#gamesDob").value
 const perdidosDob = gamesDob - scoreDob
 
+// Variables nulos tenis
+const nulTenis = document.getElementById("nuloTenis").value
+// Variables nulos padel
+const nulPadel = document.getElementById("nuloPadel").value
+
 //Variables partidos padel individual
 const scorePadelInd = document.querySelector("#scorePadInd").value
 const gamesIndPadel = document.querySelector("#gamesPadInd").value
@@ -24,27 +29,47 @@ const perdidosDobPad = gamesDobPadel - scorePadelDob
 const canvas = document.getElementById('my-canvas')
 //Canvas dob tenis
 const canvasDob = document.getElementById('my-canvas-dob')
-console.log(canvasDob)
 //Canvas ind padel
-const canvasPadelInd = document.getElementById('my-canvas-padel-ind')
+const canvasPadelInd = document.getElementById('my-canvas-padel')
 console.log(canvasPadelInd)
 //Canvas dob padel
 const canvasPadelDob = document.getElementById('my-canvas-padel-dob')
 
 
+
+//Score total
+const scoreTotal = Number(scoreInd) + Number(scoreDob)
+console.log("scoretotal", scoreTotal)
+const scoreTotalPadel = Number(scorePadelInd) + Number(scorePadelDob)
+console.log("scoretotalPadel", scoreTotalPadel)
+
+//Games total
+const gamestotal = Number(games) + Number(gamesDob)
+console.log("gamestotal", gamestotal)
+const gamestotalPadel = Number(gamesIndPadel) + Number(gamesDobPadel)
+console.log("gamestotalPadel", gamestotalPadel)
+
+
+// Perdidos
+const perdidosTenis = gamestotal - nulTenis - scoreTotal
+console.log("perdidosTenis", perdidosTenis)
+const perdidosPadel = gamestotalPadel - nulPadel - scoreTotalPadel
+console.log("perdidosPadel", perdidosPadel)
+
 //Funcion para el grafico
-function ChartStats(canvas,lost, wins){
+function ChartStats(canvas,lost,nulo, wins){
   const ctx = canvas.getContext('2d')
   ctx.clearRect(0,0,300,300)
     let data = {
-      labels: ["Perdidos ", "Ganados"],
+      labels: ["Perdidos ","Nulo", "Ganados"],
         datasets: [
           {
               fill: true,
               backgroundColor: [
                   '#6fc1f9',
+                  "grey",
                   '#aadd4f'],
-              data: [lost, wins ],
+              data: [lost,nulo, wins ],
     // Notice the borderColor 
               borderColor:	['rgba(0, 0, 0, 0.2)', 'rgba(0, 0, 0, 0.2)'],
               borderWidth: [1,1]
@@ -67,7 +92,9 @@ function ChartStats(canvas,lost, wins){
       });
 }
 
-ChartStats(canvas, perdidos, scoreInd)
-ChartStats(canvasDob, perdidosDob, scoreDob)
-ChartStats(canvasPadelInd, perdidosIndPad, scorePadelInd)
-ChartStats(canvasPadelDob,perdidosDobPad, scorePadelDob)
+
+
+ChartStats(canvas, perdidosTenis,nulTenis, scoreTotal)
+ChartStats(canvasPadelInd, perdidosPadel, nulPadel, scoreTotalPadel)
+// ChartStats(canvasPadelInd, perdidosDob, scoreDob)
+// ChartStats(canvasPadelDob,perdidosDobPad, scorePadelDob)

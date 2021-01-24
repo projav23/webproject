@@ -14,6 +14,11 @@
 {{!-- Grafico padel dobles --}}
 <input type="number" name="scorePadDob" id="scorePadDob" value={{chartScorePadel.scorePadelDob}} hidden>
 <input type="number" name="gamesPadDob" id="gamesPadDob" value={{chartGamesPadelDob.length}} hidden>
+{{!-- Partidos nulos Tenis --}}
+<input type="number" name="nuloTenis" id="nuloTenis" value={{nulosTenis.length}} hidden>
+{{!-- PArtidos nulos padel --}}
+<input type="number" name="nuloPadel" id="nuloPadel" value={{nulosPadel.length}} hidden>
+
 {{!-- <input type="text" name="params" id="params" value={{user._id}} hidden> --}}
 <div id="title_profile">
     <img src={{user.imgURL}} alt="">
@@ -112,29 +117,13 @@
 </div>
 <div id="Estadisticas" class="tabcontent tabStats holster">
     {{#if matchEnd}}
-        {{#if matchStats}}
+        {{#if chartGames}}
             <div class="Tenis">
                 <h3 class="text-center shadow-title-h3 top-less-space">TENIS</h3>
-                <div class="container x mandatory-scroll-snapping">
-                    {{#if chartGames}}
-                        <div>
-                            <canvas class="my-canvas" id="my-canvas"></canvas>
-                        </div>
-                    {{else}}
-                        <div>
-                            <p>No ha jugado partidos individuales a tenis.</p> 
-                        </div>
-                        
-                    {{/if}}
-                    {{#if chartGamesDob}}
-                        <div>
-                            <canvas class="my-canvas" id="my-canvas-dob"></canvas>
-                        </div>
-                    {{else}}
-                        <div>
-                            <p>No ha jugado partidos de dobles a tenis.</p> 
-                        </div>                   
-                    {{/if}}
+                <div>
+                    <div>
+                        <canvas class="my-canvas" id="my-canvas"></canvas>
+                    </div>
                 </div>
                 <div class="containerLastGames">
                     <div>Ultimos 5 encuentros</div> 
@@ -166,30 +155,16 @@
                 </div>
             </div>
         {{else}}
-        <p>Aun no ha jugado partidos</p>
+        <p>Aun no ha jugado partidos de tenis</p>
         {{/if}}
-        {{#if matchStatsPadel}}
+        {{#if chartGamesPadel}}
             <div class="Padel">
             <h3 class="text-center shadow-title-h3 top-less-space">Padel</h3>
-            <div class="container x mandatory-scroll-snapping">
-                {{#if chartGamesPadel}}
+            <div>
                 <div>
-                    <canvas class="my-canvas" id="my-canvas-padel-ind"></canvas>
+                    <canvas class="my-canvas" id="my-canvas-padel"></canvas>
                 </div>
-                {{else}}
-                <div>
-                    <p>No ha jugado partidos individuales a Padel</p>
-                </div>
-                {{/if}}
-                {{#if chartGamesPadelDob}}
-                <div>
-                    <canvas class="my-canvas" id="my-canvas-padel-dob"></canvas>
-                </div>
-                {{else}}
-                <div>
-                    <p>No ha jugado partidos de dobles a Padel</p>
-                </div>
-                {{/if}}
+
             </div>
                 <div class="containerLastGames">
                     <div>Ultimos 5 encuentros</div> 
@@ -220,6 +195,8 @@
                     </div>
                 </div>
             </div>
+        {{else}}
+        <p>Aún no ha jugado partidos de padel</p>
         {{/if}}
     {{else}}
     <p>Aún no ha jugado ningún partido. <a href="/matches">Únete</a> a uno.</p> 
@@ -246,3 +223,6 @@
 {{/ifCond}}
 </div>
 
+<footer>
+  {{> footer}}
+</footer>
