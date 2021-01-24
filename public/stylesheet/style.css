@@ -523,6 +523,10 @@ table thead {
 #loginDiv {
   border-radius: 5px;
 }
+.invalid{
+  margin-top: 10px;
+  margin-bottom: 10%;
+}
 
 .btn-login {
   width: 40vw;
@@ -539,6 +543,7 @@ table thead {
   cursor: pointer;
   background: none;
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+
 }
 
 .btn-login:before, .btn-login:after {
@@ -910,3 +915,20 @@ hr{
   margin-bottom: 10%;
 }
 
+.btn-filter {
+  width: 40vw;
+  border: none;
+  padding: 1em;
+  outline: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: 1.2em;
+  letter-spacing: 0.2em;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  background: none;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+
+}

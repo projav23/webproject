@@ -14,13 +14,16 @@
 <div id="loginDiv"class="flex-row-inputs paint-div-input bottom-space">
   <img  id="imgLogin" src="/images/iconos/password-icon.png" width="8%">
 <input  id="inputsLogin" type="password" name="password" required>
-</div>
 
+</div>
+{{#if message}}
+<p class=" invalid blanco-difuminado top-less-space">{{message}}</p>
+{{/if}}
 <button class="btn-login" type="submit">Login</button>
 </form>
-{{#if message}}
+{{!-- {{#if message}}
 <p class="blanco-difuminado top-less-space">{{message}}</p>
-{{/if}}
+{{/if}} --}}
 </section>
 
 <p class="blanco-difuminado top-less-space noStyle">¿No tienes cuenta?<a id="Registrate" class="noStyle" href="/auth/signup"> Registrate aquí</a></p>
