@@ -859,6 +859,9 @@ label {
 .green-status{
   background-color: rgba(45, 206, 45, 0.911);
 }
+.orange-status{
+  background-color: rgba(219, 130, 27, 0.849);
+}
 .red-status{
   background-color: rgba(219, 69, 64, 0.863);
 }
@@ -867,7 +870,7 @@ label {
 }
 .container-row{
   display: flex;
-  margin-bottom: 15%;
+  /* margin-bottom: %; */
   width: 80%;
   height: 150px;
   align-items: flex-start;
@@ -899,3 +902,16 @@ hr{
   height: auto;
   background: none;
 }
+.centro-match{
+  margin-bottom: 5%;
+}
+.centro-match a{
+  font-size: 1.4em;
+  text-decoration: none;
+  color: #181717ce;
+}
+.numberPlayers{
+  font-size: 3em;
+  margin-bottom: 10%;
+}
+

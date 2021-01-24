@@ -14,10 +14,15 @@ const getProfile = async (req, res, next) => {
   const user = await Users.findById(userId).populate("comunidad")
   //Comunidades
   const comunidades = await Comunidades.find().populate("comunidad")
+  //Partidos nulos Tenis
+  const nulosTenis = await Matches.find({$and: [{acceptedGuests:{$in: userId}}, {status: "Finalizado"},{esport: "Tenis"}, {playerWinners:{$ne: []}}]})
+  //Data para pintar el grafico si hay partidos finalizados
+  //Partidos nulos Padel
+  const nulosPadel = await Matches.find({$and: [{acceptedGuests:{$in: userId}}, {status: "Finalizado"},{esport: "Padel"}, {playerWinners:{$ne: []}}]})
   //Data para pintar el grafico si hay partidos finalizados
   const matchEnd = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}]})
   //Data para el grafico Tenis individual
-  const chartGames = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Tenis"}, {numberPlayers: 2}]})
+  const chartGames = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Tenis"}]})
   //Data para el grafico Tenis dobles
   const chartGamesDob = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Tenis"}, {numberPlayers: 4}]})
   //Puntuacion tenis
@@ -29,13 +34,13 @@ const getProfile = async (req, res, next) => {
   //Puntuacion padel
   const chartScorePadel = await Users.findById(userId, {scorePadelInd: 1, scorePadelDob: 1})
   //Estadistica ultimos partidos Tenis
-  const matchStats = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Tenis"}]}).sort({date:-1}).limit(10)
+  const matchStats = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Tenis"}]}).sort({date:-1}).limit(5)
   const topScoreInd = await Users.find({},{scoreTenisInd:1, _id: 1, username: 1} ).sort({scoreTenisInd: -1})
   const topScoreDob = await Users.find({},{scoreTenisDob:1, _id: 1, username: 1} ).sort({scoreTenisDob: -1})
   const posInd = topScoreInd.findIndex(x => x.id === userId) + 1
   const posDob = topScoreDob.findIndex(x => x.id === userId) + 1
   //Estadistica ultimos partidos Padel
-  const matchStatsPadel = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Padel"}]}).sort({date:-1}).limit(10)
+  const matchStatsPadel = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Padel"}]}).sort({date:-1}).limit(5)
   console.log(matchStatsPadel)
   const topScoreIndPadel = await Users.find({},{scorePadelInd:1, _id: 1, username: 1} ).sort({scorePadelInd: -1})
   const topScoreDobPadel = await Users.find({},{scorePadelDob:1, _id: 1, username: 1} ).sort({scorePadelDob: -1})
@@ -44,9 +49,9 @@ const getProfile = async (req, res, next) => {
   //Solicitudes
   const matches = await Matches.find({$and: [{host: userId}, {pendingGuests: {$ne: []}}]}).populate('pendingGuests center', {passwordHash: 0})
   if(matches.length === 0){
-    res.render('profile', {message: "No tienes solicitudes pendientes", user, matchEnd,matchStats, posInd, posDob, chartGames, chartScore, userId, chartGamesPadel,chartScorePadel,matchStatsPadel, posIndPadel, posDobPadel, chartGamesDob, chartGamesPadelDob, comunidades})
+    res.render('profile', {message: "No tienes solicitudes pendientes", user,nulosPadel, nulosTenis, matchEnd,matchStats, posInd, posDob, chartGames, chartScore, userId, chartGamesPadel,chartScorePadel,matchStatsPadel, posIndPadel, posDobPadel, chartGamesDob, chartGamesPadelDob, comunidades})
   } else {
-  res.render('profile', {matches, matchEnd,user, matchStats, posInd, posDob, chartGames, chartScore, userId, chartGamesPadel,chartScorePadel,matchStatsPadel, posIndPadel, posDobPadel, chartGamesDob, chartGamesPadelDob, comunidades})
+  res.render('profile', {matches,nulosTenis, nulosPadel, matchEnd,user, matchStats, posInd, posDob, chartGames, chartScore, userId, chartGamesPadel,chartScorePadel,matchStatsPadel, posIndPadel, posDobPadel, chartGamesDob, chartGamesPadelDob, comunidades})
   }
   } catch (e) {
   console.error(e)
