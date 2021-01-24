@@ -260,14 +260,14 @@ h2 {
 }
 
 .btnRedondo {
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.8);
   letter-spacing: 0.3px;
   font-weight: bold;
-  border-style: none;
-  border-width: 0;
-  padding: 1.5rem;
+  border-style:none;
+  border-width:0;
+  padding: 1rem;
   text-decoration: none;
-  color: white;
+  color:white;
   border-radius: 50%;
 }
 
@@ -299,9 +299,9 @@ h2 {
 }
 
 #td-title {
-  width: 80vw;
+  /* width: 80vw; */
   padding: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
 }
 
 #td-img {
@@ -578,16 +578,13 @@ table thead {
 }
 #notificacion{
   position: relative;
-  top: -25px;
-  left: 75px;
+  top: -10px;
   width:fit-content;
   background-color: #aadd4f;
   border-radius: 50%;
+  padding: 0 3px;
 }
-#notificacion p{
-  width:15px;
-  color: black;
-}
+
 /* .tabcontent{
   display: block;
 
@@ -673,8 +670,6 @@ background-color: gray;
 }
 #my-canvas,#my-canvas-dob,#my-canvas-padel-ind,#my-canvas-padel-dob{
   margin-top: 10%;
-  width: 500px;
-  height: 500px;
 }
 
 

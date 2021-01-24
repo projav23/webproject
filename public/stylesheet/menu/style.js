@@ -20,10 +20,15 @@ menu.hidden = !isMenuOpen;
 nav.classList.toggle('nav--open');
 
 //Cambio color hamburguesa
-lines.forEach(line => line.classList.toggle("menuicon__barBlack"))
-// lines.forEach(line => line.classList.remove("menuicon__barWhite"))
+lines.forEach(line => {
+  if(line.classList.value != "menuicon__bar menuicon__barBlack"){line.classList.toggle("menuicon__barBlack")}
+})
+  
+
+
 //Cuando abre el menú envio los btn detrás
 buttonsToSendBack.forEach(btn => btn.classList.toggle("sendToBack-1"))
+
 //Envio también el footer
 footer.classList.toggle("sendToBack-1")
 });
@@ -63,7 +68,7 @@ if (e.keyCode === 9) {
 }
 });
 
-//Toggle Color Menu --------------------------
+//Toggle Color Menu con Scroll --------------------------
 
 var myNav = document.getElementById('nav');
 window.onscroll = function () { 
@@ -102,7 +107,7 @@ window.onscroll = function () {
 };
 
 
-// PROFILE
+// PROFILE & Ranking Tabs
 
 function openTab(evt, name) {
   // Declare all variables
@@ -113,11 +118,34 @@ function openTab(evt, name) {
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
+
   const perf = document.getElementById('Perfil').style.display = "none";
   const solici =document.getElementById('Solicitudes').style.display = "none";
   const stats = document.getElementById('Estadisticas').style.display = "none";
   const contact = document.getElementById('Contact').style.display = "none";
+  const tenis = document.getElementById("Tenis").style.display="none"
+  const paddle = document.getElementById("Paddle").style.display="none"
+ console.log("Tenis",tenis);
+ console.log("Paddle",paddle);
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(name).style.display = "block";
+  evt.currentTarget.className += " active";
+}
 
+function openTabRanking(evt, name) {
+  // Declare all variables
+  let i, tabcontent;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  const tenis = document.getElementById("Tenis").style.display="none"
+  const paddle = document.getElementById("Paddle").style.display="none"
+  // console.log("Tenis",tenis);
+  // console.log("Paddle",paddle);
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(name).style.display = "block";
   evt.currentTarget.className += " active";

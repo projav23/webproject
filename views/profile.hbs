@@ -1,6 +1,6 @@
-<section>
+<header class="header">
     {{> menu}}
-</section>
+</header>
 {{!-- UsernameID --}}
 {{!-- Grafico tenis individual --}}
 <input type="number" name="score" id="score" value={{chartScore.scoreTenisInd}} hidden>
@@ -26,7 +26,7 @@
 </div>
 <div class="tab">
   <button class="tablinks sendToBack" onclick="openTab(event, 'Perfil')" id="defaultOpen">Perfil</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')" id="defaultOpenRequest">Solicitudes{{#if matches}}<div id="notificacion"><p>{{matches.length}}</p></div>{{/if}}</button>
+  <button class="tablinks sendToBack" onclick="openTab(event, 'Solicitudes')" id="defaultOpenRequest">Solicitudes{{#if matches}}<span id="notificacion">{{matches.length}}</span>{{/if}}</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Estadisticas')">Estadisticas</button>
   <button class="tablinks sendToBack" onclick="openTab(event, 'Contact')">Contacto</button>
 </div>
@@ -225,8 +225,6 @@
     <p>Aún no ha jugado ningún partido. <a href="/matches">Únete</a> a uno.</p> 
     {{/if}}
 </div>
-
-
 <div id="Contact" class="tabcontent tabContact">
 {{#ifCond user._id currentUser._id}}
     <h3 class="text-center shadow-title-h3 top-less-space">Contacta conmigo</h3>

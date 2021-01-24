@@ -1,7 +1,7 @@
 
-<section class="max-width">
+<header class="header">
   {{> menu}}
-</section>
+</header>
 <br>
 <br>
 <br>
@@ -12,12 +12,38 @@
 
 
 <div class="tab">
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Tenis')" >Tenis</button>
-  <button class="tablinks sendToBack" onclick="openTab(event, 'Paddle')">Paddle</button>
+  <button class="tablinks sendToBack" onclick="openTabRanking(event, 'Tenis')" id="defaultOpen">Tenis</button>
+  <button class="tablinks sendToBack" onclick="openTabRanking(event, 'Paddle')">Paddle</button>
 </div>
 
 <div id="Tenis" class="tabcontent">
-Ranking Individual Tenis
+<h3>Ranking Individual Tenis</h3>
+<section>
+{{#each rankingInd}}
+  <div class="flex-row">
+    {{!-- Foto Perfil --}}
+    <div>
+      <img src={{user.imgURL}} alt="">
+    </div>
+    {{!-- Info --}}
+    <div class="flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        {{!-- Bandera --}}
+        {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}}
+        {{!-- Nombre --}}
+        <h4>{{name}}</h4>
+        {{!-- Points --}}
+        <h4>Points:{{scoreTenisInd}}</h4>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p>{{inc @index}}</p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</section>
 {{#each rankingInd}}
 <br>
 {{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scoreTenisInd}}
@@ -34,9 +60,8 @@ Ranking Dobles Tenis
 <br>
 <br>
 <br>
-<br>
 </div>
-<div id="Paddle" style="display:none" class="tabcontent">
+<div id="Paddle" class="tabcontent">
 Ranking Dobles Padel
 {{#each rankingDobPadel}}
 <br>
@@ -44,13 +69,3 @@ Ranking Dobles Padel
 {{/each}}
 </div>
 
-<script>
-function openTab(Sport) {
-  var i;
-  var x = document.getElementsByClassName("city");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  document.getElementById(Sport).style.display = "block";  
-}
-</script>
