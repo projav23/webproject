@@ -20,10 +20,15 @@ menu.hidden = !isMenuOpen;
 nav.classList.toggle('nav--open');
 
 //Cambio color hamburguesa
-lines.forEach(line => line.classList.toggle("menuicon__barBlack"))
-// lines.forEach(line => line.classList.remove("menuicon__barWhite"))
+lines.forEach(line => {
+  if(line.classList.value != "menuicon__bar menuicon__barBlack"){line.classList.toggle("menuicon__barBlack")}
+})
+  
+
+
 //Cuando abre el menú envio los btn detrás
 buttonsToSendBack.forEach(btn => btn.classList.toggle("sendToBack-1"))
+
 //Envio también el footer
 footer.classList.toggle("sendToBack-1")
 });
@@ -63,7 +68,7 @@ if (e.keyCode === 9) {
 }
 });
 
-//Toggle Color Menu --------------------------
+//Toggle Color Menu con Scroll --------------------------
 
 var myNav = document.getElementById('nav');
 window.onscroll = function () { 
