@@ -8,7 +8,8 @@ const mongoose = require('mongoose')
 const getRanking = async (req,res,next) => {
   try {
   const rankingInd = await Users.find().sort({scoreTenisInd: -1}).populate("comunidad")
-  console.log(rankingInd)
+  console.log("RankingInd", rankingInd[0])
+  console.log("Comunidad",rankingInd[2])
   const rankingDob = await Users.find().sort({scoreTenisDob: -1}).populate("comunidad")
   const rankingIndPadel = await Users.find().sort({scorePadelInd: -1}).populate("comunidad")
   const rankingDobPadel = await Users.find().sort({scorePadelDob: -1}).populate("comunidad")

@@ -16,34 +16,95 @@
   <button class="tablinks sendToBack" onclick="openTabRanking(event, 'Paddle')">Paddle</button>
 </div>
 
-<div id="Tenis" class="tabcontent">
+<div id="Tenis" class="tabcontent holster">
 <h3>Ranking Individual Tenis</h3>
-<section>
-{{#each rankingInd}}
+<div id="ranking" class="top-less-space container x mandatory-scroll-snapping">
+{{!-- 1 --}}
   <div class="flex-row">
     {{!-- Foto Perfil --}}
-    <div>
-      <img src={{user.imgURL}} alt="">
-    </div>
+        <img id="img-ranking"src={{rankingInd.[0].imgURL}} alt="">
     {{!-- Info --}}
-    <div class="flex-row">
+    <div id="content-card-ranking"class="normal-flex-row">
       {{!-- Nombre-comunidad-Puntos --}}
       <div>
-        {{!-- Bandera --}}
-        {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}}
-        {{!-- Nombre --}}
-        <h4>{{name}}</h4>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingInd.[0].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingInd.[0].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingInd.[0].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingInd.[0].username}}</p>
         {{!-- Points --}}
-        <h4>Points:{{scoreTenisInd}}</h4>
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingInd.[0].scoreTenisInd}}</p>
+        </div>
       </div>
       {{!-- Position --}}
       <div>
-      <p>{{inc @index}}</p>
+      <p class="number" id="position-ranking">1</p>
       </div>
     </div>
   </div>
-  {{/each}}
-</section>
+  {{!-- 2 --}}
+    <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingInd.[1].imgURL}} alt="">
+    {{!-- Info --}}
+    <div id="content-card-ranking"class="normal-flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingInd.[1].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingInd.[1].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingInd.[1].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingInd.[1].username}}</p>
+        {{!-- Points --}}
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingInd.[1].scoreTenisInd}}</p>
+        </div>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p class="number" id="position-ranking">2</p>
+      </div>
+    </div>
+  </div>
+  {{!-- 3 --}}
+    <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingInd.[2].imgURL}} alt="">
+    {{!-- Info --}}
+    <div id="content-card-ranking"class="normal-flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingInd.[2].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingInd.[2].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingInd.[2].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingInd.[2].username}}</p>
+        {{!-- Points --}}
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingInd.[2].scoreTenisInd}}</p>
+        </div>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p class="number" id="position-ranking">3</p>
+      </div>
+    </div>
+  </div>
+ 
+</div>
 {{#each rankingInd}}
 <br>
 {{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scoreTenisInd}}
