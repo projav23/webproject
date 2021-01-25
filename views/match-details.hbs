@@ -1,23 +1,11 @@
 <header class="header">
     {{> menu}}
 </header>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <div class="container-col">
-  <p class="centro-match"><a href={{match.center.url}}>{{match.center.name}}</a></p>
-<br>
-<br>
-
-
+  <div id="title_match">
+    <p class="centro-match"><a href={{match.center.url}}>{{match.center.name}}</a></p>
+  </div>
   <div class="status">
     {{#ifeq match.level "Principiante"}} 
     <p class="orange-status">Principiante</p>
@@ -92,7 +80,7 @@
   {{#ifCond match.host._id currentUser._id}}
     {{#if currentUserIsAccepted}}
       <form action="/matches/{{match._id}}/cancel" method="post">
-      <button class="sendToBack" type="submit">Cancelar partido</button>
+      <button class="sendToBack cancel-match" type="submit">Cancelar partido</button>
       </form>
     {{else}}
       {{#ifeq match.acceptedGuests.length match.numberPlayers}}
@@ -100,14 +88,14 @@
       {{else}}
       <form action="/matches/{{match._id}}/join" method="post">
       <input type="text" name="pendingGuests" value="{{currentUser._id}}" hidden>
-      <button class="sendToBack" type="submit">Join</button>
+      <button class="sendToBack join" type="submit">Join</button>
       </form>
       {{/ifeq}}
     {{/if}}
   {{else}}
     {{#ifeq match.acceptedGuests.length match.numberPlayers}}
     <form action="/matches/{{match._id}}/endMatch" method="post">
-    <button class="sendToBack" type="submit">Cerrar partido</button>
+    <button class="sendToBack close-match" type="submit">Cerrar partido</button>
     </form>
     {{/ifeq}}
     <form action="/matches/{{match._id}}/delete" method="post">
@@ -121,10 +109,10 @@
     {{else}}
       {{#ifeq match.acceptedGuests.length 4}}
         <form action="/matches/{{match._id}}/delete" method="post">
-        <button  class="sendToBack" type="submit"><img src="/images/eliminar.png" alt=""></button>
+        <button  class="btn-delete sendToBack" type="submit"><img src="/images/eliminar.png" alt=""></button>
         </form>
         <form action="/matches/{{match._id}}/winners" method="post" id="winners">
-          <button class="sendToBack" type="submit">Enviar resultado</button>
+          <button class="sendToBack send-result" type="submit">Enviar resultado</button>
         </form>
           <label for="win">Choose the winners:</label>
             <select name="player1" id="win" form="winners" required>
@@ -142,10 +130,10 @@
       {{/ifeq}}
       {{#ifeq match.acceptedGuests.length 2}}
           <form action="/matches/{{match._id}}/delete" method="post">
-      <button  class="sendToBack" type="submit"><img src="/images/eliminar.png" alt=""></button>
+      <button  class="sendToBack btn-delete" type="submit"><img src="/images/eliminar.png" alt=""></button>
       </form>
         <form action="/matches/{{match._id}}/winners" method="post" id='winners'>
-          <button class="sendToBack" type="submit">Enviar resultado</button>
+          <button class="sendToBack send-result" type="submit">Enviar resultado</button>
         </form>
         <label for="win">Choose the winners:</label>
           <select name="player1" id="win" form="winners" required>

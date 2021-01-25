@@ -838,8 +838,7 @@ label {
 
 .status{
   display: flex;
-  margin-top: 5%;
- 
+  margin-top: 10%;
   width: 85%;
   justify-content: center;
 }
@@ -899,9 +898,11 @@ hr{
 }
 .btn-delete{
   border: none;
-  max-width: 20%;
+  max-width: 30%;
   height: auto;
   background: none;
+  margin-left: 90%;
+  margin-bottom: 5%;
 }
 .centro-match{
   margin-bottom: 5%;
@@ -909,7 +910,8 @@ hr{
 .centro-match a{
   font-size: 1.4em;
   text-decoration: none;
-  color: #181717ce;
+  color: white;
+  text-align: center;
 }
 .numberPlayers{
   font-size: 3em;
@@ -939,4 +941,188 @@ hr{
   margin-top: 5%;
   margin-left: 5%;
   border-radius: 50%;
+}
+
+#title_match{
+  background-image: url("../images/nadal1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding-left: 10%; */
+  padding-top: 20vh;
+  padding-bottom: 15%;
+  width: 100%;
+  height: auto;
+  filter: grayscale();
+}
+
+.join{
+  margin-bottom: 50px;
+  width: 40vw;
+  border: none;
+  padding: 1em;
+  outline: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: 1.2em;
+  letter-spacing: 0.2em;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  background: none;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.join:before, .join:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 5%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 105%;
+  height: 105%;
+  content: '';
+  z-index: -2;
+  background-size: 400% 400%;
+  background: #aadd4f;
+}
+
+
+.join:before {
+  filter: blur(3px);
+  transition: all .25s ease;
+  animation: pulse 10s infinite ease;
+}
+
+.join:after {
+  filter: blur(0.3px);
+}
+.close-match{
+  margin-bottom: 50px;
+  width: 40vw;
+  border: none;
+  padding: 1em;
+  outline: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: 1.2em;
+  letter-spacing: 0.2em;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  background: none;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.close-match:before, .close-match:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 5%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 105%;
+  height: 105%;
+  content: '';
+  z-index: -2;
+  background-size: 400% 400%;
+  background: #aadd4f;
+}
+
+
+.close-match:before {
+  filter: blur(3px);
+  transition: all .25s ease;
+  animation: pulse 10s infinite ease;
+}
+
+.close-match:after {
+  filter: blur(0.3px);
+}
+.send-result{
+  margin-bottom: 50px;
+  width: 40vw;
+  border: none;
+  padding: 1em;
+  outline: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: 1.2em;
+  letter-spacing: 0.2em;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  background: none;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.send-result:before, .send-result:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 5%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 105%;
+  height: 105%;
+  content: '';
+  z-index: -2;
+  background-size: 400% 400%;
+  background: #aadd4f;
+}
+
+
+.send-result:before {
+  filter: blur(3px);
+  transition: all .25s ease;
+  animation: pulse 10s infinite ease;
+}
+
+.send-result:after {
+  filter: blur(0.3px);
+}
+.cancel-match{
+  margin-bottom: 50px;
+  width: 40vw;
+  border: none;
+  padding: 1em;
+  outline: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-style: 1.2em;
+  letter-spacing: 0.2em;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  background: none;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.cancel-match:before, .cancel-match:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 5%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 105%;
+  height: 105%;
+  content: '';
+  z-index: -2;
+  background-size: 400% 400%;
+  background: #aadd4f;
+}
+
+
+.cancel-match:before {
+  filter: blur(3px);
+  transition: all .25s ease;
+  animation: pulse 10s infinite ease;
+}
+
+.cancel-match:after {
+  filter: blur(0.3px);
 }
