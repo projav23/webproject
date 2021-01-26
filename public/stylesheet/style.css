@@ -1251,7 +1251,19 @@ h4{
       padding-top: 20vh;
 }
 
+#defaultOpenRanking{
+  background-color: rgba(255,255,255,80%);
+  width:50vw;
+}
 #btn-ranking{
   background-color: rgba(255,255,255,80%);
   width:50vw;
+}
+#your-ranking{
+  background-color: #969B9D;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 }
