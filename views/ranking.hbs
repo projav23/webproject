@@ -2,71 +2,377 @@
 <header class="header">
   {{> menu}}
 </header>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-
-<div class="tab">
-  <button class="tablinks sendToBack" onclick="openTabRanking(event, 'Tenis')" id="defaultOpenRanking">Tenis</button>
-  <button class="tablinks sendToBack" onclick="openTabRanking(event, 'Paddle')">Paddle</button>
+<div id="tab-ranking" class="tab">
+  <button  id="btn-ranking" class="tablinks sendToBack" onclick="openTabRanking(event, 'Tenis')" id="defaultOpenRanking">Tenis</button>
+  <button  id="btn-ranking" class="tablinks sendToBack" onclick="openTabRanking(event, 'Paddle')">Paddle</button>
 </div>
 
-<div id="Tenis" class="tabcontent">
-<h3>Ranking Individual Tenis</h3>
-<section>
-{{#each rankingInd}}
-  <div class="flex-row">
-    {{!-- Foto Perfil --}}
+<div id="Tenis" class="tabcontent holster">
+  <div class="container x mandatory-scroll-snapping">
+    {{!-- Individual Tenis --}}
     <div>
-      <img src={{user.imgURL}} alt="">
-    </div>
+      <h3 class="text-center">Ranking Individual Tenis</h3>
+      <div id="ranking" class="top-less-space container x mandatory-scroll-snapping">
+        {{!-- 1 --}}
+          <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingInd.[0].imgURL}} alt="">
     {{!-- Info --}}
-    <div class="flex-row">
+    <div id="content-card-ranking"class="normal-flex-row">
       {{!-- Nombre-comunidad-Puntos --}}
       <div>
-        {{!-- Bandera --}}
-        {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}}
-        {{!-- Nombre --}}
-        <h4>{{name}}</h4>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingInd.[0].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingInd.[0].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingInd.[0].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingInd.[0].username}}</p>
         {{!-- Points --}}
-        <h4>Points:{{scoreTenisInd}}</h4>
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingInd.[0].scoreTenisInd}}</p>
+        </div>
       </div>
       {{!-- Position --}}
       <div>
-      <p>{{inc @index}}</p>
+      <p class="number" id="position-ranking">1</p>
       </div>
     </div>
-  </div>
+          </div>
+        {{!-- 2 --}}
+          <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingInd.[1].imgURL}} alt="">
+    {{!-- Info --}}
+    <div id="content-card-ranking"class="normal-flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingInd.[1].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingInd.[1].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingInd.[1].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingInd.[1].username}}</p>
+        {{!-- Points --}}
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingInd.[1].scoreTenisInd}}</p>
+        </div>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p class="number" id="position-ranking">2</p>
+      </div>
+    </div>
+          </div>
+        {{!-- 3 --}}
+          <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingInd.[2].imgURL}} alt="">
+    {{!-- Info --}}
+    <div id="content-card-ranking"class="normal-flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingInd.[2].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingInd.[2].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingInd.[2].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingInd.[2].username}}</p>
+        {{!-- Points --}}
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingInd.[2].scoreTenisInd}}</p>
+        </div>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p class="number" id="position-ranking">3</p>
+      </div>
+    </div>
+          </div>
+      </div>
+      {{!-- Tabla Individual Tenis --}}
+      <table id="ranking-table">
+
+  {{#ifeq posInd 1}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#1🥇🎾</b></p>
+  {{/ifeq}}
+  {{#ifeq posInd 2}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#2🥈🎾</b></p>
+  {{/ifeq}}
+  {{#ifeq posInd 3}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#3🥉🎾</b></p>
+  {{/ifeq}}
+  {{#if noTop}}
+  <p class="text-center">@{{user.username}} estás en la posición <b>#{{posInd}}👑</b></p>
+  {{/if}}
+
+  {{#each rankingInd}}
+  <tr id="ranking-tr">
+    <td id="position-ranking-table">{{inc @index}}</td>
+    <td><img id="img-user-ranking-table" src={{imgURL}}></td>
+    <td>
+      <p id="td-name-ranking">{{name}}</p>
+      <p id="username-ranking-table">@{{username}}</p>
+    </td>
+    <td id="score-ranking-table">{{scoreTenisInd}}</td>
+  </tr>
   {{/each}}
-</section>
-{{#each rankingInd}}
-<br>
-{{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scoreTenisInd}}
-{{/each}}
-<br>
-<br>
-<br>
-<br>
-Ranking Dobles Tenis
-{{#each rankingDob}}
-<br>
-{{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scoreTenisDob}}
-{{/each}}
-<br>
-<br>
-<br>
+      </table>
+    </div>
+    {{!-- Dobles Tenis --}}
+    <div>
+      <h3 class="text-center">Ranking Dobles Tenis</h3>
+      <div id="ranking" class="top-less-space container x mandatory-scroll-snapping">
+        {{!-- 1 --}}
+          <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingDob.[0].imgURL}} alt="">
+    {{!-- Info --}}
+    <div id="content-card-ranking"class="normal-flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingDob.[0].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingDob.[0].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingDob.[0].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingDob.[0].username}}</p>
+        {{!-- Points --}}
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingDob.[0].scoreTenisDob}}</p>
+        </div>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p class="number" id="position-ranking">1</p>
+      </div>
+    </div>
+          </div>
+        {{!-- 2 --}}
+          <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingInd.[1].imgURL}} alt="">
+    {{!-- Info --}}
+    <div id="content-card-ranking"class="normal-flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingInd.[1].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingInd.[1].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingInd.[1].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingInd.[1].username}}</p>
+        {{!-- Points --}}
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingInd.[1].scoreTenisDob}}</p>
+        </div>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p class="number" id="position-ranking">2</p>
+      </div>
+    </div>
+          </div>
+        {{!-- 3 --}}
+          <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingInd.[2].imgURL}} alt="">
+    {{!-- Info --}}
+    <div id="content-card-ranking"class="normal-flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingInd.[2].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingInd.[2].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingInd.[2].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingInd.[2].username}}</p>
+        {{!-- Points --}}
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingInd.[2].scoreTenisDob}}</p>
+        </div>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p class="number" id="position-ranking">3</p>
+      </div>
+    </div>
+          </div>
+      </div>
+      {{!--Tabla Dobles Tenis --}}
+          <table id="ranking-table">
+
+  {{#ifeq posDob 1}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#1🥇🎾</b></p>
+  {{/ifeq}}
+  {{#ifeq posDob 2}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#2🥈🎾</b></p>
+  {{/ifeq}}
+  {{#ifeq posDob 3}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#3🥉🎾</b></p>
+  {{/ifeq}}
+  {{#if noTop1}}
+  <p class="text-center">@{{user.username}} estás en la posición <b>#{{posDob}}👑</b></p>
+  {{/if}}
+
+  {{#each rankingDob}}
+  <tr id="ranking-tr">
+    <td id="position-ranking-table">{{inc @index}}</td>
+    <td><img id="img-user-ranking-table" src={{imgURL}}></td>
+    <td>
+      <p id="td-name-ranking">{{name}}</p>
+      <p id="username-ranking-table">@{{username}}</p>
+    </td>
+    <td id="score-ranking-table">{{scoreTenisDob}}</td>
+  </tr>
+  {{/each}}
+          </table>
+    </div>
+  </div>
 </div>
-<div id="Paddle" class="tabcontent">
-Ranking Dobles Padel
-{{#each rankingDobPadel}}
-<br>
-{{inc @index}} {{#if comunidad}}<img class="comunity" src={{comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} {{username}} {{scorePadelDob}}
-{{/each}}
+
+<div id="Paddle" class="tabcontent holster">
+    {{!-- Dobles Paddle --}}
+    <div>
+      <h3 class="text-center">Ranking Dobles Paddle</h3>
+      <div id="ranking" class="top-less-space container x mandatory-scroll-snapping">
+        {{!-- 1 --}}
+          <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingDobPadel.[0].imgURL}} alt="">
+    {{!-- Info --}}
+    <div id="content-card-ranking"class="normal-flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingDobPadel.[0].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingDobPadel.[0].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingDobPadel.[0].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingDobPadel.[0].username}}</p>
+        {{!-- Points --}}
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingDobPadel.[0].scorePadelDob}}</p>
+        </div>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p class="number" id="position-ranking">1</p>
+      </div>
+    </div>
+          </div>
+        {{!-- 2 --}}
+          <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingDobPadel.[1].imgURL}} alt="">
+    {{!-- Info --}}
+    <div id="content-card-ranking"class="normal-flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingDobPadel.[1].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingDobPadel.[1].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingDobPadel.[1].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingDobPadel.[1].username}}</p>
+        {{!-- Points --}}
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingDobPadel.[1].scorePadelDob}}</p>
+        </div>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p class="number" id="position-ranking">2</p>
+      </div>
+    </div>
+          </div>
+        {{!-- 3 --}}
+          <div class="flex-row">
+    {{!-- Foto Perfil --}}
+        <img id="img-ranking"src={{rankingDobPadel.[2].imgURL}} alt="">
+    {{!-- Info --}}
+    <div id="content-card-ranking"class="normal-flex-row">
+      {{!-- Nombre-comunidad-Puntos --}}
+      <div>
+        <div class="normal-flex-row">
+            {{!-- Bandera --}}
+            {{!-- {{#if comunidad}}<img id="img-comunidad" src={{rankingDobPadel.[2].comunidad.imgURL}} alt="">{{else}}<img class="comunity" src="/images/default-user.jpg" alt="">{{/if}} --}}
+            <img id="img-comunidad" src={{rankingDobPadel.[2].comunidad.imgURL}} alt="">
+            {{!-- Nombre --}}
+            <h4 id="name-ranking">{{rankingDobPadel.[2].name}}</h4>
+        </div>
+        <p id="username-ranking">@{{rankingDobPadel.[2].username}}</p>
+        {{!-- Points --}}
+        <div id="div-score-ranking" class="normal-flex-row">
+            <p id="score-ranking">Score</p>
+            <p class="number" id="score-ranking-number">{{rankingDobPadel.[2].scorePadelDob}}</p>
+        </div>
+      </div>
+      {{!-- Position --}}
+      <div>
+      <p class="number" id="position-ranking">3</p>
+      </div>
+    </div>
+          </div>
+      </div>
+      <table id="ranking-table">
+
+  {{#ifeq posDobPadel 1}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#1🥇🎾</b></p>
+  {{/ifeq}}
+  {{#ifeq posDobPadel 2}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#2🥈🎾</b></p>
+  {{/ifeq}}
+  {{#ifeq posDobPadel 3}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#3🥉🎾</b></p>
+  {{/ifeq}}
+  {{#if noTop2}}
+  <p class="text-center">@{{user.username}} estás en la posición <b>#{{posDobPadel}}👑</b></p>
+  {{/if}}
+
+  {{#each rankingDobPadel}}
+  <tr id="ranking-tr">
+    <td id="position-ranking-table">{{inc @index}}</td>
+    <td><img id="img-user-ranking-table" src={{imgURL}}></td>
+    <td>
+      <p id="td-name-ranking">{{name}}</p>
+      <p id="username-ranking-table">@{{username}}</p>
+    </td>
+    <td id="score-ranking-table">{{scorePadelDob}}</td>
+  </tr>
+  {{/each}}
+      </table>
+    </div>
 </div>
+
+
+
+
+
+
 
 

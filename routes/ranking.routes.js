@@ -4,6 +4,6 @@ const {getRanking} = require('../controllers/ranking.controller')
 const {userLogin} =  require('../controllers/auth.controller')
 
 router
-.get("/", userLogin, getRanking)
+.get("/:userId", userLogin, getRanking)
 
 module.exports = router

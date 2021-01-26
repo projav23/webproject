@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 body {
   font-family: 'Lato', sans-serif;
 }
@@ -276,7 +277,7 @@ h2 {
   color: black;
 }
 
-/*----------RANKING-----------*/
+/*----------RANKING MENU-----------*/
 #two {
   height: auto;
 }
@@ -357,6 +358,7 @@ table thead {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+
 }
 
 /*----------------VIDEO------------------*/
@@ -1125,4 +1127,131 @@ hr{
 
 .cancel-match:after {
   filter: blur(0.3px);
+}
+
+/*----------------RANKING--------------*/
+
+#Tenis,#Paddle{
+  height: auto;
+}
+
+#img-ranking{
+  width:auto;
+  border-radius: 50%;
+  height: 125px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+
+#img-comunidad{
+  width:20%;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+
+.normal-flex-row{
+  display: flex;
+}
+#username-ranking{
+  margin-top: 10px;
+  text-align: -webkit-left;
+  margin-bottom: 10px;
+  color: #969B9D;
+}
+#name-ranking{
+  margin-left: 10px;
+  font-weight: 100;
+ font-size: 25px;
+}
+#score-ranking{
+  text-transform: uppercase;
+  font-size: 20px;
+}
+#content-card-ranking{
+  height: fit-content;
+  background-color: rgba(221, 221, 221, 0.589);
+  border-radius: 5px;
+  padding: 10px;
+}
+#div-score-ranking{
+  align-items: flex-end;
+}
+
+h4{
+  text-transform: uppercase;
+  font-size: 45px;
+  font-weight: 700;
+}
+#position-ranking{
+  font-size: 120px;
+  position: relative;
+  top: -12px;
+}
+#score-ranking-number{
+  font-size: 35px;
+  margin-left: 25px;
+  position: relative;
+  top: 4px;
+}
+
+#ranking-card{
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  border-radius: 10px;
+}
+
+.number{
+  font-family: 'Roboto', sans-serif ;
+}
+
+#td-name-ranking{
+  text-transform: uppercase;
+}
+
+#username-ranking-table{
+  color: #969B9D;
+}
+
+#img-user-ranking-table{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+#score-ranking-table{
+  font-size:20px;
+  vertical-align: middle;
+}
+
+#position-ranking-table{
+  font-size:25px;
+  vertical-align: middle;
+}
+
+#ranking-table{
+  width:90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ranking-tr{
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 7%);
+  border-radius: 5px;
+}
+
+#ranking-tr td{
+  padding:10px;
+}
+#ranking{
+  margin-bottom: 50px;
+}
+
+#tab-ranking{
+  background-image: url("../images/ranking.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+      padding-top: 20vh;
+}
+
+#btn-ranking{
+  background-color: rgba(255,255,255,80%);
+  width:50vw;
 }
