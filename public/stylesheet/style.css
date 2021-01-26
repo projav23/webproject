@@ -358,6 +358,7 @@ table thead {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+
 }
 
 /*----------------VIDEO------------------*/
@@ -1130,10 +1131,15 @@ hr{
 
 /*----------------RANKING--------------*/
 
+#Tenis,#Paddle{
+  height: auto;
+}
+
 #img-ranking{
   width:auto;
   border-radius: 50%;
   height: 125px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 }
 
 #img-comunidad{
@@ -1193,4 +1199,47 @@ h4{
 
 .number{
   font-family: 'Roboto', sans-serif ;
+}
+
+#td-name-ranking{
+  text-transform: uppercase;
+}
+
+#username-ranking-table{
+  color: #969B9D;
+}
+
+#img-user-ranking-table{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+#score-ranking-table{
+  font-size:20px;
+  vertical-align: middle;
+}
+
+#position-ranking-table{
+  font-size:25px;
+  vertical-align: middle;
+}
+
+#ranking-table{
+  width:90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ranking-tr{
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 7%);
+  border-radius: 5px;
+}
+
+#ranking-tr td{
+  padding:10px;
+}
+#ranking{
+  margin-bottom: 50px;
 }
