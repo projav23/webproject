@@ -220,19 +220,20 @@
       </div>
       {{!--Tabla Dobles Tenis --}}
           <table id="ranking-table">
-
-  {{#ifeq posDob 1}}
-  <p class="text-center">@{{user.username}} eres el numero <b>#1🥇🎾</b></p>
-  {{/ifeq}}
-  {{#ifeq posDob 2}}
-  <p class="text-center">@{{user.username}} eres el numero <b>#2🥈🎾</b></p>
-  {{/ifeq}}
-  {{#ifeq posDob 3}}
-  <p class="text-center">@{{user.username}} eres el numero <b>#3🥉🎾</b></p>
-  {{/ifeq}}
-  {{#if noTop1}}
-  <p class="text-center">@{{user.username}} estás en la posición <b>#{{posDob}}👑</b></p>
-  {{/if}}
+  <div id="your-ranking">
+    {{#ifeq posDob 1}}
+    <p class="text-center">@{{user.username}} eres el numero <b>#1🥇🎾</b></p>
+    {{/ifeq}}
+    {{#ifeq posDob 2}}
+    <p class="text-center">@{{user.username}} eres el numero <b>#2🥈🎾</b></p>
+    {{/ifeq}}
+    {{#ifeq posDob 3}}
+    <p class="text-center">@{{user.username}} eres el numero <b>#3🥉🎾</b></p>
+    {{/ifeq}}
+    {{#if noTop1}}
+    <p class="text-center">@{{user.username}} estás en la posición <b>#{{posDob}}👑</b></p>
+    {{/if}}
+  </div>
 
   {{#each rankingDob}}
   <tr id="ranking-tr">
@@ -341,7 +342,7 @@
           </div>
       </div>
       <table id="ranking-table">
-
+ <div id="your-ranking">
   {{#ifeq posDobPadel 1}}
   <p class="text-center">@{{user.username}} eres el numero <b>#1🥇🎾</b></p>
   {{/ifeq}}
@@ -354,6 +355,7 @@
   {{#if noTop2}}
   <p class="text-center">@{{user.username}} estás en la posición <b>#{{posDobPadel}}👑</b></p>
   {{/if}}
+  </div>
 
   {{#each rankingDobPadel}}
   <tr id="ranking-tr">
