@@ -107,6 +107,7 @@
     </div>
           </div>
       </div>
+      {{!-- Tabla Individual Tenis --}}
       <table id="ranking-table">
 
   {{#ifeq posInd 1}}
@@ -119,7 +120,7 @@
   <p class="text-center">@{{user.username}} eres el numero <b>#3🥉🎾</b></p>
   {{/ifeq}}
   {{#if noTop}}
-  <p class="text-center">@{{user.username}} estás en la posición "else" <b>#{{posInd}}👑</b></p>
+  <p class="text-center">@{{user.username}} estás en la posición <b>#{{posInd}}👑</b></p>
   {{/if}}
 
   {{#each rankingInd}}
@@ -133,7 +134,7 @@
     <td id="score-ranking-table">{{scoreTenisInd}}</td>
   </tr>
   {{/each}}
-</table>
+      </table>
     </div>
     {{!-- Dobles Tenis --}}
     <div>
@@ -224,6 +225,34 @@
     </div>
           </div>
       </div>
+      {{!--Tabla Dobles Tenis --}}
+          <table id="ranking-table">
+
+  {{#ifeq posDob 1}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#1🥇🎾</b></p>
+  {{/ifeq}}
+  {{#ifeq posDob 2}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#2🥈🎾</b></p>
+  {{/ifeq}}
+  {{#ifeq posDob 3}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#3🥉🎾</b></p>
+  {{/ifeq}}
+  {{#if noTop1}}
+  <p class="text-center">@{{user.username}} estás en la posición <b>#{{posDob}}👑</b></p>
+  {{/if}}
+
+  {{#each rankingDob}}
+  <tr id="ranking-tr">
+    <td id="position-ranking-table">{{inc @index}}</td>
+    <td><img id="img-user-ranking-table" src={{imgURL}}></td>
+    <td>
+      <p id="td-name-ranking">{{name}}</p>
+      <p id="username-ranking-table">@{{username}}</p>
+    </td>
+    <td id="score-ranking-table">{{scoreTenisDob}}</td>
+  </tr>
+  {{/each}}
+          </table>
     </div>
   </div>
 </div>
@@ -318,25 +347,22 @@
     </div>
           </div>
       </div>
-    </div>
-</div>
+      <table id="ranking-table">
 
-{{!-- <table id="ranking-table">
-
-  {{#ifeq posInd 1}}
+  {{#ifeq posDobPadel 1}}
   <p class="text-center">@{{user.username}} eres el numero <b>#1🥇🎾</b></p>
   {{/ifeq}}
-  {{#ifeq posInd 2}}
+  {{#ifeq posDobPadel 2}}
   <p class="text-center">@{{user.username}} eres el numero <b>#2🥈🎾</b></p>
   {{/ifeq}}
-  {{#ifeq posInd 3}}
+  {{#ifeq posDobPadel 3}}
   <p class="text-center">@{{user.username}} eres el numero <b>#3🥉🎾</b></p>
   {{/ifeq}}
-  {{#if noTop}}
-  <p class="text-center">@{{user.username}} estás en la posición "else" <b>#{{posInd}}👑</b></p>
+  {{#if noTop2}}
+  <p class="text-center">@{{user.username}} estás en la posición <b>#{{posDobPadel}}👑</b></p>
   {{/if}}
 
-  {{#each rankingInd}}
+  {{#each rankingDobPadel}}
   <tr id="ranking-tr">
     <td id="position-ranking-table">{{inc @index}}</td>
     <td><img id="img-user-ranking-table" src={{imgURL}}></td>
@@ -344,7 +370,37 @@
       <p id="td-name-ranking">{{name}}</p>
       <p id="username-ranking-table">@{{username}}</p>
     </td>
-    <td id="score-ranking-table">{{scoreTenisInd}}</td>
+    <td id="score-ranking-table">{{scorePadelDob}}</td>
+  </tr>
+  {{/each}}
+      </table>
+    </div>
+</div>
+{{!-- 
+<table id="ranking-table">
+
+  {{#ifeq posDobPadel 1}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#1🥇🎾</b></p>
+  {{/ifeq}}
+  {{#ifeq posDobPadel 2}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#2🥈🎾</b></p>
+  {{/ifeq}}
+  {{#ifeq posDobPadel 3}}
+  <p class="text-center">@{{user.username}} eres el numero <b>#3🥉🎾</b></p>
+  {{/ifeq}}
+  {{#if noTop2}}
+  <p class="text-center">@{{user.username}} estás en la posición <b>#{{posDobPadel}}👑</b></p>
+  {{/if}}
+
+  {{#each rankingDobPadel}}
+  <tr id="ranking-tr">
+    <td id="position-ranking-table">{{inc @index}}</td>
+    <td><img id="img-user-ranking-table" src={{imgURL}}></td>
+    <td>
+      <p id="td-name-ranking">{{name}}</p>
+      <p id="username-ranking-table">@{{username}}</p>
+    </td>
+    <td id="score-ranking-table">{{scorePadelDob}}</td>
   </tr>
   {{/each}}
 </table> --}}
