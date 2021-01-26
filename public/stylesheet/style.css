@@ -1243,3 +1243,15 @@ h4{
 #ranking{
   margin-bottom: 50px;
 }
+
+#tab-ranking{
+  background-image: url("../images/ranking.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+      padding-top: 20vh;
+}
+
+#btn-ranking{
+  background-color: rgba(255,255,255,80%);
+  width:50vw;
+}

@@ -2,18 +2,10 @@
 <header class="header">
   {{> menu}}
 </header>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-
-<div class="tab">
-  <button class="tablinks sendToBack" onclick="openTabRanking(event, 'Tenis')" id="defaultOpenRanking">Tenis</button>
-  <button class="tablinks sendToBack" onclick="openTabRanking(event, 'Paddle')">Paddle</button>
+<div id="tab-ranking" class="tab">
+  <button  id="btn-ranking" class="tablinks sendToBack" onclick="openTabRanking(event, 'Tenis')" id="defaultOpenRanking">Tenis</button>
+  <button  id="btn-ranking" class="tablinks sendToBack" onclick="openTabRanking(event, 'Paddle')">Paddle</button>
 </div>
 
 <div id="Tenis" class="tabcontent holster">
@@ -187,7 +179,7 @@
         {{!-- Points --}}
         <div id="div-score-ranking" class="normal-flex-row">
             <p id="score-ranking">Score</p>
-            <p class="number" id="score-ranking-number">{{rankingInd.[1].scoreTenisInd}}</p>
+            <p class="number" id="score-ranking-number">{{rankingInd.[1].scoreTenisDob}}</p>
         </div>
       </div>
       {{!-- Position --}}
@@ -215,7 +207,7 @@
         {{!-- Points --}}
         <div id="div-score-ranking" class="normal-flex-row">
             <p id="score-ranking">Score</p>
-            <p class="number" id="score-ranking-number">{{rankingInd.[2].scoreTenisInd}}</p>
+            <p class="number" id="score-ranking-number">{{rankingInd.[2].scoreTenisDob}}</p>
         </div>
       </div>
       {{!-- Position --}}
@@ -257,7 +249,7 @@
   </div>
 </div>
 
- <div id="Paddle" class="tabcontent holster">
+<div id="Paddle" class="tabcontent holster">
     {{!-- Dobles Paddle --}}
     <div>
       <h3 class="text-center">Ranking Dobles Paddle</h3>
@@ -376,34 +368,6 @@
       </table>
     </div>
 </div>
-{{!-- 
-<table id="ranking-table">
-
-  {{#ifeq posDobPadel 1}}
-  <p class="text-center">@{{user.username}} eres el numero <b>#1🥇🎾</b></p>
-  {{/ifeq}}
-  {{#ifeq posDobPadel 2}}
-  <p class="text-center">@{{user.username}} eres el numero <b>#2🥈🎾</b></p>
-  {{/ifeq}}
-  {{#ifeq posDobPadel 3}}
-  <p class="text-center">@{{user.username}} eres el numero <b>#3🥉🎾</b></p>
-  {{/ifeq}}
-  {{#if noTop2}}
-  <p class="text-center">@{{user.username}} estás en la posición <b>#{{posDobPadel}}👑</b></p>
-  {{/if}}
-
-  {{#each rankingDobPadel}}
-  <tr id="ranking-tr">
-    <td id="position-ranking-table">{{inc @index}}</td>
-    <td><img id="img-user-ranking-table" src={{imgURL}}></td>
-    <td>
-      <p id="td-name-ranking">{{name}}</p>
-      <p id="username-ranking-table">@{{username}}</p>
-    </td>
-    <td id="score-ranking-table">{{scorePadelDob}}</td>
-  </tr>
-  {{/each}}
-</table> --}}
 
 
 
