@@ -1,84 +1,87 @@
+{{!-- 
+<header class="header">
+  {{#if display}}
+  {{> menu}}
+  {{else}}
+  {{> menuDesktop}}
+  {{/if}}
+</header> --}}
 
 <header class="header">
-  {{> menu}}
+  {{> menuDesktop}}
 </header>
 
-      <section id="one">
+<section id="one">
       <div id="header">
         <h1 id="homePageTitle" class="padding-left shadow-title-h1">Reta y Gana a tus amigos</h1>
-        <div class="flex-row top-space">
+        <div id="btnAndTitle" class="flex-row top-space">
               <p class="text-weight-h1 shadow-title-h1">Empieza hoy</p>
               <a class="btnRedondo" href="/matches/newgame"><img height="40px"src="/images/iconos/flecha.png"></a>  
         </div>
         
       </div>
       
-      </section>
-      <section id="two" class="holster">
-    <h2 class="shadow-title-h2">Ranking</h2>
-    <div id="ranking" class="container x mandatory-scroll-snapping">
-      <div class="text-center">
-        <h3 class="shadow-title-h3">Mejores Jugadores Tennis</h3>
-      <table id="table" class="container x mandatory-scroll-snapping">
-        <td>
-          <table id="td-points"class="width-100vw">
-                <thead class="sendToBack-1">
-                      <td id="td-title">INDIVIDUAL</td>
-                </thead>
-                <tbody>
-                    {{#each users}}  
+</section>
+<section id="two">
+    <h2 class="shadow-title-h2 text-center">Ranking</h2>
+    <div class="holster top-less-space">
+        <div class="container x mandatory-scroll-snapping widthMax900">
+        {{!-- Tenis --}}
+          <div class="holster">
+            <h3 class="shadow-title-h3">Mejores Jugadores Tenis</h3>
+            <div class="container x mandatory-scroll-snapping">
+              {{!-- Individual --}}
+                <div>
+                    <p id="td-title" class="top-space">INDIVIDUAL</p>
+                    <table id="table">
+                      {{#each users}}
+                      <tr class="table-row sendToBack-1 ">
+                        <td id="td-img"><img id="img-user-ranking" src={{imgURL}}></td>
+                        <td id="td-name">{{name}}</td>
+                        <td id="td-points">{{scoreTenisInd}}</td>
+                      </tr>
+                      {{/each}}
+                    </table>
+                </div>
+                {{!-- Dobles --}}
+                <div>
+                  <p id="td-title" class="top-space">DOBLES</p>
+                    <table id="table">
+                      {{#each users}}
                       <tr class="table-row sendToBack-1">
-                          <td id="td-img"><img id="img-user-ranking" src="{{imgURL}}"></td>
-                          <td id="td-name">
-                              {{name}}
-                          </td>
-                          <td id="td-points">{{scoreTenisInd}}</td>
+                        <td id="td-img"><img id="img-user-ranking" src={{imgURL}}></td>
+                        <td id="td-name">{{name}}</td>
+                        <td id="td-points">{{scoreTenisDob}}</td>
                       </tr>
                     {{/each}}
-                </tbody>
-          </table>
-        </td>
-        <td>
-          <table class="width-100vw">
-                <thead class="sendToBack-1">
-                  <td id="td-title">DOBLES</td>
-            </thead>
-            <tbody>
-                {{#each users}}  
-                      <tr class="table-row sendToBack-1">
-                          <td id="td-img"><img id="img-user-ranking" src="{{imgURL}}"></td>
-                          <td id="td-name">
-                              {{name}}
-                          </td>
-                          <td id="td-points">{{scoreTenisDob}}</td>
-                      </tr>
-                {{/each}}
-            </tbody>
-        </table>
-        </td>
-      </table>
-      </div>
-      <div class="text-center">
-        <h3 class="shadow-title-h3">Mejores Jugadores Paddle</h3>
-      <table id="table">
-        {{#each users}}  
-          <tr class="table-row sendToBack-1">
-              <td id="td-img"><img id="img-user-ranking" src="{{imgURL}}"></td>
-              <td id="td-name">
-                  {{name}}
-              </td>
-              <td id="td-points">{{scorePadelDob}}</td>
-          </tr>
-        {{/each}}
-      </table>
-      </div>
+                    </table>
+                </div>
+            </div>
+          </div>
+        {{!-- Paddle --}}
+          <div>
+            <h3 id="best-players-paddle-title"class="shadow-title-h3">Mejores Jugadores Paddle</h3>
+            <table id="table">
+              {{#each users}}
+                <tr class="table-row sendToBack-1">
+                  <td id="td-img"><img id="img-user-ranking" src={{imgURL}}></td>
+                  <td id="td-name">{{name}}</td>
+                  <td id="td-points">{{scorePadelDob}}</td>
+                </tr>
+              {{/each}}
+            </table>
+          </div>
+        </div>
     </div>
-      </section>
+</section>
       <section id="three">
         <h3 id="h3-video" class="shadow-title-h1 sendToBack">Empieza hoy a ganar partidos</h3>
         <a  id="btn-video" class="btnRedondo sendToBack" href="/matches/"><img height="20px"src="/images/iconos/flecha.png"></a>
-      <video id="video" class="sendToBack" loop autoplay muted>
-        <source src="../videos/mobile.mp4" type="video/mp4">
+      <video id="videoMobile" class="sendToBack" loop autoplay muted style="display: none;">
+        <source src="/videos/mobile.mp4" type="video/mp4">
+      </video>
+      <video id="videoDesktop" class="sendToBack" loop autoplay muted style="display: none;">
+        <source src="/videos/desktop.mp4" type="video/mp4">
       </video>
       </section>
 

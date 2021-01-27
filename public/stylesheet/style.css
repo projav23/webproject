@@ -281,6 +281,13 @@ h2 {
 #two {
   height: auto;
 }
+#two .holster{
+  height: auto;
+}
+
+#best-players-paddle-title{
+  margin-bottom: 56px;
+}
 
 #two #ranking {
   display: flex;
@@ -341,6 +348,7 @@ h2 {
   padding-top: 5px;
   padding-bottom: 5px;
   margin: 10px 0;
+  max-width: 900px;
 }
 
 table thead {
@@ -378,7 +386,12 @@ table thead {
   margin-left: 10px;
 }
 
-#video {
+#videoDesktop {
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+#videoMobile {
   width: 100vw;
   height: 100vh;
   z-index: -1;
@@ -1259,6 +1272,7 @@ h4{
   background-color: rgba(255,255,255,80%);
   width:50vw;
 }
+
 #your-ranking{
   background-color: #969B9D;
   height: 30px;
@@ -1267,3 +1281,40 @@ h4{
   align-items: center;
   color: white;
 }
+
+/*------------------RESPONSIVE----------------------------*/
+
+.widthMax900{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 700px){
+#h3-video{
+  font-size: 3.5rem;
+}
+#btn-video img{
+  height: 40px;
+}
+.text-weight-h1{
+  font-size: 35px;
+}
+#header{
+  background-position-y: 80%;
+}
+
+.logo{
+  text-align: center;
+}
+
+#btnAndTitle{
+  flex-direction: column;
+  align-items: center;
+}
+
+#homePageTitle{
+  text-align: center;
+}
+
+}
+

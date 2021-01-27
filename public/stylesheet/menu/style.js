@@ -7,31 +7,36 @@ const buttonsToSendBack = document.querySelectorAll(".sendToBack")
 const footer = document.querySelector("#footer")
 const lines = document.querySelectorAll("#line")
 const titleLogo = document.querySelector(".logo")
+const videoHomePage = document.querySelector("source")
+const menuItem = document.querySelectorAll("#menu-item")
 let isMenuOpen = false;
 
 
 // TOGGLE MENU ACTIVE STATE
-menuToggle.addEventListener('click', e => {
-e.preventDefault();
-isMenuOpen = !isMenuOpen;
+if(menuToggle){
+  menuToggle.addEventListener('click', e => {
+    e.preventDefault();
+    isMenuOpen = !isMenuOpen;
+    
+    menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
+    menu.hidden = !isMenuOpen;
+    nav.classList.toggle('nav--open');
+    
+    //Cambio color hamburguesa
+    lines.forEach(line => {
+      if(line.classList.value != "menuicon__bar menuicon__barBlack"){line.classList.toggle("menuicon__barBlack")}
+    })
+      
+    
+    
+    //Cuando abre el menú envio los btn detrás
+    buttonsToSendBack.forEach(btn => btn.classList.toggle("sendToBack-1"))
+    
+    //Envio también el footer
+    footer.classList.toggle("sendToBack-1")
+    });
+}
 
-menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
-menu.hidden = !isMenuOpen;
-nav.classList.toggle('nav--open');
-
-//Cambio color hamburguesa
-lines.forEach(line => {
-  if(line.classList.value != "menuicon__bar menuicon__barBlack"){line.classList.toggle("menuicon__barBlack")}
-})
-  
-
-
-//Cuando abre el menú envio los btn detrás
-buttonsToSendBack.forEach(btn => btn.classList.toggle("sendToBack-1"))
-
-//Envio también el footer
-footer.classList.toggle("sendToBack-1")
-});
 
 if(iniciarSesion){
   iniciarSesion.addEventListener('click', e => {
@@ -73,9 +78,10 @@ if (e.keyCode === 9) {
 var myNav = document.getElementById('nav');
 window.onscroll = function () { 
     "use strict";
-     if(!isMenuOpen){
+    if(!isMenuOpen || lines.lenght == 0 ){
+      
       if (document.body.scrollTop >= 100 || document.documentElement.scrollTop >= 100) {
-
+        
         //Cambio color Nav
           myNav.classList.add("nav-colored");
           myNav.classList.remove("nav-transparent");
@@ -87,6 +93,11 @@ window.onscroll = function () {
         //Cambio color TitleLogo
         titleLogo.classList.remove("white-color")
         titleLogo.classList.add("black-color")
+
+        //Cambio color Menu Items Desktop
+        menuItem.forEach(item => item.classList.remove("white-color"))
+        menuItem.forEach(item => item.classList.add("black-color"))
+
       } 
       else {
          //Cambio color Nav
@@ -100,6 +111,11 @@ window.onscroll = function () {
          //Cambio color TitleLogo
         titleLogo.classList.remove("black-color")
         titleLogo.classList.add("white-color")
+
+        //Cambio color Menu Items Desktop
+        menuItem.forEach(item => item.classList.remove("black-color"))
+        menuItem.forEach(item => item.classList.add("white-color"))
+        
   
       }
     }
@@ -141,11 +157,43 @@ function openTabRanking(evt, name) {
 
   const tenis = document.getElementById("Tenis").style.display="none"
   const paddle = document.getElementById("Paddle").style.display="none"
-  // console.log("Tenis",tenis);
-  // console.log("Paddle",paddle);
+
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.getElementById(name).style.display = "block";
   evt.currentTarget.className += " active";
 }
+if(document.getElementById('defaultOpenRanking')){
+  document.getElementById('defaultOpenRanking').click()
+}
 
-document.getElementById('defaultOpenRanking').click()
+function videoUrl() {
+  // Declare all variables
+  let i, video;
+
+  // Get all video elements and hide them
+  video = document.querySelectorAll("video");
+  for (i = 0; i < video.length; i++) {
+    video[i].style.display = "none";
+  }
+
+  if (!window.matchMedia("(max-width: 700px)").matches) { //When is Desktop
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.querySelector("#videoDesktop").style.display = "block";
+  evt.currentTarget.className += " active";
+
+  } else { //When is Mobile
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.querySelector("#videoMobile").style.display = "block";
+  evt.currentTarget.className += " active";
+  }
+}
+window.onload = videoUrl
+
+const screen = window.matchMedia("(max-width: 700px)").matches
+
+module.exports = {screen}
+
+
+
