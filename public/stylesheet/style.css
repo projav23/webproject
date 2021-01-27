@@ -1315,6 +1315,85 @@ h4{
 #homePageTitle{
   text-align: center;
 }
+#title_profile {
+
+  height: 400px;
 
 }
-
+#title_profile img {
+  border-radius: 50%;
+  height: 240px;
+  width: 240px;
+}
+#user_profile {
+  font-size: 2.2em;
+}
+.tab {
+  font-size: 2em;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.tabcontent {
+  font-size: 1.5em;
+  max-width: 900px;
+  margin: 20px auto;
+}
+/* .tabcontent img{
+justify-content: center;
+} */
+.tabcontent p{
+  font-size: 1em;
+  text-align: center;
+  margin-top: 300px;
+}
+.tabcontent form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tabcontent label{
+  align-items: flex-start;
+  width: 50%;
+}
+.tabcontent button{
+  width: 250px;
+}
+.tabcontent input{
+  font-size: 0.7em;
+  width: 50%;
+}
+.tabcontent select{
+  font-size: 0.7em;
+  width: 50%;
+}
+.container-col{
+  margin-top: 100px
+}
+.container-col p{
+  margin-top: 20px
+}
+#btns-notification {
+  justify-content: space-evenly;
+  margin-left: 30%;
+  margin-right: 20%;
+}
+#notification-img-name {
+  justify-content: space-evenly;
+}
+#notificacion {
+  padding: 0 8px;
+}
+.gadget{
+  display: flex;
+  margin: auto;  
+}
+/* .btn{
+  width: 200px;
+} */
+.Tenis h3{
+  font-size: 1.5em;
+}
+.Padel h3{
+  font-size: 1.5em;
+}
+}
