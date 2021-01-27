@@ -38,7 +38,7 @@
 <div id="Perfil" class="tabcontent tabPerfil">
 {{#ifCond user._id currentUser._id}}
 <h2 class="text-center shadow-title-h2">No es tu perfil</h2>
-<img src="/images/inspector-gadget.png">
+<img class="gadget"src="/images/inspector-gadget.png">
 {{else}}
 <section>
     <br>
@@ -78,7 +78,7 @@
 <div id="Solicitudes" class="tabcontent tabSol">
 {{#ifCond user._id currentUser._id }}
 <h2 class="text-center shadow-title-h2">No es tu perfil</h2>
-<img src="/images/inspector-gadget.png">
+<img class="gadget" src="/images/inspector-gadget.png">
 {{else}}
 {{#if matches}}
   {{#each matches}}
