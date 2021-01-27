@@ -281,6 +281,13 @@ h2 {
 #two {
   height: auto;
 }
+#two .holster{
+  height: auto;
+}
+
+#best-players-paddle-title{
+  margin-bottom: 56px;
+}
 
 #two #ranking {
   display: flex;
@@ -341,6 +348,7 @@ h2 {
   padding-top: 5px;
   padding-bottom: 5px;
   margin: 10px 0;
+  max-width: 900px;
 }
 
 table thead {
@@ -1270,8 +1278,17 @@ h4{
   margin: 0 auto;
 }
 
-/* @media screen and (max-width: 700px){
-  source {
-    
-  }
-} */
+@media (min-width: 700px){
+#h3-video{
+  font-size: 3.5rem;
+}
+#btn-video img{
+  height: 40px;
+}
+.text-weight-h1{
+  font-size: 35px;
+}
+#header{
+  background-position-y: 80%;
+}
+}
