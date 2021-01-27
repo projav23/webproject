@@ -8,31 +8,35 @@ const footer = document.querySelector("#footer")
 const lines = document.querySelectorAll("#line")
 const titleLogo = document.querySelector(".logo")
 const videoHomePage = document.querySelector("source")
+const menuItem = document.querySelectorAll("#menu-item")
 let isMenuOpen = false;
 
 
 // TOGGLE MENU ACTIVE STATE
-menuToggle.addEventListener('click', e => {
-e.preventDefault();
-isMenuOpen = !isMenuOpen;
+if(menuToggle){
+  menuToggle.addEventListener('click', e => {
+    e.preventDefault();
+    isMenuOpen = !isMenuOpen;
+    
+    menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
+    menu.hidden = !isMenuOpen;
+    nav.classList.toggle('nav--open');
+    
+    //Cambio color hamburguesa
+    lines.forEach(line => {
+      if(line.classList.value != "menuicon__bar menuicon__barBlack"){line.classList.toggle("menuicon__barBlack")}
+    })
+      
+    
+    
+    //Cuando abre el menú envio los btn detrás
+    buttonsToSendBack.forEach(btn => btn.classList.toggle("sendToBack-1"))
+    
+    //Envio también el footer
+    footer.classList.toggle("sendToBack-1")
+    });
+}
 
-menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
-menu.hidden = !isMenuOpen;
-nav.classList.toggle('nav--open');
-
-//Cambio color hamburguesa
-lines.forEach(line => {
-  if(line.classList.value != "menuicon__bar menuicon__barBlack"){line.classList.toggle("menuicon__barBlack")}
-})
-  
-
-
-//Cuando abre el menú envio los btn detrás
-buttonsToSendBack.forEach(btn => btn.classList.toggle("sendToBack-1"))
-
-//Envio también el footer
-footer.classList.toggle("sendToBack-1")
-});
 
 if(iniciarSesion){
   iniciarSesion.addEventListener('click', e => {
@@ -74,9 +78,10 @@ if (e.keyCode === 9) {
 var myNav = document.getElementById('nav');
 window.onscroll = function () { 
     "use strict";
-     if(!isMenuOpen){
+    if(!isMenuOpen || lines.lenght == 0 ){
+      
       if (document.body.scrollTop >= 100 || document.documentElement.scrollTop >= 100) {
-
+        
         //Cambio color Nav
           myNav.classList.add("nav-colored");
           myNav.classList.remove("nav-transparent");
@@ -88,6 +93,11 @@ window.onscroll = function () {
         //Cambio color TitleLogo
         titleLogo.classList.remove("white-color")
         titleLogo.classList.add("black-color")
+
+        //Cambio color Menu Items Desktop
+        menuItem.forEach(item => item.classList.remove("white-color"))
+        menuItem.forEach(item => item.classList.add("black-color"))
+
       } 
       else {
          //Cambio color Nav
@@ -101,6 +111,11 @@ window.onscroll = function () {
          //Cambio color TitleLogo
         titleLogo.classList.remove("black-color")
         titleLogo.classList.add("white-color")
+
+        //Cambio color Menu Items Desktop
+        menuItem.forEach(item => item.classList.remove("black-color"))
+        menuItem.forEach(item => item.classList.add("white-color"))
+        
   
       }
     }
@@ -151,8 +166,6 @@ if(document.getElementById('defaultOpenRanking')){
   document.getElementById('defaultOpenRanking').click()
 }
 
-
-
 function videoUrl() {
   // Declare all variables
   let i, video;
@@ -170,12 +183,17 @@ function videoUrl() {
   evt.currentTarget.className += " active";
 
   } else { //When is Mobile
-    
+
   // Show the current tab, and add an "active" class to the button that opened the tab
   document.querySelector("#videoMobile").style.display = "block";
   evt.currentTarget.className += " active";
   }
 }
 window.onload = videoUrl
+
+const screen = window.matchMedia("(max-width: 700px)").matches
+
+module.exports = {screen}
+
 
 

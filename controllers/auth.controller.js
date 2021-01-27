@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const nodemailer = require("nodemailer")
 const moment = require('moment')
 const templates = require('../public/templates/template')
-
+//const {screen} = require('../public/stylesheet/menu/style')
 
 
 //Errores de validacion mongoose
@@ -148,6 +148,7 @@ const logout = async (req, res) => {
 const getAllUsers = async (req,res) => {
   try{
   const users = await Users.find();
+  //console.log(screen);
 
   res.render('index',{users})
    

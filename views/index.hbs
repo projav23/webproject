@@ -1,12 +1,20 @@
+{{!-- 
+<header class="header">
+  {{#if display}}
+  {{> menu}}
+  {{else}}
+  {{> menuDesktop}}
+  {{/if}}
+</header> --}}
 
 <header class="header">
-  {{> menu}}
+  {{> menuDesktop}}
 </header>
 
 <section id="one">
       <div id="header">
         <h1 id="homePageTitle" class="padding-left shadow-title-h1">Reta y Gana a tus amigos</h1>
-        <div class="flex-row top-space">
+        <div id="btnAndTitle" class="flex-row top-space">
               <p class="text-weight-h1 shadow-title-h1">Empieza hoy</p>
               <a class="btnRedondo" href="/matches/newgame"><img height="40px"src="/images/iconos/flecha.png"></a>  
         </div>

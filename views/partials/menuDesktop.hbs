@@ -1,0 +1,44 @@
+  <nav id="nav" class="nav">    
+    <a class="logo nav__link white-color" href="/">T🎾GETHER</a>
+    <!--Actual Navigation Menu-->
+    {{#if currentUser}}
+    <ul class="" id="menu" tabindex="-1">
+    <li class="flex_items">
+        {{!-- <img id="img-user-ranking" src="/images/default-user.jpg"> --}}
+        <a id="menu-item" href="/profile/{{currentUser._id}}/#Perfil"  class="nav__link white-color">{{currentUser.name}}</a>
+    </li>
+    <li class="flex_items">
+        {{!-- <img id="img-user-ranking" src="/images/iconos/inbox.png"> --}}
+        <a id="menu-item" href="/profile/{{currentUser._id}}/solicitudes/#Solicitudes"  class="nav__link white-color">Solicitudes</a>
+    </li>
+    <li class="flex_items">
+        {{!-- <img id="img-user-ranking" src="/images/iconos/pelota.png"> --}}
+        <a id="menu-item" href="/matches" class="nav__link white-color">Partidos</a>
+    </li>
+    <li class="flex_items">
+        {{!-- <img id="img-user-ranking" src="/images/iconos/pelota2.png"> --}}
+        <a id="menu-item" href="/matches/newgame" class="nav__link white-color">Crear partido</a>
+    </li>
+    <li class="flex_items">
+        {{!-- <img id="img-user-ranking" src="/images/iconos/ranking.png"> --}}
+        <a id="menu-item" href="/ranking/{{currentUser._id}}/#Tenis" class="nav__link white-color">Ranking</a>
+    </li>
+    <li class="flex_items">
+        {{!-- <img id="img-user-ranking" src="/images/iconos/logout.png"> --}}
+        <a id="menu-item" href="/logout" class="nav__link white-color">Logout</a>
+    </li>
+</ul>
+    {{else}}
+<ul class="" id="menu" tabindex="-1" hidden>
+    <li class="">
+        <a id="menu-item" href="/auth/login" id="iniciar-sesion" class="nav__link white-color">Iniciar
+        sesión</a>
+    </li>
+    <li class="">
+        <!--Button to open the modal-->
+        <a id="menu-item" href="/auth/signup" id="hazte-miembro" class="nav__link white-color">Hazte
+        miembro</a>
+    </li>
+    </ul>
+    {{/if}}
+</nav>
