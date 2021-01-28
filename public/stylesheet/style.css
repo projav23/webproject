@@ -1316,7 +1316,9 @@ h4{
   text-align: center;
 }
 #title_profile {
-  height: 400px;
+  height: 100vh;
+  background-position-y: 50%;
+  padding-top: 400px;
 }
 #title_profile img {
   border-radius: 50%;
