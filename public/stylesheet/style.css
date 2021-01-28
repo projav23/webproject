@@ -1476,4 +1476,8 @@ margin: 0 auto;
   max-width: 300px;
   margin: 0 auto;
 }
+#mobileMenu{
+  visibility: hidden;
+  display: hidden;
+}
 }
