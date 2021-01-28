@@ -1,4 +1,5 @@
 const nav = document.querySelector('#nav');
+const navDesktop = document.querySelector("#navDesktop");
 const menu = document.querySelector('#menu');
 const menuToggle = document.querySelector('.nav__toggle');
 const iniciarSesion = document.querySelector("#iniciar-sesion");
@@ -7,6 +8,7 @@ const buttonsToSendBack = document.querySelectorAll(".sendToBack")
 const footer = document.querySelector("#footer")
 const lines = document.querySelectorAll("#line")
 const titleLogo = document.querySelector(".logo")
+const titleLogoDesktop = document.querySelector(".logoDesktop")
 const videoHomePage = document.querySelector("source")
 const menuItem = document.querySelectorAll("#menu-item")
 let isMenuOpen = false;
@@ -21,6 +23,7 @@ if(menuToggle){
     menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
     menu.hidden = !isMenuOpen;
     nav.classList.toggle('nav--open');
+    
     
     //Cambio color hamburguesa
     lines.forEach(line => {
@@ -76,6 +79,7 @@ if (e.keyCode === 9) {
 //Toggle Color Menu con Scroll --------------------------
 
 var myNav = document.getElementById('nav');
+var desktopNav = document.querySelector("#navDesktop");//Menu
 window.onscroll = function () { 
     "use strict";
     if(!isMenuOpen || lines.lenght == 0 ){
@@ -85,6 +89,9 @@ window.onscroll = function () {
         //Cambio color Nav
           myNav.classList.add("nav-colored");
           myNav.classList.remove("nav-transparent");
+
+          desktopNav.classList.add("nav-colored");//Menu
+          desktopNav.classList.remove("nav-transparent");//Menu
   
         //Cambio color hamburguesa
         lines.forEach(line => line.classList.add("menuicon__barBlack"))
@@ -93,6 +100,8 @@ window.onscroll = function () {
         //Cambio color TitleLogo
         titleLogo.classList.remove("white-color")
         titleLogo.classList.add("black-color")
+        titleLogoDesktop.classList.remove("white-color")//Menu
+        titleLogoDesktop.classList.add("black-color")//Menu
 
         //Cambio color Menu Items Desktop
         menuItem.forEach(item => item.classList.remove("white-color"))
@@ -103,6 +112,10 @@ window.onscroll = function () {
          //Cambio color Nav
           myNav.classList.add("nav-transparent");
           myNav.classList.remove("nav-colored");
+
+          desktopNav.classList.add("nav-transparent");//Menu
+          desktopNav.classList.remove("nav-colored");//Menu
+
   
           //Cambio color hamburguesa
         lines.forEach(line => line.classList.add("menuicon__barWhite"))
@@ -111,6 +124,8 @@ window.onscroll = function () {
          //Cambio color TitleLogo
         titleLogo.classList.remove("black-color")
         titleLogo.classList.add("white-color")
+        titleLogoDesktop.classList.remove("black-color")//Menu
+        titleLogoDesktop.classList.add("white-color")//Menu
 
         //Cambio color Menu Items Desktop
         menuItem.forEach(item => item.classList.remove("black-color"))
@@ -191,9 +206,7 @@ function videoUrl() {
 }
 window.onload = videoUrl
 
-const screen = window.matchMedia("(max-width: 700px)").matches
 
-module.exports = {screen}
 
 
 
