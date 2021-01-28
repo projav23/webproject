@@ -1453,4 +1453,27 @@ h1{
   margin-top: 15px;
   margin-bottom: 15px;
 }
+#loginDiv{
+  height: 50px;
+}
+#form-login button{
+max-width: 300px;
+margin: 0 auto;
+}
+#form-login{
+  max-width: 900px;
+  margin: 0 auto;
+}
+#imgLogin{
+  max-width: 200px;
+}
+#signupForm{
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+#signupForm form > button{
+  max-width: 300px;
+  margin: 0 auto;
+}
 }
