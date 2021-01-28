@@ -1426,4 +1426,31 @@ justify-content: center;
 #tab-ranking{
   padding-top: 40vh;
 }
+#headerMatches{
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btn{
+  font-size: 25px;
+}
+h1{
+  font-size: 80px;
+}
+#encuentraLosPartidos{
+  font-size: 2rem;
+  text-align: center;
+}
+#filter{
+  margin: 0 auto;
+  max-width: 900px;
+  text-align: center;
+}
+#btnCrearPartido{
+  flex-direction: column;
+  align-items: center;
+}
+#btnCrearPartido button{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 }
