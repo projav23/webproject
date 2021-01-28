@@ -1480,4 +1480,9 @@ margin: 0 auto;
   visibility: hidden;
   display: hidden;
 }
+#navDesktop a{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 40px;
+}
 }

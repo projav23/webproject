@@ -1,11 +1,8 @@
   <nav id="navDesktop" class="nav">    
+    <a class="logoDesktop nav__link white-color" href="/">T🎾GETHER</a>
     <!--Actual Navigation Menu-->
     {{#if currentUser}}
     <ul id="menu" tabindex="-1">
-    <li class="flex_items">
-        {{!-- <img id="img-user-ranking" src="/images/default-user.jpg"> --}}
-        <a class="logoDesktop nav__link white-color" href="/">T🎾GETHER</a>
-    </li>
     <li class="flex_items">
         {{!-- <img id="img-user-ranking" src="/images/default-user.jpg"> --}}
         <a id="menu-item" href="/profile/{{currentUser._id}}/#Perfil"  class="nav__link white-color">{{currentUser.name}}</a>
