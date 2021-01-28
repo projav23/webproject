@@ -1,6 +1,11 @@
-<header class="header">
- {{>menu}} 
+<header id="mobileMenu" class="header">
+  {{> menu}}
 </header>
+
+<header id="desktopMenu" class="header">
+  {{> menuDesktop}}
+</header>
+
 {{#if matches}}
   {{#each matches}}
   Las siguientes personas han solicitado unirse al evento {{id}} <br> <br>

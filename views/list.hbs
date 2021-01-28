@@ -1,5 +1,9 @@
-<header class="header">
- {{>menu}} 
+<header id="mobileMenu" class="header">
+  {{> menu}}
+</header>
+
+<header id="desktopMenu" class="header">
+  {{> menuDesktop}}
 </header>
 
 <section id="header">
@@ -28,7 +32,7 @@
   </form>
 
 
-  <div class="matches">
+  <div id="matchesList" class="matches">
     {{#if match}}
       {{#each match}}
           {{> matchesCard}}

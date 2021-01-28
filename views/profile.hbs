@@ -1,6 +1,11 @@
-<header class="header">
-    {{> menu}}
+<header id="mobileMenu" class="header">
+  {{> menu}}
 </header>
+
+<header id="desktopMenu" class="header">
+  {{> menuDesktop}}
+</header>
+
 {{!-- UsernameID --}}
 {{!-- Grafico tenis individual --}}
 <input type="number" name="score" id="score" value={{chartScore.scoreTenisInd}} hidden>
