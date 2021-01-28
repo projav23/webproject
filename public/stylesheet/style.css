@@ -1316,9 +1316,7 @@ h4{
   text-align: center;
 }
 #title_profile {
-
   height: 400px;
-
 }
 #title_profile img {
   border-radius: 50%;
@@ -1330,12 +1328,12 @@ h4{
 }
 .tab {
   font-size: 2em;
-  max-width: 900px;
+  /*max-width: 900px; */
   margin: 0 auto;
 }
 .tabcontent {
   font-size: 1.5em;
-  max-width: 900px;
+  /* max-width: 900px; TT */
   margin: 20px auto;
 }
 /* .tabcontent img{
@@ -1344,7 +1342,7 @@ justify-content: center;
 .tabcontent p{
   font-size: 1em;
   text-align: center;
-  margin-top: 300px;
+  /* margin-top: 300px; TT */
 }
 .tabcontent form{
   display: flex;
@@ -1395,5 +1393,87 @@ justify-content: center;
 }
 .Padel h3{
   font-size: 1.5em;
+}
+
+#ranking{
+  margin: 0 auto;
+  max-width: 900px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+#div-score-ranking{
+  justify-content: space-evenly;
+}
+#score-ranking-number,#name-ranking{
+  font-size: 70px;
+}
+#score-ranking{
+  font-size: 50px;
+}
+#img-ranking{
+  height: 200px;
+}
+#position-ranking{
+  font-size:240px ;
+}
+#your-ranking{
+  margin: 0 auto;
+  width: 90vw;
+}
+.container h3,#Paddle h3{
+  font-size: 3rem;
+}
+#tab-ranking{
+  padding-top: 40vh;
+}
+#headerMatches{
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btn{
+  font-size: 25px;
+}
+h1{
+  font-size: 80px;
+}
+#encuentraLosPartidos{
+  font-size: 2rem;
+  text-align: center;
+}
+#filter{
+  margin: 0 auto;
+  max-width: 900px;
+  text-align: center;
+}
+#btnCrearPartido{
+  flex-direction: column;
+  align-items: center;
+}
+#btnCrearPartido button{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#loginDiv{
+  height: 50px;
+}
+#form-login button{
+max-width: 300px;
+margin: 0 auto;
+}
+#form-login{
+  max-width: 900px;
+  margin: 0 auto;
+}
+#imgLogin{
+  max-width: 200px;
+}
+#signupForm{
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+#signupForm form > button{
+  max-width: 300px;
+  margin: 0 auto;
 }
 }
