@@ -26,6 +26,7 @@ const getRanking = async (req,res,next) => {
   const noTop2 = posDobPadel > 3
 
   const rankingDob = await Users.find().sort({scoreTenisDob: -1}).populate("comunidad")
+  console.log("rakingDob", rankingDob)
   const rankingIndPadel = await Users.find().sort({scorePadelInd: -1}).populate("comunidad")
   const rankingDobPadel = await Users.find().sort({scorePadelDob: -1}).populate("comunidad")
   res.render("ranking", {rankingInd, rankingDob, rankingIndPadel, rankingDobPadel, userId, user,posInd,noTop,posDob,noTop1,posDobPadel,noTop2})
