@@ -21,8 +21,8 @@ console.log(perdidosIndPad)
 
 //Variables partidos padel dobles
 const scorePadelDob = document.querySelector("#scorePadDob").value
-const gamesDobPadel = document.querySelector("#gamesPadDob").value
-const perdidosDobPad = gamesDobPadel - scorePadelDob
+// const gamesDobPadel = document.querySelector("#gamesPadDob").value
+// const perdidosDobPad = gamesDobPadel - scorePadelDob
 
 
 //Canvas ind tenis
@@ -46,7 +46,7 @@ console.log("scoretotalPadel", scoreTotalPadel)
 //Games total
 const gamestotal = Number(games) + Number(gamesDob)
 console.log("gamestotal", gamestotal)
-const gamestotalPadel = Number(gamesIndPadel) + Number(gamesDobPadel)
+const gamestotalPadel = Number(gamesIndPadel)
 console.log("gamestotalPadel", gamestotalPadel)
 
 

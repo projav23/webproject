@@ -36,9 +36,12 @@ if(menuToggle){
     buttonsToSendBack.forEach(btn => btn.classList.toggle("sendToBack-1"))
     
     //Envio también el footer
-    footer.classList.toggle("sendToBack-1")
-    });
+    if(footer){
+      footer.classList.toggle("sendToBack-1")
+    }
+})
 }
+
 
 
 if(iniciarSesion){

@@ -227,10 +227,12 @@ const winners = async (req,res,next) => {
         )
         const match = await Matches.findByIdAndUpdate(
           matchId,
-          {
-            $addToSet: {playersWinners: player1, player2},
-            status: 'Finalizado'
-          },
+          {$addToSet: {playerWinners: {$each: [player1, player2]}}},
+          {new: true}
+        )
+        const matchStatus = await Matches.findByIdAndUpdate(
+          matchId,
+          {status: "Finalizado"},
           {new: true}
         )
       } else {
@@ -246,10 +248,12 @@ const winners = async (req,res,next) => {
         )
         const match = await Matches.findByIdAndUpdate(
           matchId,
-          {
-            $addToSet: {playersWinners: player1, player2},
-            status: 'Finalizado'
-          },
+          {$addToSet: {playerWinners: {$each: [player1, player2]}}},
+          {new: true}
+        )
+        const matchStatus = await Matches.findByIdAndUpdate(
+          matchId,
+          {status: "Finalizado"},
           {new: true}
         )
       }

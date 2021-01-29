@@ -15,10 +15,10 @@ const getProfile = async (req, res, next) => {
   //Comunidades
   const comunidades = await Comunidades.find().populate("comunidad")
   //Partidos nulos Tenis
-  const nulosTenis = await Matches.find({$and: [{acceptedGuests:{$in: userId}}, {status: "Finalizado"},{esport: "Tenis"}, {playerWinners:{$ne: []}}]})
+  const nulosTenis = await Matches.find({$and: [{acceptedGuests:{$in: userId}}, {status: "Finalizado"},{esport: "Tenis"}, {playerWinners:{$in: []}}]})
   //Data para pintar el grafico si hay partidos finalizados
   //Partidos nulos Padel
-  const nulosPadel = await Matches.find({$and: [{acceptedGuests:{$in: userId}}, {status: "Finalizado"},{esport: "Padel"}, {playerWinners:{$ne: []}}]})
+  const nulosPadel = await Matches.find({$and: [{acceptedGuests:{$in: userId}}, {status: "Finalizado"},{esport: "Padel"}, {playerWinners:{$in: []}}]})
   //Data para pintar el grafico si hay partidos finalizados
   const matchEnd = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}]})
   //Data para el grafico Tenis individual
@@ -28,7 +28,7 @@ const getProfile = async (req, res, next) => {
   //Puntuacion tenis
   const chartScore = await Users.findById(userId, {scoreTenisInd: 1, scoreTenisDob: 1})
   //Data para el grafico Padel individual
-  const chartGamesPadel = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Padel"}, {numberPlayers: 2}]})
+  const chartGamesPadel = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Padel"}]})
   //Data para el grafico padel dobles
   const chartGamesPadelDob = await Matches.find({$and: [{acceptedGuests:{$in: userId}},{status: "Finalizado"}, {esport: "Padel"}, {numberPlayers: 4}]})
   //Puntuacion padel
