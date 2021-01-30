@@ -147,9 +147,9 @@ const logout = async (req, res) => {
 //TRAER TODOS LOS USUARIOS PARA MOSTRARLOS EN EL PARTIAL DEL RANKING
 const getAllUsers = async (req,res) => {
   try{
-  const users = await Users.find({}).sort({scoreTenisInd: -1});
-  const usersDob = await Users.find({}).sort({scoreTenisDob: -1});
-  const usersPadel = await Users.find({}).sort({scorePadelDob: -1});
+  const users = await Users.find({}).sort({scoreTenisInd: -1}).limit(5);
+  const usersDob = await Users.find({}).sort({scoreTenisDob: -1}).limit(5);
+  const usersPadel = await Users.find({}).sort({scorePadelDob: -1}).limit(5);
 
 
   res.render('index',{users, usersDob, usersPadel})
